@@ -28,6 +28,5 @@ npm run preview  # Vorschau des Produktions-Builds
 ## Offene Punkte vor offizieller Bewerbung (TODO)
 
 1. **Impressum & Datenschutz** (`src/pages/impressum.astro` & `src/pages/datenschutz.astro`): Inhabername, E-Mail-Adresse, ggf. USt-IdNr. und zuständige Behörde eintragen.
-2. **Bildrechte:** Aktuelle Fotos stammen aus dem Google-Unternehmensprofil – vor offizieller Veröffentlichung Freigabe des Inhabers einholen oder eigene Fotos einsetzen.
-3. **Domain:** Eigene Domain (z. B. `ristorante-verdi.com` oder `.de`) verbinden und `SITE_URL` in Vercel hinterlegen.
-4. **Speisekarte prüfen:** Familien-Pizza (50 cm Ø) ggf. ergänzen, falls weiterhin angeboten.
+2. **Domain:** Eigene Domain (z. B. `ristorante-verdi.com` oder `.de`) verbinden und `SITE_URL` in Vercel hinterlegen.
+3. **Speisekarte prüfen:** Familien-Pizza (50 cm Ø) ggf. ergänzen, falls weiterhin angeboten.
