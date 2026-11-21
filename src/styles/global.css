@@ -1,15 +1,16 @@
 @import "tailwindcss";
-@import "@fontsource-variable/fraunces";
-@import "@fontsource-variable/fraunces/wght-italic.css";
-@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/cormorant-garamond";
+@import "@fontsource-variable/cormorant-garamond/wght-italic.css";
+@import "@fontsource-variable/lora";
+@import "@fontsource-variable/lora/wght-italic.css";
 
 @theme {
-  --font-display: "Fraunces Variable", Georgia, "Times New Roman", serif;
-  --font-sans: "Plus Jakarta Sans Variable", system-ui, -apple-system, sans-serif;
+  --font-display: "Cormorant Garamond Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Lora Variable", Georgia, "Times New Roman", serif;
 
   --color-cream: #FBF6EE;
   --color-parchment: #F3EADB;
-  --color-sand: #E8DCC9;
+  --color-sand: #E6D9C4;
   --color-ink: #1C1917;
   --color-muted: #595047;
   --color-tomato: #B82D1A;
@@ -22,7 +23,6 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     background-color: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
@@ -37,9 +37,8 @@
     overflow-x: clip;
   }
 
-  h1, h2, h3, .font-display {
+  h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
-    font-variation-settings: "SOFT" 55, "WONK" 1;
   }
 
   ::selection {
@@ -61,16 +60,110 @@
   inset: 0;
   pointer-events: none;
   z-index: 60;
-  opacity: 0.028;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Dotted price leader */
+/* Culinary studio radial glow for the 3D Hero stage */
+.stage-3d-bg {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(199, 138, 59, 0.24) 0%, rgba(184, 45, 26, 0.14) 36%, rgba(20, 51, 36, 0.92) 78%, #10251B 100%);
+}
+
+/* Interactive 3D tilt cards with dynamic specular light */
+[data-tilt-card] {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+[data-tilt-card]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(199, 138, 59, 0.16),
+    transparent 65%
+  );
+}
+[data-tilt-card]:hover::after {
+  opacity: 1;
+}
+
+/* Authentic Speisekarte paper & dotted leader */
+.menu-sheet {
+  background:
+    linear-gradient(180deg, rgba(252, 248, 240, 0.98) 0%, rgba(248, 241, 229, 0.98) 100%);
+  box-shadow:
+    0 24px 60px -24px rgba(28, 25, 23, 0.16),
+    0 2px 10px rgba(28, 25, 23, 0.05),
+    inset 0 0 0 1px rgba(185, 122, 38, 0.25);
+}
+
 .menu-leader {
-  background-image: radial-gradient(circle, rgba(89, 80, 71, 0.35) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(89, 80, 71, 0.48) 0.95px, transparent 1px);
   background-position: bottom;
-  background-size: 8px 2px;
+  background-size: 7px 2px;
   background-repeat: repeat-x;
+}
+
+/* Animated Mobile Navbar Drawer (smooth grid height + staggered links) */
+.mobile-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.mobile-drawer[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer-inner {
+  overflow: hidden;
+}
+
+.mobile-nav-item {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0ms;
+}
+
+.mobile-drawer[data-open="true"] .mobile-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: var(--stagger, 0ms);
+}
+
+/* Hamburger -> X morph */
+.burger-line {
+  transform-origin: center;
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.22s ease;
+}
+
+[aria-expanded="true"] .burger-top {
+  transform: translateY(5px) rotate(45deg);
+}
+[aria-expanded="true"] .burger-mid {
+  opacity: 0;
+  transform: scaleX(0);
+}
+[aria-expanded="true"] .burger-bot {
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 /* Marquee animation */
@@ -110,7 +203,21 @@
   animation: soft-pulse 2.2s ease-in-out infinite;
 }
 
-/* Scroll reveal */
+/* Slow orbital spin for studio badge ring */
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: slow-spin 26s linear infinite;
+}
+
+/* Fallback subtle CSS reveal */
 .reveal {
   opacity: 1;
   transform: none;
@@ -144,13 +251,17 @@ html.js-reveal .reveal:not(.is-visible) {
   .marquee-clone {
     display: none;
   }
-  .status-dot-pulse {
+  .status-dot-pulse,
+  .spin-slow {
     animation: none;
   }
+  .mobile-drawer,
+  .mobile-nav-item,
+  .burger-line,
   .reveal,
   html.js-reveal .reveal:not(.is-visible) {
+    transition: none;
     opacity: 1;
     transform: none;
-    transition: none;
   }
 }

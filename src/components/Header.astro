@@ -9,15 +9,15 @@ const { isSubpage = false } = Astro.props;
 const prefix = isSubpage ? '/' : '';
 
 const navLinks = [
-  { label: 'Speisekarte', href: `${prefix}#speisekarte` },
-  { label: 'Über uns', href: `${prefix}#ueber-uns` },
-  { label: 'Bewertungen', href: `${prefix}#bewertungen` },
-  { label: 'Galerie', href: `${prefix}#galerie` },
-  { label: 'Besuch & Zeiten', href: `${prefix}#besuch` },
+  { num: 'I', label: 'Speisekarte', href: `${prefix}#speisekarte` },
+  { num: 'II', label: 'Über uns', href: `${prefix}#ueber-uns` },
+  { num: 'III', label: 'Bewertungen', href: `${prefix}#bewertungen` },
+  { num: 'IV', label: 'Galerie', href: `${prefix}#galerie` },
+  { num: 'V', label: 'Besuch & Zeiten', href: `${prefix}#besuch` },
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-sand/80 bg-cream/92 backdrop-blur-md">
+<header class="sticky top-0 z-40 border-b border-sand/85 bg-cream/94 backdrop-blur-md">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
     <a href="/" class="group focus-visible:outline-tomato" aria-label="Ristorante Verdi Pizzeria – Startseite">
       <VerdiLogo compact />
@@ -27,17 +27,17 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="text-sm font-medium text-ink/85 transition-colors hover:text-tomato"
+          class="font-display text-[1.08rem] font-semibold tracking-wide text-ink/90 transition-colors hover:text-tomato"
         >
           {link.label}
         </a>
       ))}
     </nav>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2.5 sm:gap-3">
       <div
         data-live-status
-        class="hidden items-center gap-2 rounded-full border border-sand bg-parchment/80 px-3 py-1.5 text-xs font-medium text-ink sm:inline-flex"
+        class="hidden items-center gap-2 rounded-full border border-sand bg-parchment/85 px-3 py-1.5 text-xs font-medium text-ink sm:inline-flex"
       >
         <span data-status-dot class="h-2 w-2 rounded-full bg-verdi"></span>
         <span data-status-text>Mo, Mi–So · 11–14:30 &amp; 17–21:30</span>
@@ -54,47 +54,79 @@ const navLinks = [
         <span class="sm:hidden">Anrufen</span>
       </a>
 
+      <!-- Morphing Hamburger -> X Toggle Button -->
       <button
         type="button"
         id="mobile-menu-toggle"
         aria-expanded="false"
         aria-controls="mobile-nav-drawer"
         aria-label="Menü öffnen"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-sand bg-parchment text-ink transition-colors hover:border-ink/30 lg:hidden"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-sand bg-parchment text-ink transition-colors hover:border-verdi/40 hover:bg-parchment/90 lg:hidden"
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <line x1="4" y1="7" x2="20" y2="7" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="17" x2="20" y2="17" />
+          <line class="burger-line burger-top" x1="4" y1="7" x2="20" y2="7" />
+          <line class="burger-line burger-mid" x1="4" y1="12" x2="20" y2="12" />
+          <line class="burger-line burger-bot" x1="4" y1="17" x2="20" y2="17" />
         </svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Dropdown Navigation -->
+  <!-- Smooth Animated Mobile Navigation Drawer -->
   <div
     id="mobile-nav-drawer"
-    hidden
-    class="border-t border-sand bg-cream px-4 pb-5 pt-3 shadow-lg lg:hidden"
+    data-open="false"
+    aria-hidden="true"
+    class="mobile-drawer border-t border-sand/90 bg-cream/98 shadow-xl backdrop-blur-md lg:hidden"
   >
-    <div
-      data-live-status
-      class="mb-3 inline-flex items-center gap-2 rounded-full border border-sand bg-parchment px-3 py-1.5 text-xs font-medium text-ink"
-    >
-      <span data-status-dot class="h-2 w-2 rounded-full bg-verdi"></span>
-      <span data-status-text>Mo, Mi–So · 11–14:30 &amp; 17–21:30</span>
-    </div>
-    <nav aria-label="Mobile Navigation" class="flex flex-col gap-1">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          data-mobile-nav-link
-          class="rounded-xl px-3 py-2.5 text-base font-medium text-ink transition-colors hover:bg-parchment hover:text-tomato"
+    <div class="mobile-drawer-inner">
+      <div class="mx-auto max-w-7xl px-5 pb-6 pt-4">
+        <div
+          data-live-status
+          style="--stagger: 35ms"
+          class="mobile-nav-item mb-4 inline-flex items-center gap-2 rounded-full border border-verdi/20 bg-verdi-soft px-3.5 py-1.5 text-xs font-medium text-verdi"
         >
-          {link.label}
-        </a>
-      ))}
-    </nav>
+          <span data-status-dot class="h-2 w-2 rounded-full bg-verdi"></span>
+          <span data-status-text>Mo, Mi–So · 11–14:30 &amp; 17–21:30</span>
+        </div>
+
+        <nav aria-label="Mobile Navigation" class="divide-y divide-sand/70">
+          {navLinks.map((link, idx) => (
+            <a
+              href={link.href}
+              data-mobile-nav-link
+              style={`--stagger: ${75 + idx * 55}ms`}
+              class="mobile-nav-item group flex items-baseline justify-between py-3.5 text-ink transition-colors hover:text-tomato"
+            >
+              <span class="flex items-baseline gap-3.5">
+                <span class="font-display text-sm italic text-crust">{link.num}.</span>
+                <span class="font-display text-2xl font-semibold tracking-tight">{link.label}</span>
+              </span>
+              <svg
+                class="h-4 w-4 text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:text-tomato"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
+          ))}
+        </nav>
+
+        <div
+          style="--stagger: 360ms"
+          class="mobile-nav-item mt-5 flex items-center justify-between gap-3 rounded-2xl border border-sand bg-parchment/80 px-4 py-3 text-xs text-muted"
+        >
+          <span>{RESTAURANT.street} · {RESTAURANT.city}</span>
+          <a href={RESTAURANT.phoneHref} class="shrink-0 font-semibold text-tomato underline underline-offset-2">
+            {RESTAURANT.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -104,21 +136,27 @@ const navLinks = [
     const drawer = document.getElementById('mobile-nav-drawer');
     if (!btn || !drawer) return;
 
-    const close = () => {
-      drawer.hidden = true;
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('aria-label', 'Menü öffnen');
+    const setOpen = (open: boolean) => {
+      drawer.dataset.open = String(open);
+      drawer.setAttribute('aria-hidden', String(!open));
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
     };
 
     btn.onclick = () => {
-      const opening = drawer.hidden;
-      drawer.hidden = !opening;
-      btn.setAttribute('aria-expanded', String(opening));
-      btn.setAttribute('aria-label', opening ? 'Menü schließen' : 'Menü öffnen');
+      const isOpen = drawer.dataset.open === 'true';
+      setOpen(!isOpen);
     };
 
     drawer.querySelectorAll('[data-mobile-nav-link]').forEach((link) => {
-      link.addEventListener('click', close);
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.dataset.open === 'true') {
+        setOpen(false);
+        btn.focus();
+      }
     });
   }
   document.addEventListener('astro:page-load', initMobileNav);

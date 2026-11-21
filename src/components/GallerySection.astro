@@ -133,7 +133,7 @@ const galleryItems = await Promise.all(
     <!-- Bento / Masonry Photo Grid -->
     <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
       {galleryItems.map((item) => (
-        <figure class={`reveal group relative overflow-hidden rounded-3xl border border-sand bg-parchment ${item.span}`}>
+        <figure data-clip-reveal class={`group relative overflow-hidden rounded-3xl border border-sand bg-parchment ${item.span}`}>
           <button
             type="button"
             data-lightbox-trigger={item.index}

@@ -3,24 +3,34 @@ import { Picture } from 'astro:assets';
 import heroPizza from '../assets/photos/hero-pizza-rucola.jpg';
 import crustDetail from '../assets/photos/pizza-steinofen-nah.jpg';
 import { RESTAURANT } from '../data/restaurant';
+
+const tickerItems = [
+  'Steinofen-Pizza Ø 32 cm',
+  'Frischegarantie',
+  '4,7 ★ Google (216 Bewertungen)',
+  'Kompositionen aus Küche & Keller',
+  'Pasta al Forno 8,50 €',
+  'Schnelle Abholung · 05602 7100',
+  'Desseler Str. 15 · Hessisch Lichtenau',
+];
 ---
 
 <section class="relative overflow-hidden border-b border-sand/80">
-  <!-- Subtle ambient warm wash -->
+  <!-- Ambient culinary studio glows -->
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute -top-24 right-0 h-[34rem] w-[34rem] rounded-full bg-tomato/[0.06] blur-3xl"
+    class="pointer-events-none absolute -top-28 right-0 h-[36rem] w-[36rem] rounded-full bg-tomato/[0.07] blur-3xl"
   ></div>
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute -bottom-24 -left-16 h-[28rem] w-[28rem] rounded-full bg-verdi/[0.06] blur-3xl"
+    class="pointer-events-none absolute -bottom-24 -left-16 h-[30rem] w-[30rem] rounded-full bg-verdi/[0.07] blur-3xl"
   ></div>
 
-  <div class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8 lg:pb-28 lg:pt-16">
+  <div class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8 lg:pb-24 lg:pt-14">
     <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
       <!-- Editorial Copy Column -->
-      <div class="lg:col-span-6 xl:col-span-6">
-        <div class="mb-6 flex flex-wrap items-center gap-3">
+      <div class="lg:col-span-6">
+        <div data-hero-fade class="mb-6 flex flex-wrap items-center gap-2.5">
           <span
             data-live-status
             class="inline-flex items-center gap-2 rounded-full border border-verdi/25 bg-verdi-soft px-3.5 py-1.5 text-xs font-semibold tracking-wide text-verdi"
@@ -37,28 +47,39 @@ import { RESTAURANT } from '../data/restaurant';
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
             <span>{RESTAURANT.rating.scoreDisplay} ★</span>
-            <span class="text-muted">({RESTAURANT.rating.count} Google-Bewertungen)</span>
+            <span class="text-muted">({RESTAURANT.rating.count} Google)</span>
           </a>
         </div>
 
-        <p class="mb-3 font-display text-sm italic tracking-wide text-tomato sm:text-base">
+        <p data-hero-fade class="mb-3 font-display text-sm italic tracking-wide text-tomato sm:text-base">
           „{RESTAURANT.tagline}“ · {RESTAURANT.city}
         </p>
 
-        <h1 class="font-display text-[2.65rem] font-semibold leading-[1.03] tracking-[-0.03em] text-ink sm:text-6xl xl:text-[4.25rem]">
-          Steinofen-Pizza aus{' '}
-          <span class="italic font-normal text-verdi">Hessisch Lichtenau.</span>
+        <!-- Staggered Masked Monumental Headline -->
+        <h1 class="font-display text-[2.7rem] font-semibold leading-[1.02] tracking-[-0.03em] text-ink sm:text-6xl xl:text-[4.35rem]">
+          <span class="block overflow-hidden pb-1">
+            <span data-hero-line class="block">Steinofen-Pizza</span>
+          </span>
+          <span class="block overflow-hidden pb-1">
+            <span data-hero-line class="block">
+              aus <span class="italic font-normal text-verdi">Hessisch</span>
+            </span>
+          </span>
+          <span class="block overflow-hidden pb-1.5">
+            <span data-hero-line class="block italic font-normal text-verdi">Lichtenau.</span>
+          </span>
         </h1>
 
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+        <p data-hero-fade class="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
           Hauchdünner Teig aus dem heißen Steinofen, frische Zutaten und ehrliche Portionen –
-          seit Jahren beliebt für blitzschnelle Abholung oder einen entspannten Abend an der
+          blitzschnell zum Mitnehmen oder gemütlich vor Ort an der{' '}
           <span class="font-medium text-ink">{RESTAURANT.street}</span>.
         </p>
 
-        <!-- Hand-drawn musical cadence flourish (Verdi nod) -->
+        <!-- Hand-drawn Verdi musical cadence flourish -->
         <svg
-          class="mt-6 h-4 w-44 text-tomato/65"
+          data-hero-fade
+          class="mt-5 h-4 w-44 text-tomato/70"
           viewBox="0 0 180 18"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -79,11 +100,12 @@ import { RESTAURANT } from '../data/restaurant';
           />
         </svg>
 
-        <!-- Primary & Secondary CTAs -->
-        <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <!-- Magnetic Primary & Secondary CTAs -->
+        <div data-hero-fade class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
             href={RESTAURANT.phoneHref}
-            class="group inline-flex items-center justify-center gap-3 rounded-full bg-tomato px-7 py-4 text-base font-semibold text-cream shadow-md shadow-tomato/20 transition-all hover:bg-tomato-dark hover:shadow-lg hover:shadow-tomato/25 active:scale-[0.98]"
+            data-magnetic
+            class="group inline-flex items-center justify-center gap-3 rounded-full bg-tomato px-7 py-4 text-base font-semibold text-cream shadow-lg shadow-tomato/25 transition-colors hover:bg-tomato-dark active:scale-[0.98]"
           >
             <svg class="h-5 w-5 transition-transform group-hover:-rotate-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -93,7 +115,8 @@ import { RESTAURANT } from '../data/restaurant';
 
           <a
             href="#speisekarte"
-            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-verdi/30 bg-transparent px-7 py-3.5 text-base font-semibold text-verdi transition-all hover:border-verdi hover:bg-verdi hover:text-cream"
+            data-magnetic
+            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-verdi/30 bg-cream/60 px-7 py-3.5 text-base font-semibold text-verdi transition-colors hover:border-verdi hover:bg-verdi hover:text-cream"
           >
             <span>Speisekarte ansehen</span>
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -103,7 +126,7 @@ import { RESTAURANT } from '../data/restaurant';
         </div>
 
         <!-- Micro facts bar -->
-        <dl class="mt-9 grid grid-cols-3 gap-4 border-t border-sand pt-6 text-sm">
+        <dl data-hero-fade class="mt-9 grid grid-cols-3 gap-4 border-t border-sand pt-6 text-sm">
           <div>
             <dt class="text-xs uppercase tracking-wider text-muted">Steinofen-Pizza</dt>
             <dd class="mt-1 font-display text-lg font-semibold text-ink">Ø 32 cm ab 7 €</dd>
@@ -119,27 +142,72 @@ import { RESTAURANT } from '../data/restaurant';
         </dl>
       </div>
 
-      <!-- Art-Directed Photography Column -->
-      <div class="relative lg:col-span-6 xl:col-span-6">
+      <!-- Interactive 3D Stone-Oven Pizza Stage + Authentic Photo Switcher -->
+      <div class="relative lg:col-span-6" data-parallax="-18">
         <div class="relative mx-auto max-w-xl lg:max-w-none">
-          <!-- Main Pizza Frame -->
-          <div class="relative overflow-hidden rounded-[2rem] border border-sand bg-parchment shadow-2xl shadow-ink/10">
-            <Picture
-              src={heroPizza}
-              formats={['avif', 'webp']}
-              widths={[640, 960, 1280]}
-              sizes="(max-width: 1024px) 100vw, 48vw"
-              alt="Frisch gebackene Steinofen-Pizza aus dem Ristorante Verdi mit leuchtend roter Tomatensauce, frischem Rucola und schwarzen Oliven"
-              loading="eager"
-              fetchpriority="high"
-              class="aspect-[4/3.35] w-full object-cover object-[50%_72%] transition-transform duration-700 hover:scale-[1.03]"
-            />
-            <!-- Warm bottom vignette for caption legibility -->
-            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink/75 via-ink/25 to-transparent"></div>
-            <div class="absolute bottom-4 left-5 right-5 flex items-end justify-between gap-3 text-cream sm:pl-44 lg:pl-48">
+          <div class="stage-3d-bg relative overflow-hidden rounded-[2rem] border border-verdi/25 shadow-2xl shadow-verdi-dark/25">
+            <!-- Mode Switcher Pill (3D Model vs Real Verdi Photo) -->
+            <div class="absolute left-4 top-4 z-20 inline-flex items-center rounded-full border border-cream/20 bg-ink/55 p-1 text-xs font-semibold text-cream backdrop-blur-md">
+              <button
+                type="button"
+                id="hero-mode-3d"
+                aria-pressed="true"
+                class="rounded-full bg-cream px-3 py-1 text-verdi-dark transition-all"
+              >
+                3D Steinofen
+              </button>
+              <button
+                type="button"
+                id="hero-mode-photo"
+                aria-pressed="false"
+                class="rounded-full px-3 py-1 text-cream/85 transition-all hover:text-cream"
+              >
+                Echtes Foto
+              </button>
+            </div>
+
+            <!-- Subtle architectural studio reticle ring -->
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 400 400"
+              class="spin-slow pointer-events-none absolute left-1/2 top-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 opacity-20"
+            >
+              <circle cx="200" cy="200" r="186" fill="none" stroke="#FBF6EE" stroke-width="0.75" stroke-dasharray="4 8" />
+              <circle cx="200" cy="200" r="158" fill="none" stroke="#C78A3B" stroke-width="0.6" stroke-dasharray="2 10" />
+            </svg>
+
+            <!-- Aspect Stage Container -->
+            <div class="relative aspect-[4/3.55] w-full">
+              <!-- Authentic Verdi Photo (Immediate LCP & Photo-mode / Reduced-motion view) -->
+              <div
+                id="hero-photo-layer"
+                class="absolute inset-0 transition-opacity duration-500 opacity-100"
+              >
+                <Picture
+                  src={heroPizza}
+                  formats={['avif', 'webp']}
+                  widths={[640, 960, 1280]}
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                  alt="Frisch gebackene Steinofen-Pizza aus dem Ristorante Verdi mit leuchtend roter Tomatensauce, frischem Rucola und schwarzen Oliven"
+                  loading="eager"
+                  fetchpriority="high"
+                  class="h-full w-full object-cover object-[50%_72%]"
+                />
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent"></div>
+              </div>
+
+              <!-- Interactive Three.js 3D Stone-Oven Pizza Canvas -->
+              <div
+                id="hero-3d-canvas"
+                class="absolute inset-0 z-10 opacity-0 transition-opacity duration-700"
+              ></div>
+            </div>
+
+            <!-- Bottom Studio HUD Caption (zero overlap with floating card) -->
+            <div class="pointer-events-none absolute bottom-4 left-5 right-5 z-20 flex items-end justify-between gap-3 text-cream sm:pl-44 lg:pl-48">
               <div>
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-cream/85">
-                  Frischegarantie
+                <p id="hero-stage-kicker" class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-sand">
+                  Interaktives 3D-Modell · Ziehen zum Drehen
                 </p>
                 <p class="font-display text-base italic leading-snug sm:text-lg">
                   Knusprig aus dem Steinofen
@@ -151,8 +219,11 @@ import { RESTAURANT } from '../data/restaurant';
             </div>
           </div>
 
-          <!-- Floating Secondary Stone-Oven Detail Card (Desktop / Tablet) -->
-          <div class="absolute -bottom-7 left-2 hidden w-40 overflow-hidden rounded-2xl border-4 border-cream bg-parchment shadow-xl sm:block lg:-left-6 lg:w-48">
+          <!-- Floating Secondary Stone-Oven Detail Card with Counter-Parallax -->
+          <div
+            data-parallax="24"
+            class="absolute -bottom-7 left-2 z-20 hidden w-40 overflow-hidden rounded-2xl border-4 border-cream bg-parchment shadow-2xl sm:block lg:-left-6 lg:w-48"
+          >
             <Picture
               src={crustDetail}
               formats={['avif', 'webp']}
@@ -167,12 +238,12 @@ import { RESTAURANT } from '../data/restaurant';
             </div>
           </div>
 
-          <!-- Floating Stamp Badge -->
+          <!-- Floating Circular Seal Stamp -->
           <div
-            class="absolute right-3 top-3 flex h-20 w-20 rotate-6 flex-col items-center justify-center rounded-full border-2 border-dashed border-cream/65 bg-verdi text-center text-cream shadow-lg sm:-right-4 sm:-top-5 sm:h-24 sm:w-24"
+            class="absolute right-3 top-3 z-20 flex h-20 w-20 rotate-6 flex-col items-center justify-center rounded-full border-2 border-dashed border-cream/65 bg-tomato text-center text-cream shadow-xl sm:-right-4 sm:-top-5 sm:h-24 sm:w-24"
           >
             <span class="font-display text-2xl font-bold leading-none">{RESTAURANT.rating.scoreDisplay}★</span>
-            <span class="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-cream/85">
+            <span class="mt-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-cream/90">
               216 Gäste
             </span>
           </div>
@@ -180,4 +251,98 @@ import { RESTAURANT } from '../data/restaurant';
       </div>
     </div>
   </div>
+
+  <!-- Scroll-Driven Kinetic Editorial Ticker -->
+  <div class="overflow-hidden border-t border-verdi/15 bg-verdi-dark py-3.5 text-cream" aria-hidden="true">
+    <div
+      data-kinetic-ticker
+      data-direction="-1"
+      class="flex w-max items-center gap-8 whitespace-nowrap px-4 text-xs font-semibold uppercase tracking-[0.24em] text-sand/90 sm:text-sm"
+    >
+      {[...tickerItems, ...tickerItems].map((text) => (
+        <span class="inline-flex items-center gap-8">
+          <span>{text}</span>
+          <span class="h-1.5 w-1.5 rounded-full bg-tomato"></span>
+        </span>
+      ))}
+    </div>
+  </div>
 </section>
+
+<script>
+  let cleanup3D: (() => void) | null = null;
+
+  async function initHeroStage() {
+    if (cleanup3D) {
+      cleanup3D();
+      cleanup3D = null;
+    }
+
+    const canvasHost = document.getElementById('hero-3d-canvas');
+    const photoLayer = document.getElementById('hero-photo-layer');
+    const btn3d = document.getElementById('hero-mode-3d') as HTMLButtonElement | null;
+    const btnPhoto = document.getElementById('hero-mode-photo') as HTMLButtonElement | null;
+    const kicker = document.getElementById('hero-stage-kicker');
+
+    if (!canvasHost || !photoLayer) return;
+
+    const setMode = (mode: '3d' | 'photo') => {
+      const is3d = mode === '3d';
+      canvasHost.classList.toggle('opacity-100', is3d);
+      canvasHost.classList.toggle('opacity-0', !is3d);
+      canvasHost.classList.toggle('pointer-events-none', !is3d);
+
+      photoLayer.classList.toggle('opacity-100', !is3d);
+      photoLayer.classList.toggle('opacity-0', is3d);
+
+      if (btn3d && btnPhoto) {
+        btn3d.setAttribute('aria-pressed', String(is3d));
+        btnPhoto.setAttribute('aria-pressed', String(!is3d));
+        btn3d.classList.toggle('bg-cream', is3d);
+        btn3d.classList.toggle('text-verdi-dark', is3d);
+        btn3d.classList.toggle('text-cream/85', !is3d);
+
+        btnPhoto.classList.toggle('bg-cream', !is3d);
+        btnPhoto.classList.toggle('text-verdi-dark', !is3d);
+        btnPhoto.classList.toggle('text-cream/85', is3d);
+      }
+
+      if (kicker) {
+        kicker.textContent = is3d
+          ? 'Interaktives 3D-Modell · Ziehen zum Drehen'
+          : 'Frischegarantie · Original Verdi Foto';
+      }
+    };
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      setMode('photo');
+      return;
+    }
+
+    if (btn3d) btn3d.onclick = () => setMode('3d');
+    if (btnPhoto) btnPhoto.onclick = () => setMode('photo');
+
+    // Lazy-load Three.js chunk so initial HTML/LCP stays instant
+    try {
+      const { mountPizza3D } = await import('../scripts/pizza3d');
+      cleanup3D = mountPizza3D(canvasHost);
+      // Reveal 3D stage smoothly once WebGL is ready
+      if (canvasHost.childElementCount > 0) {
+        setMode('3d');
+      } else {
+        setMode('photo');
+      }
+    } catch {
+      setMode('photo');
+    }
+  }
+
+  document.addEventListener('astro:before-swap', () => {
+    if (cleanup3D) {
+      cleanup3D();
+      cleanup3D = null;
+    }
+  });
+  document.addEventListener('astro:page-load', initHeroStage);
+</script>

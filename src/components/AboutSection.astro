@@ -9,10 +9,13 @@ import { RESTAURANT } from '../data/restaurant';
 <section id="ueber-uns" class="scroll-mt-20 border-y border-sand bg-parchment/60 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-      <!-- Visual Editorial Collage -->
-      <div class="reveal lg:col-span-6">
+      <!-- Visual Editorial Collage with Multi-Layer Scrubbed Parallax -->
+      <div class="lg:col-span-6">
         <div class="grid grid-cols-12 gap-4">
-          <div class="col-span-12 overflow-hidden rounded-3xl border border-sand bg-cream shadow-md">
+          <div
+            data-parallax="-18"
+            class="col-span-12 overflow-hidden rounded-3xl border border-sand bg-cream shadow-lg"
+          >
             <Picture
               src={crustPhoto}
               formats={['avif', 'webp']}
@@ -22,7 +25,10 @@ import { RESTAURANT } from '../data/restaurant';
               class="aspect-[16/10] w-full object-cover object-[50%_75%]"
             />
           </div>
-          <div class="col-span-7 h-44 overflow-hidden rounded-3xl border border-sand bg-cream shadow-sm sm:h-56">
+          <div
+            data-parallax="16"
+            class="col-span-7 h-44 overflow-hidden rounded-3xl border border-sand bg-cream shadow-sm sm:h-56"
+          >
             <Picture
               src={tablePhoto}
               formats={['avif', 'webp']}
@@ -32,7 +38,10 @@ import { RESTAURANT } from '../data/restaurant';
               class="h-full w-full object-cover"
             />
           </div>
-          <div class="col-span-5 h-44 overflow-hidden rounded-3xl border border-sand bg-cream shadow-sm sm:h-56">
+          <div
+            data-parallax="30"
+            class="col-span-5 h-44 overflow-hidden rounded-3xl border border-sand bg-cream shadow-sm sm:h-56"
+          >
             <Picture
               src={melanzanePhoto}
               formats={['avif', 'webp']}
@@ -46,43 +55,43 @@ import { RESTAURANT } from '../data/restaurant';
       </div>
 
       <!-- Story Copy -->
-      <div class="reveal lg:col-span-6">
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-tomato">
+      <div data-stagger-group class="lg:col-span-6">
+        <p data-stagger-item class="text-xs font-bold uppercase tracking-[0.22em] text-tomato">
           Über das Ristorante Verdi
         </p>
-        <h2 class="mt-2 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl">
+        <h2 data-stagger-item class="mt-2 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl">
           Ehrliche Küche, heißer Steinofen &amp;{' '}
           <span class="italic font-normal text-verdi">faire Preise.</span>
         </h2>
 
-        <p class="mt-6 text-base leading-relaxed text-muted sm:text-lg">
+        <p data-stagger-item class="mt-6 text-base leading-relaxed text-muted sm:text-lg">
           Im <strong class="font-semibold text-ink">Ristorante Verdi</strong> zählt das, was auf dem Teller
           landet: hauchdünner, knusprig gebackener Pizzateig direkt aus dem Steinofen,
           großzügige Portionen und klassische italienische Pasta- und Ofengerichte ohne Schnörkel.
         </p>
 
-        <p class="mt-4 text-base leading-relaxed text-muted">
+        <p data-stagger-item class="mt-4 text-base leading-relaxed text-muted">
           Ob Sie Ihre Lieblingspizza auf dem Heimweg blitzschnell abholen oder in entspannter,
           zwangloser Atmosphäre (Selbstbedienung am Tresen) vor Ort oder im Freien genießen:
           Bei uns bekommen Sie kompromisslose Frische zu einem Preis-Leistungs-Verhältnis,
           für das Gäste aus ganz Hessisch Lichtenau und Umgebung immer wiederkommen.
         </p>
 
-        <!-- Three Craft Pillars -->
-        <div class="mt-8 grid gap-4 sm:grid-cols-3">
-          <div class="rounded-2xl border border-sand bg-cream p-4">
+        <!-- Three Interactive 3D Perspective Tilt Craft Pillars -->
+        <div data-stagger-item class="mt-8 grid gap-4 sm:grid-cols-3">
+          <div data-tilt-card class="rounded-2xl border border-sand bg-cream p-4 shadow-xs transition-shadow hover:shadow-md">
             <p class="font-display text-lg font-semibold text-verdi">Steinofen-Teig</p>
             <p class="mt-1 text-xs leading-relaxed text-muted">
               Schön dünn, kross gebacken und frisch belegt – von Ø 24 cm bis Ø 32 cm.
             </p>
           </div>
-          <div class="rounded-2xl border border-sand bg-cream p-4">
+          <div data-tilt-card class="rounded-2xl border border-sand bg-cream p-4 shadow-xs transition-shadow hover:shadow-md">
             <p class="font-display text-lg font-semibold text-verdi">Schnelle Abholung</p>
             <p class="mt-1 text-xs leading-relaxed text-muted">
               Kurz anrufen, bestellen und heiß mitnehmen – direkt gegenüber der Grundschule.
             </p>
           </div>
-          <div class="rounded-2xl border border-sand bg-cream p-4">
+          <div data-tilt-card class="rounded-2xl border border-sand bg-cream p-4 shadow-xs transition-shadow hover:shadow-md">
             <p class="font-display text-lg font-semibold text-verdi">Frischegarantie</p>
             <p class="mt-1 text-xs leading-relaxed text-muted">
               Ausschließlich frische Zutaten – von knackigen Salaten bis Pasta al Forno.
@@ -90,19 +99,43 @@ import { RESTAURANT } from '../data/restaurant';
           </div>
         </div>
 
-        <!-- Real Proof Bar -->
-        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-sand pt-6">
+        <!-- Animated Count-Up Real Proof Bar -->
+        <div data-stagger-item class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-sand pt-6">
           <div>
-            <p class="font-display text-3xl font-bold text-tomato">{RESTAURANT.rating.scoreDisplay} ★</p>
+            <p
+              class="font-display text-3xl font-bold tabular-nums text-tomato"
+              data-count-to="4.7"
+              data-count-decimals="1"
+              data-count-suffix=" ★"
+              data-count-display={`${RESTAURANT.rating.scoreDisplay} ★`}
+            >
+              {RESTAURANT.rating.scoreDisplay} ★
+            </p>
             <p class="text-xs text-muted">{RESTAURANT.rating.fiveStarCount}× 5 Sterne bei Google</p>
           </div>
           <div>
-            <p class="font-display text-3xl font-bold text-ink">10–20 €</p>
-            <p class="text-xs text-muted">Durchschnitt pro Person</p>
+            <p
+              class="font-display text-3xl font-bold tabular-nums text-ink"
+              data-count-to="216"
+              data-count-decimals="0"
+              data-count-suffix="+"
+              data-count-display="216+"
+            >
+              216+
+            </p>
+            <p class="text-xs text-muted">Verifizierte Bewertungen</p>
           </div>
           <div>
-            <p class="font-display text-3xl font-bold text-verdi">6 Tage</p>
-            <p class="text-xs text-muted">Mittags &amp; abends geöffnet</p>
+            <p
+              class="font-display text-3xl font-bold tabular-nums text-verdi"
+              data-count-to="63"
+              data-count-decimals="0"
+              data-count-suffix=""
+              data-count-display="63"
+            >
+              63
+            </p>
+            <p class="text-xs text-muted">Gerichte frisch zubereitet</p>
           </div>
         </div>
       </div>

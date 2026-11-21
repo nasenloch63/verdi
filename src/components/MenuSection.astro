@@ -8,47 +8,18 @@ const vegetarianCount = menuData.categories.reduce(
   (acc, c) => acc + c.items.filter((i) => i.vegetarian).length,
   0
 );
+const romanNumerals = ['I', 'II', 'III', 'IV', 'V'];
 ---
 
 <section id="speisekarte" class="scroll-mt-20 py-20 sm:py-28">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Editorial Section Header -->
-    <div class="reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-      <div class="max-w-2xl">
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-tomato">
-          Das Menü-Buch · {totalItems} Gerichte
-        </p>
-        <h2 class="mt-2 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-          Unsere <span class="italic font-normal text-verdi">Speisekarte</span>
-        </h2>
-        <p class="mt-3 text-base leading-relaxed text-muted">
-          {menuData.freshnessNote} Alle Gerichte werden frisch für den Verzehr vor Ort oder
-          zur schnellen Abholung zubereitet.
-        </p>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-3 rounded-2xl border border-sand bg-parchment/80 px-4 py-3 text-sm">
-        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-tomato/12 text-tomato">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-          </svg>
-        </span>
-        <div>
-          <p class="text-xs text-muted">Telefonisch vorbestellen</p>
-          <a href={RESTAURANT.phoneHref} class="font-semibold text-ink hover:text-tomato">
-            {RESTAURANT.phoneDisplay} · Abholung ohne Wartezeit
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sticky Filter & Category Bar -->
-    <div class="sticky top-[62px] z-30 mt-8 rounded-2xl border border-sand/90 bg-cream/95 px-3.5 py-3.5 shadow-xs backdrop-blur-md sm:px-4">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <!-- Subtle Sticky Navigation & Filter Ribbon above the Menu Sheet -->
+    <div class="sticky top-[62px] z-30 mb-8 rounded-2xl border border-sand bg-cream/95 px-3.5 py-3 shadow-sm backdrop-blur-md sm:px-5">
       <div class="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-        <!-- Category Pills -->
+        <!-- Classic Book-Tab Category Selector -->
         <div
           role="tablist"
-          aria-label="Speisekarten-Kategorien"
+          aria-label="Speisekarten-Kapitel"
           class="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-0.5 lg:flex-wrap lg:overflow-visible lg:pb-0"
         >
           <button
@@ -56,9 +27,9 @@ const vegetarianCount = menuData.categories.reduce(
             role="tab"
             aria-selected="true"
             data-cat-btn="all"
-            class="cat-pill shrink-0 rounded-full bg-verdi px-3.5 py-1.5 text-xs font-semibold text-cream transition-all sm:text-[13px]"
+            class="cat-pill shrink-0 rounded-full bg-verdi px-3.5 py-1.5 font-display text-sm font-semibold tracking-wide text-cream transition-all"
           >
-            Alle ({totalItems})
+            Gesamte Karte ({totalItems})
           </button>
           {menuData.categories.map((cat) => (
             <button
@@ -66,7 +37,7 @@ const vegetarianCount = menuData.categories.reduce(
               role="tab"
               aria-selected="false"
               data-cat-btn={cat.id}
-              class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-3.5 py-1.5 text-xs font-medium text-ink transition-all hover:border-verdi/50 hover:text-verdi sm:text-[13px]"
+              class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-3.5 py-1.5 font-display text-sm font-semibold tracking-wide text-ink transition-all hover:border-verdi/50 hover:text-verdi"
             >
               {cat.title}
             </button>
@@ -76,13 +47,13 @@ const vegetarianCount = menuData.categories.reduce(
             role="tab"
             aria-selected="false"
             data-cat-btn="extras"
-            class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-3.5 py-1.5 text-xs font-medium text-ink transition-all hover:border-verdi/50 hover:text-verdi sm:text-[13px]"
+            class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-3.5 py-1.5 font-display text-sm font-semibold tracking-wide text-ink transition-all hover:border-verdi/50 hover:text-verdi"
           >
             Extras
           </button>
         </div>
 
-        <!-- Veggie Toggle + Search -->
+        <!-- Veggie Filter & Search -->
         <div class="flex shrink-0 items-center gap-2">
           <button
             type="button"
@@ -97,10 +68,10 @@ const vegetarianCount = menuData.categories.reduce(
             <span>Vegetarisch ({vegetarianCount})</span>
           </button>
 
-          <div class="relative flex-1 sm:w-48 xl:w-44">
+          <div class="relative flex-1 sm:w-44">
             <label for="menu-search" class="sr-only">Gericht oder Zutat suchen</label>
             <svg
-              class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
+              class="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -115,156 +86,230 @@ const vegetarianCount = menuData.categories.reduce(
               type="search"
               placeholder="Zutat suchen…"
               autocomplete="off"
-              class="w-full rounded-full border border-sand bg-parchment/60 py-1.5 pl-9 pr-3 text-sm text-ink placeholder:text-muted/75 focus:border-verdi focus:bg-cream focus:outline-none"
+              class="w-full rounded-full border border-sand bg-parchment/60 py-1.5 pl-8 pr-3 text-xs text-ink placeholder:text-muted/75 focus:border-verdi focus:bg-cream focus:outline-none"
             />
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Empty search state -->
-    <div
-      id="menu-empty-state"
-      hidden
-      class="mt-10 rounded-3xl border border-sand bg-parchment/60 px-6 py-12 text-center"
-    >
-      <p class="font-display text-2xl text-ink">Keine passenden Gerichte gefunden.</p>
-      <p class="mt-2 text-sm text-muted">
-        Probieren Sie eine andere Zutat oder setzen Sie den Filter zurück.
-      </p>
-      <button
-        type="button"
-        id="menu-reset-btn"
-        class="mt-5 rounded-full bg-verdi px-5 py-2.5 text-sm font-semibold text-cream hover:bg-verdi-dark"
-      >
-        Alle Gerichte anzeigen
-      </button>
-    </div>
+    <!-- AUTHENTIC ITALIAN SPEISEKARTE / MENÜBUCH SHEET -->
+    <div class="menu-sheet relative rounded-sm border border-verdi/30 p-3 sm:p-5 md:p-7">
+      <!-- Inner Double-Border Classic Trattoria Frame -->
+      <div class="relative border border-crust/55 px-5 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16">
+        <!-- Decorative Italian Corner Squares (echoing Verdi's real printed brochure!) -->
+        <span aria-hidden="true" class="pointer-events-none absolute -left-[5px] -top-[5px] h-3.5 w-3.5 border border-verdi/60 bg-cream"></span>
+        <span aria-hidden="true" class="pointer-events-none absolute -right-[5px] -top-[5px] h-3.5 w-3.5 border border-verdi/60 bg-cream"></span>
+        <span aria-hidden="true" class="pointer-events-none absolute -bottom-[5px] -left-[5px] h-3.5 w-3.5 border border-verdi/60 bg-cream"></span>
+        <span aria-hidden="true" class="pointer-events-none absolute -bottom-[5px] -right-[5px] h-3.5 w-3.5 border border-verdi/60 bg-cream"></span>
 
-    <!-- Menu Categories -->
-    <div class="mt-10 space-y-14" id="menu-sections-wrapper">
-      {menuData.categories.map((cat) => (
-        <section data-menu-category={cat.id} aria-labelledby={`cat-heading-${cat.id}`}>
-          <div class="mb-6 flex flex-col justify-between gap-2 border-b-2 border-verdi/20 pb-3 sm:flex-row sm:items-baseline">
-            <h3 id={`cat-heading-${cat.id}`} class="font-display text-2xl font-semibold text-ink sm:text-3xl">
-              {cat.title}
-            </h3>
-            <p class="text-sm italic text-muted">{cat.subtitle}</p>
+        <!-- Classic Speisekarte Masthead -->
+        <header class="reveal mx-auto max-w-2xl text-center">
+          <div class="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.32em] text-verdi">
+            <span class="h-px w-8 bg-verdi/45" aria-hidden="true"></span>
+            <span>Ristorante · Pizzeria Verdi</span>
+            <span class="h-px w-8 bg-verdi/45" aria-hidden="true"></span>
           </div>
 
-          <ul class="grid gap-x-8 gap-y-4 md:grid-cols-2">
-            {cat.items.map((item) => (
-              <li
-                data-menu-item
-                data-veg={item.vegetarian ? 'true' : 'false'}
-                data-search={`${item.number} ${item.name} ${item.description}`.toLowerCase()}
-                class="group rounded-2xl border border-transparent bg-parchment/45 px-4 py-3.5 transition-all hover:border-sand hover:bg-parchment/95"
-              >
-                <div class="flex items-baseline gap-2">
-                  <span class="font-mono text-xs font-semibold text-muted/80">
-                    #{item.number}
-                  </span>
-                  <h4 class="font-display text-lg font-semibold text-ink group-hover:text-verdi">
-                    {item.name}
-                  </h4>
+          <h2 class="mt-3 font-display text-5xl font-semibold tracking-tight text-ink sm:text-6xl">
+            Speisekarte
+          </h2>
 
-                  {item.vegetarian && (
-                    <span
-                      title="Vegetarisch"
-                      class="inline-flex shrink-0 items-center rounded-full bg-verdi-soft px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-verdi"
-                    >
-                      Veggie
-                    </span>
-                  )}
-
-                  {item.highlight && (
-                    <span class="inline-flex shrink-0 items-center rounded-full bg-tomato/12 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-tomato">
-                      {item.highlight}
-                    </span>
-                  )}
-
-                  <span class="menu-leader mx-1 hidden flex-1 self-end mb-1.5 sm:block" aria-hidden="true"></span>
-
-                  <span class="ml-auto shrink-0 font-sans text-base font-bold tabular-nums text-ink">
-                    {formatPrice(item.price)}
-                  </span>
-                </div>
-
-                <div class="mt-1 flex items-baseline justify-between gap-4 pl-6">
-                  <p class="text-sm leading-snug text-muted">
-                    {item.description}
-                  </p>
-                  {item.allergens && (
-                    <span class="shrink-0 text-[0.68rem] text-muted/70" title={`Allergene / Zusatzstoffe: ${item.allergens}`}>
-                      ({item.allergens})
-                    </span>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
-
-      <!-- Extras / Aufpreis Section -->
-      <section
-        data-menu-category="extras"
-        aria-labelledby="cat-heading-extras"
-        class="rounded-3xl border border-verdi/20 bg-verdi-soft/55 p-6 sm:p-8"
-      >
-        <div class="flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-          <h3 id="cat-heading-extras" class="font-display text-2xl font-semibold text-verdi sm:text-3xl">
-            Extras &amp; Wunschbelag
-          </h3>
-          <p class="text-sm text-verdi/80">Aufpreis je nach Wahl für Ihre Wunsch-Pizza</p>
-        </div>
-
-        <div class="mt-5 grid gap-4 md:grid-cols-3">
-          {menuData.extras.map((tier) => (
-            <div class="rounded-2xl border border-verdi/15 bg-cream p-5 shadow-xs">
-              <p class="font-display text-2xl font-bold text-tomato tabular-nums">
-                + {formatPrice(tier.price)}
-              </p>
-              <p class="mt-2 text-sm leading-relaxed text-ink/85">{tier.items}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <!-- Expandable Allergens & Additives Legend (Official Menu Compliance) -->
-    <details class="mt-10 rounded-2xl border border-sand bg-parchment/50 p-5 text-sm text-muted">
-      <summary class="cursor-pointer font-semibold text-ink hover:text-verdi">
-        Hinweise zu Allergenen (a–n) &amp; Zusatzstoffen (1–13) anzeigen
-      </summary>
-      <div class="mt-4 grid gap-6 border-t border-sand pt-4 md:grid-cols-2">
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-ink">Allergene</h4>
-          <dl class="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2">
-            {menuData.allergenLegend.map((a) => (
-              <div>
-                <dt class="inline font-bold text-ink">{a.code} =</dt>{' '}
-                <dd class="inline">{a.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-ink">Zusatzstoffe</h4>
-          <dl class="mt-2 space-y-1 text-xs">
-            {menuData.additiveLegend.map((z) => (
-              <div>
-                <dt class="inline font-bold text-ink">{z.code} =</dt>{' '}
-                <dd class="inline">{z.label}</dd>
-              </div>
-            ))}
-          </dl>
-          <p class="mt-3 text-xs italic">
-            Alle Preise in Euro inkl. MwSt. · Änderungen vorbehalten.
+          <p class="mt-2 font-display text-xl italic text-tomato sm:text-2xl">
+            „{RESTAURANT.tagline}“
           </p>
+
+          <p class="mt-3 text-sm italic text-muted">
+            {menuData.freshnessNote} · Telefonische Vorbestellung zur Abholung unter{' '}
+            <a href={RESTAURANT.phoneHref} class="font-semibold not-italic text-ink underline decoration-crust/70 underline-offset-4 hover:text-tomato">
+              {RESTAURANT.phoneDisplay}
+            </a>
+          </p>
+
+          <!-- Ornamental Menu Divider -->
+          <div class="mt-7 flex items-center justify-center gap-3 text-crust/80" aria-hidden="true">
+            <span class="h-px w-20 bg-gradient-to-r from-transparent to-crust/60"></span>
+            <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0 10.2 5.8 16 8l-5.8 2.2L8 16l-2.2-5.8L0 8l5.8-2.2Z" />
+            </svg>
+            <span class="h-px w-20 bg-gradient-to-l from-transparent to-crust/60"></span>
+          </div>
+        </header>
+
+        <!-- Empty search state -->
+        <div
+          id="menu-empty-state"
+          hidden
+          class="my-12 border border-dashed border-sand bg-parchment/50 px-6 py-12 text-center"
+        >
+          <p class="font-display text-2xl italic text-ink">Keine passenden Gerichte gefunden.</p>
+          <p class="mt-2 text-sm text-muted">
+            Probieren Sie eine andere Zutat oder setzen Sie den Filter zurück.
+          </p>
+          <button
+            type="button"
+            id="menu-reset-btn"
+            class="mt-5 rounded-full bg-verdi px-5 py-2 text-sm font-semibold text-cream hover:bg-verdi-dark"
+          >
+            Gesamte Speisekarte anzeigen
+          </button>
         </div>
+
+        <!-- Menu Chapters (Authentic Classic Print Spread) -->
+        <div class="mt-12 space-y-16" id="menu-sections-wrapper">
+          {menuData.categories.map((cat, catIdx) => (
+            <section data-menu-category={cat.id} aria-labelledby={`cat-heading-${cat.id}`}>
+              <!-- Centered Classic Chapter Header -->
+              <div class="mb-8 text-center">
+                <p class="font-display text-sm italic tracking-[0.25em] text-crust">
+                  — {romanNumerals[catIdx]} —
+                </p>
+                <h3
+                  id={`cat-heading-${cat.id}`}
+                  class="mt-1 font-display text-3xl font-semibold tracking-tight text-verdi sm:text-4xl"
+                >
+                  {cat.title}
+                </h3>
+                <p class="mt-1 font-display text-base italic text-muted">{cat.subtitle}</p>
+                <div class="mx-auto mt-3 h-px w-28 bg-verdi/25" aria-hidden="true"></div>
+              </div>
+
+              <!-- Two-Column Fine-Dining Open-Book List -->
+              <ul class="relative grid gap-x-12 gap-y-5 md:grid-cols-2">
+                {cat.items.map((item) => (
+                  <li
+                    data-menu-item
+                    data-veg={item.vegetarian ? 'true' : 'false'}
+                    data-search={`${item.number} ${item.name} ${item.description}`.toLowerCase()}
+                    class="group border-b border-sand/60 pb-3.5 transition-colors hover:border-crust/60"
+                  >
+                    <div class="flex items-baseline gap-2">
+                      <span class="w-6 shrink-0 font-display text-sm italic text-crust">
+                        {item.number}.
+                      </span>
+
+                      <h4 class="font-display text-[1.22rem] font-semibold leading-snug text-ink transition-colors group-hover:text-tomato">
+                        {item.name}
+                      </h4>
+
+                      {item.vegetarian && (
+                        <span
+                          title="Vegetarisch"
+                          class="inline-flex shrink-0 items-center text-verdi"
+                          aria-label="Vegetarisch"
+                        >
+                          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+                          </svg>
+                        </span>
+                      )}
+
+                      {item.highlight && (
+                        <span class="shrink-0 font-display text-xs italic font-semibold tracking-wide text-tomato">
+                          ★ {item.highlight}
+                        </span>
+                      )}
+
+                      <span class="menu-leader mx-1.5 mb-1.5 hidden flex-1 self-end sm:block" aria-hidden="true"></span>
+
+                      <span class="ml-auto shrink-0 font-display text-[1.2rem] font-bold tabular-nums text-ink">
+                        {formatPrice(item.price)}
+                      </span>
+                    </div>
+
+                    <div class="mt-0.5 flex items-baseline justify-between gap-4 pl-8">
+                      <p class="text-[0.86rem] italic leading-relaxed text-muted">
+                        {item.description}
+                      </p>
+                      {item.allergens && (
+                        <span
+                          class="shrink-0 text-[0.68rem] text-muted/70"
+                          title={`Allergene / Zusatzstoffe: ${item.allergens}`}
+                        >
+                          ({item.allergens})
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+
+          <!-- Classic Trattoria Footnote Box: Aufpreis je nach Wahl -->
+          <section
+            data-menu-category="extras"
+            aria-labelledby="cat-heading-extras"
+            class="border border-verdi/30 bg-parchment/60 p-6 sm:p-8"
+          >
+            <div class="text-center">
+              <p class="font-display text-xs italic uppercase tracking-[0.26em] text-crust">
+                Aufpreis je nach Wahl
+              </p>
+              <h3 id="cat-heading-extras" class="mt-1 font-display text-3xl font-semibold text-verdi">
+                Zusätzliche Wunschbeläge
+              </h3>
+            </div>
+
+            <div class="mt-6 grid divide-y divide-sand md:grid-cols-3 md:divide-x md:divide-y-0">
+              {menuData.extras.map((tier) => (
+                <div class="px-4 py-4 text-center first:pt-0 md:py-2">
+                  <p class="font-display text-2xl font-bold italic text-tomato tabular-nums">
+                    + {formatPrice(tier.price)}
+                  </p>
+                  <p class="mt-2 text-sm italic leading-relaxed text-ink/85">{tier.items}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <!-- Classic Menu Footnote: Frischegarantie + Legend + Allergens -->
+        <footer class="mt-12 border-t border-crust/40 pt-6">
+          <div class="flex flex-wrap items-center justify-between gap-4 text-xs italic text-muted">
+            <p class="flex items-center gap-2">
+              <svg class="h-3.5 w-3.5 text-verdi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+              </svg>
+              <span>= Vegetarisch · ★ = Haus-Spezialität / Gäste-Favorit</span>
+            </p>
+            <p>Alle Preise in Euro inkl. MwSt. · Änderungen vorbehalten</p>
+          </div>
+
+          <details class="mt-5 border-t border-sand/80 pt-4 text-sm text-muted">
+            <summary class="cursor-pointer font-display text-base font-semibold text-ink hover:text-verdi">
+              Hinweise zu Allergenen (a–n) &amp; Zusatzstoffen (1–13) öffnen
+            </summary>
+            <div class="mt-4 grid gap-6 border-t border-sand/70 pt-4 md:grid-cols-2">
+              <div>
+                <h4 class="font-display text-sm font-bold uppercase tracking-wider text-ink">Allergene</h4>
+                <dl class="mt-2 grid grid-cols-1 gap-1 text-xs sm:grid-cols-2">
+                  {menuData.allergenLegend.map((a) => (
+                    <div>
+                      <dt class="inline font-bold text-ink">{a.code} =</dt>{' '}
+                      <dd class="inline">{a.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+              <div>
+                <h4 class="font-display text-sm font-bold uppercase tracking-wider text-ink">Zusatzstoffe</h4>
+                <dl class="mt-2 space-y-1 text-xs">
+                  {menuData.additiveLegend.map((z) => (
+                    <div>
+                      <dt class="inline font-bold text-ink">{z.code} =</dt>{' '}
+                      <dd class="inline">{z.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </details>
+        </footer>
       </div>
-    </details>
+    </div>
   </div>
 </section>
 
@@ -327,7 +372,6 @@ const vegetarianCount = menuData.categories.reduce(
         btn.setAttribute('aria-selected', String(selected));
         btn.classList.toggle('bg-verdi', selected);
         btn.classList.toggle('text-cream', selected);
-        btn.classList.toggle('font-semibold', selected);
         btn.classList.toggle('bg-parchment/70', !selected);
         btn.classList.toggle('text-ink', !selected);
         btn.classList.toggle('border', !selected);
