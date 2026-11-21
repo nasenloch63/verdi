@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import MenuSection from '../components/MenuSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import GallerySection from '../components/GallerySection.astro';
+import VisitSection from '../components/VisitSection.astro';
+import Footer from '../components/Footer.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
+---
+
+<Layout
+  title="Ristorante Verdi Pizzeria | Steinofen-Pizza & Pasta in Hessisch Lichtenau"
+  description="Ristorante Verdi Pizzeria in Hessisch Lichtenau (Desseler Str. 15): Frische Steinofen-Pizza Ø 32 cm, Mini-Pizza, Pasta, Pasta al Forno & Salate. 4,7 ★ bei 216 Google-Bewertungen. Jetzt anrufen: 05602 7100."
+  canonicalPath="/"
+  includeRestaurantSchema={true}
+>
+  <Header />
+  <main id="hauptinhalt">
+    <Hero />
+    <MenuSection />
+    <AboutSection />
+    <ReviewsSection />
+    <GallerySection />
+    <VisitSection />
+  </main>
+  <Footer />
+  <MobileActionBar />
+</Layout>

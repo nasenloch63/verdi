@@ -1,0 +1,141 @@
+{
+  "currency": "EUR",
+  "freshnessNote": "Frischegarantie! Wir verwenden ausschließlich frische Zutaten.",
+  "categories": [
+    {
+      "id": "pizza",
+      "title": "Pizza aus dem Steinofen",
+      "subtitle": "Ø 32 cm · knusprig dünner Boden",
+      "items": [
+        { "number": "1", "name": "Pizza Margherita", "description": "Tomaten, Käse", "price": 7.0, "vegetarian": true, "allergens": "a, g, 1, 8" },
+        { "number": "2", "name": "Pizza Salami", "description": "Tomaten, Käse, Salami", "price": 8.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "3", "name": "Pizza Prosciutto", "description": "Tomaten, Käse, Schinken", "price": 8.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "4", "name": "Pizza Funghi", "description": "Tomaten, Käse, Champignons", "price": 8.0, "vegetarian": true, "allergens": "a, g, 1, 8" },
+        { "number": "5", "name": "Pizza Hawaii", "description": "Tomaten, Käse, Schinken, Ananas", "price": 8.5, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "6", "name": "Pizza Lella", "description": "Tomaten, Käse, Salami, Schinken", "price": 8.5, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "7", "name": "Pizza Rustica", "description": "Tomaten, Käse, Salami, Champignons", "price": 8.5, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "8", "name": "Pizza Deliziosa", "description": "Tomaten, Käse, Schinken, Champignons", "price": 8.5, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "9", "name": "Pizza Napoli", "description": "Tomaten, Käse, Sardellen, Krabben", "price": 9.0, "vegetarian": false, "allergens": "a, b, d, g, l, n, 1, 3, 8" },
+        { "number": "10", "name": "Pizza Diavolo", "description": "Tomaten, Käse, Salami, Paprika, Zwiebeln, Oliven", "price": 9.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "11", "name": "Pizza Romana", "description": "Tomaten, Käse, Salami, Champignons, Peperoni", "price": 9.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "12", "name": "Pizza Capricciosa", "description": "Tomaten, Käse, Schinken, Champignons, Artischocken", "price": 9.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "13", "name": "Pizza Quattro Stagioni", "description": "Tomaten, Käse, Salami, Schinken, Champignons, Paprika", "price": 9.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "14", "name": "Pizza Giardiniera", "description": "Tomaten, Käse, Paprika, Zwiebeln, Oliven, Artischocken, Champignons", "price": 9.0, "vegetarian": true, "allergens": "a, g, 1, 3, 8" },
+        { "number": "15", "name": "Pizza Tonno", "description": "Tomaten, Käse, Thunfisch, Zwiebeln", "price": 8.5, "vegetarian": false, "allergens": "a, d, g, l, n, 1, 3, 8" },
+        { "number": "16", "name": "Pizza Marinara", "description": "Tomaten, Käse, Meeresfrüchte, Knoblauch", "price": 9.0, "vegetarian": false, "allergens": "a, b, d, g, l, n, 1, 3, 8" },
+        { "number": "17", "name": "Pizza Calzone (Pizzatasche)", "description": "Tomaten, Käse, Schinken, Champignons", "price": 9.5, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "18", "name": "Pizza G. Verdi", "description": "Mit allem und Fisch – die Hausspezialität", "price": 11.0, "vegetarian": false, "highlight": "Haus-Spezialität", "allergens": "a, d, g, l, n, 1, 3, 8" },
+        { "number": "19", "name": "Pizza Alberto", "description": "Tomaten, Käse, Salami, Schinken, Champignons, Artischocken, Thunfisch", "price": 10.0, "vegetarian": false, "allergens": "a, d, g, n, 1, 3, 8" },
+        { "number": "20", "name": "Pizza Caprese", "description": "Mit Tomaten, Mozzarella, frische Champignons, Schinken", "price": 9.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "21", "name": "Pizza Vegetariana", "description": "Tomaten, Mozzarella, frisches Gemüse, frische Tomaten, Knoblauch", "price": 10.0, "vegetarian": true, "allergens": "a, g, 1, 8" },
+        { "number": "22", "name": "Pizza Sud", "description": "Tomaten, Mozzarella, Rucola, Parmaschinken", "price": 10.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "23", "name": "Pizza Ai Quattro Formaggi", "description": "Tomaten, Gouda, Schafskäse, Mozzarella, frische Tomaten, Gorgonzola", "price": 9.0, "vegetarian": true, "allergens": "a, g, 1, 3, 8" },
+        { "number": "24", "name": "Pizza Salciccia", "description": "Tomaten, Mozzarella, pikante ital. Wurst", "price": 9.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" }
+      ]
+    },
+    {
+      "id": "mini-pizza",
+      "title": "Mini-Pizzen",
+      "subtitle": "Ø 24 cm · ideal für den kleinen Hunger & Kinder",
+      "items": [
+        { "number": "26", "name": "Mini-Pizza Margherita", "description": "Tomaten, Käse", "price": 4.0, "vegetarian": true, "allergens": "a, g, 1, 8" },
+        { "number": "27", "name": "Mini-Pizza Salami", "description": "Tomaten, Käse, Salami", "price": 4.5, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "28", "name": "Mini-Pizza Prosciutto", "description": "Tomaten, Käse, Schinken", "price": 4.5, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "29", "name": "Mini-Pizza Funghi", "description": "Tomaten, Käse, Champignons", "price": 5.0, "vegetarian": true, "allergens": "a, g, 1, 8" },
+        { "number": "30", "name": "Mini-Pizza Rustica", "description": "Tomaten, Käse, Salami, Champignons", "price": 5.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "31", "name": "Mini-Pizza Deliziosa", "description": "Tomaten, Käse, Schinken, Champignons", "price": 5.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" },
+        { "number": "32", "name": "Mini-Pizza Tonno", "description": "Tomaten, Käse, Thunfisch, Zwiebeln", "price": 5.0, "vegetarian": false, "allergens": "a, d, g, 1, 3, 8" },
+        { "number": "33", "name": "Mini-Pizza Panzerotto (Mini Calzone)", "description": "Tomaten, Käse, Schinken", "price": 5.0, "vegetarian": false, "allergens": "a, g, 1, 3, 8" }
+      ]
+    },
+    {
+      "id": "pasta",
+      "title": "Pasta",
+      "subtitle": "Klassische italienische Nudelgerichte frisch aus der Pfanne",
+      "items": [
+        { "number": "53", "name": "Maccheroni dello Chef", "description": "Nudeln mit Schinken, Champignons, Sahnesauce", "price": 8.0, "vegetarian": false, "highlight": "Gäste-Favorit", "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "54", "name": "Maccheroni Pasticciati", "description": "Nudeln mit Champignons, Erbsen, Ei, Mozzarella, Fleischsauce", "price": 9.0, "vegetarian": false, "allergens": "a, c, g, h, 1, 3, 8" },
+        { "number": "55", "name": "Tortelloni Verdi Vegetariana", "description": "Grüne Tortelloni, Tomaten, Spinat, Ricottakäse", "price": 9.0, "vegetarian": true, "allergens": "a, c, g, 1, 8" },
+        { "number": "56", "name": "Pasta Lombarda", "description": "Nudeln mit Hähnchenbrust, Champignons, Tomatensahnesauce, Parmesankäse", "price": 9.0, "vegetarian": false, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "57", "name": "Fettucine al Salmone", "description": "Bandnudeln mit Lachs, Zucchini, Sahnesauce", "price": 10.0, "vegetarian": false, "allergens": "a, c, d, g, 1, 3, 8" },
+        { "number": "58", "name": "Paglia e Fieno", "description": "Grüne und weiße Bandnudeln mit Schinken, Zucchini, Champignons, Tomatensahnesauce", "price": 9.0, "vegetarian": false, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "59", "name": "Tortelloni alla Panna", "description": "Mit Schinken, Sahnesauce", "price": 8.0, "vegetarian": false, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "60", "name": "Gnocchi Gorgonzola e Spinaci", "description": "Ital. Nockerln mit Spinat, Gorgonzolasauce", "price": 9.0, "vegetarian": true, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "61", "name": "Spaghetti al Pomodoro", "description": "Mit Tomatensauce", "price": 7.0, "vegetarian": true, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "62", "name": "Spaghetti Bolognese", "description": "Mit Tomaten-Fleischsauce", "price": 7.5, "vegetarian": false, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "63", "name": "Spaghetti aglio e olio", "description": "Olivenöl, Knoblauch (scharf), Parmesankäse", "price": 7.0, "vegetarian": true, "allergens": "a, c, g, 1, 8" },
+        { "number": "64", "name": "Spaghetti Carbonara", "description": "Mit Eiern, Speck, Zwiebeln, Parmesankäse", "price": 8.5, "vegetarian": false, "highlight": "Gäste-Favorit", "allergens": "a, c, g, 1, 3, 8" }
+      ]
+    },
+    {
+      "id": "pasta-al-forno",
+      "title": "Pasta al Forno",
+      "subtitle": "Goldbraun mit Käse im Steinofen überbacken · alle Gerichte 8,50 €",
+      "items": [
+        { "number": "45", "name": "Maccheroni G. Verdi", "description": "Nudeln mit Zucchini, Auberginen, Tomatensahnesauce, mit Käse überbacken", "price": 8.5, "vegetarian": true, "highlight": "Haus-Spezialität", "allergens": "a, c, g, 1, 8" },
+        { "number": "46", "name": "Maccheroni al Forno", "description": "Nudeln mit Fleischsauce, Ei, Schinken, mit Käse überbacken", "price": 8.5, "vegetarian": false, "allergens": "a, c, g, h, 1, 3, 8" },
+        { "number": "47", "name": "Maccheroni Funghi Freschi e Broccoli", "description": "Nudeln mit Broccoli, Champignons, Tomatensahnesauce, mit Käse überbacken", "price": 8.5, "vegetarian": true, "allergens": "a, c, g, 1, 8" },
+        { "number": "48", "name": "Lasagne al Forno", "description": "Schinken, Bechamelsauce, Fleischsauce, mit Käse überbacken", "price": 8.5, "vegetarian": false, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "49", "name": "Tortellini al Forno", "description": "Tomatensahnesauce, Schinken, mit Käse überbacken", "price": 8.5, "vegetarian": false, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "50", "name": "Fettucine alla Contadina", "description": "Bandnudeln, frisches Gemüse, Tomatensahnesauce, mit Käse überbacken", "price": 8.5, "vegetarian": true, "allergens": "a, c, g, 1, 8" },
+        { "number": "51", "name": "Combinazione al Forno", "description": "Verschiedene Nudeln, Fleischsauce, mit Käse überbacken", "price": 8.5, "vegetarian": false, "allergens": "a, c, g, 1, 3, 8" },
+        { "number": "52", "name": "Gnocchi Spinaci e Zucchini", "description": "Ital. Nockerln, Spinat, Zucchini, Tomatensahnesauce, mit Käse überbacken", "price": 8.5, "vegetarian": true, "allergens": "a, c, g, 1, 8" }
+      ]
+    },
+    {
+      "id": "salate-vorspeisen",
+      "title": "Salate & Vorspeisen",
+      "subtitle": "Knackig-frische Salate, Carpaccio & überbackene Auberginen",
+      "items": [
+        { "number": "34", "name": "Insalata Italia", "description": "Grüner Salat, Gurken, Oliven, Tomaten, Artischocken, Thunfisch, Ei, Zwiebeln, Käse, Schinken", "price": 8.5, "vegetarian": false, "allergens": "c, d, g, 1, 3, 8" },
+        { "number": "35", "name": "Insalata Mista", "description": "Grüner Salat, Gurken, Oliven, Tomaten, Zwiebeln, Möhren", "price": 6.5, "vegetarian": true, "allergens": "13" },
+        { "number": "36", "name": "Insalata di Pomodoro", "description": "Tomatensalat, Zwiebeln, Basilikumöl", "price": 6.0, "vegetarian": true, "allergens": "" },
+        { "number": "37", "name": "Insalata di Pomodoro e Tonno", "description": "Tomatensalat, Zwiebeln, Thunfisch, Basilikumöl", "price": 7.0, "vegetarian": false, "allergens": "d, 1, 3, 8" },
+        { "number": "38", "name": "Insalata Caprese", "description": "Tomaten, Mozzarella, Basilikumöl", "price": 7.5, "vegetarian": true, "allergens": "g, 1, 8" },
+        { "number": "39", "name": "Insalata di Pomodoro e Pecorino", "description": "Tomatensalat, Oliven, Schafskäse, Basilikumöl", "price": 7.5, "vegetarian": true, "allergens": "g, 1, 8" },
+        { "number": "40", "name": "Insalata Lombarda", "description": "Salat der Saison, Mais, Feta, frische Champignons, Geflügel, Rucola", "price": 10.5, "vegetarian": false, "allergens": "g, 1, 3, 8" },
+        { "number": "41", "name": "Insalata Primavera", "description": "Salat der Saison, Rucola, Krabben, frische Champignons, Zitrone, Dressing", "price": 10.0, "vegetarian": false, "highlight": "Gäste-Favorit", "allergens": "b, d, n, 1, 3, 8" },
+        { "number": "42", "name": "Carpaccio Riviera", "description": "Rinderfiletscheiben, Champignons, Parmesankäse", "price": 8.5, "vegetarian": false, "allergens": "g, 1, 3, 8" },
+        { "number": "43", "name": "Carpaccio d'Alba", "description": "Rinderfiletscheiben, Knoblauchsauce", "price": 8.5, "vegetarian": false, "allergens": "1, 3, 8" },
+        { "number": "44", "name": "Melanzane alla Parmiggiana", "description": "Überbackene Auberginen, Tomatensauce, Mozzarella", "price": 8.0, "vegetarian": true, "highlight": "Gäste-Favorit", "allergens": "g, 1, 8" }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "price": 1.0,
+      "items": "Oliven, Zwiebeln, Ei, Ananas, Paprika, Peperoni, Knoblauch"
+    },
+    {
+      "price": 1.5,
+      "items": "Käse, Schinken, Salami, Champignons, Artischocken, Sardinen"
+    },
+    {
+      "price": 2.0,
+      "items": "Meeresfrüchte, Thunfisch, Gorgonzola, Mozzarella"
+    }
+  ],
+  "allergenLegend": [
+    { "code": "a", "label": "Glutenhaltiges Getreide" },
+    { "code": "b", "label": "Krebstiere und daraus gewonnene Erzeugnisse" },
+    { "code": "c", "label": "Eier und daraus gewonnene Erzeugnisse" },
+    { "code": "d", "label": "Fische und daraus gewonnene Erzeugnisse" },
+    { "code": "e", "label": "Erdnüsse und daraus gewonnene Erzeugnisse" },
+    { "code": "f", "label": "Sojabohnen und daraus gewonnene Erzeugnisse" },
+    { "code": "g", "label": "Milch und daraus gewonnene Erzeugnisse" },
+    { "code": "h", "label": "Schalenfrüchte" },
+    { "code": "i", "label": "Sellerie und daraus gewonnene Erzeugnisse" },
+    { "code": "j", "label": "Senf und daraus gewonnene Erzeugnisse" },
+    { "code": "k", "label": "Sesamsamen und daraus gewonnene Erzeugnisse" },
+    { "code": "l", "label": "Schwefeldioxid und Sulfite" },
+    { "code": "m", "label": "Lupinen und daraus gewonnene Erzeugnisse" },
+    { "code": "n", "label": "Weichtiere und daraus gewonnene Erzeugnisse" }
+  ],
+  "additiveLegend": [
+    { "code": "1", "label": "Konservierungsstoff: Trockenfrüchte, Wein, Fleisch- und Fischerzeugnisse, Fertigsalate, Käse (Rinde)" },
+    { "code": "2", "label": "Farbstoff: Limonaden, Liköre, Mayonnaise" },
+    { "code": "3", "label": "Antioxidationsmittel: Würzmittel, Fleischerzeugnisse" },
+    { "code": "8", "label": "Phosphat: Fleischerzeugnisse, Milchprodukte wie Käse, Kaffeeweißer, Cola" },
+    { "code": "13", "label": "Geschwärzt: Schwarze Oliven" }
+  ]
+}

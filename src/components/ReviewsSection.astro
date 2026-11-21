@@ -1,0 +1,101 @@
+---
+import { RESTAURANT, REVIEWS } from '../data/restaurant';
+---
+
+<section id="bewertungen" class="scroll-mt-20 overflow-hidden bg-verdi-dark py-20 text-cream sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="reveal flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-crust">
+          Echte Stimmen aus Google Maps
+        </p>
+        <h2 class="mt-2 font-display text-4xl font-semibold tracking-tight text-cream sm:text-5xl">
+          Was unsere <span class="italic font-normal text-sand">Gäste</span> sagen
+        </h2>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-5 rounded-3xl border border-cream/15 bg-cream/[0.06] px-6 py-4">
+        <div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display text-4xl font-bold text-cream">{RESTAURANT.rating.scoreDisplay}</span>
+            <span class="text-sm text-cream/70">/ 5,0</span>
+          </div>
+          <div class="mt-1 flex items-center gap-0.5 text-crust" aria-label="4,7 von 5 Sternen">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            ))}
+          </div>
+        </div>
+        <div class="h-10 w-px bg-cream/15" aria-hidden="true"></div>
+        <div>
+          <p class="text-sm font-semibold text-cream">{RESTAURANT.rating.count} Bewertungen</p>
+          <a
+            href={RESTAURANT.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-sand underline decoration-sand/40 underline-offset-4 transition-colors hover:text-cream"
+          >
+            <span>Alle Bewertungen bei Google lesen</span>
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 17 17 7M7 7h10v10" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Smooth Infinite Review Marquee (pauses on hover/focus; wraps cleanly under reduced-motion) -->
+  <div class="marquee-wrapper relative mt-12">
+    <!-- Subtle side edge fades -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-20 bg-gradient-to-r from-verdi-dark to-transparent sm:block"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-20 bg-gradient-to-l from-verdi-dark to-transparent sm:block"></div>
+
+    <div class="marquee-track gap-5 px-4">
+      {REVIEWS.map((review) => (
+        <article class="flex w-[310px] shrink-0 flex-col justify-between rounded-3xl border border-cream/12 bg-cream/[0.07] p-6 backdrop-blur-xs sm:w-[370px]">
+          <div>
+            <div class="flex items-center gap-0.5 text-crust" aria-label={`${review.rating} von 5 Sternen`}>
+              {Array.from({ length: review.rating }).map(() => (
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote class="mt-4 font-display text-lg italic leading-relaxed text-cream/95">
+              „{review.quote}“
+            </blockquote>
+          </div>
+          <footer class="mt-6 flex items-center justify-between border-t border-cream/10 pt-4 text-xs">
+            <span class="font-semibold text-cream">{review.author}</span>
+            <span class="text-cream/65">{review.context}</span>
+          </footer>
+        </article>
+      ))}
+
+      {/* Duplicate track for seamless loop (aria-hidden so screen readers don't read twice) */}
+      {REVIEWS.map((review) => (
+        <article aria-hidden="true" class="marquee-clone flex w-[310px] shrink-0 flex-col justify-between rounded-3xl border border-cream/12 bg-cream/[0.07] p-6 backdrop-blur-xs sm:w-[370px]">
+          <div>
+            <div class="flex items-center gap-0.5 text-crust">
+              {Array.from({ length: review.rating }).map(() => (
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              ))}
+            </div>
+            <p class="mt-4 font-display text-lg italic leading-relaxed text-cream/95">
+              „{review.quote}“
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between border-t border-cream/10 pt-4 text-xs">
+            <span class="font-semibold text-cream">{review.author}</span>
+            <span class="text-cream/65">{review.context}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

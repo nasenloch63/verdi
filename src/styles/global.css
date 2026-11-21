@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/fraunces/wght-italic.css";
+@import "@fontsource-variable/plus-jakarta-sans";
+
+@theme {
+  --font-display: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans Variable", system-ui, -apple-system, sans-serif;
+
+  --color-cream: #FBF6EE;
+  --color-parchment: #F3EADB;
+  --color-sand: #E8DCC9;
+  --color-ink: #1C1917;
+  --color-muted: #595047;
+  --color-tomato: #B82D1A;
+  --color-tomato-dark: #942213;
+  --color-verdi: #1F4D36;
+  --color-verdi-dark: #143324;
+  --color-verdi-soft: #E5EFE9;
+  --color-crust: #B97A26;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 55, "WONK" 1;
+  }
+
+  ::selection {
+    background-color: #B82D1A;
+    color: #FBF6EE;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-tomato);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Warm stone-paper grain overlay */
+.paper-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Dotted price leader */
+.menu-leader {
+  background-image: radial-gradient(circle, rgba(89, 80, 71, 0.35) 1px, transparent 1px);
+  background-position: bottom;
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+}
+
+/* Marquee animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 46s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track,
+.marquee-wrapper:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Subtle live pulse */
+@keyframes soft-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.25);
+  }
+}
+
+.status-dot-pulse {
+  animation: soft-pulse 2.2s ease-in-out infinite;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.js-reveal .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+/* Hide horizontal scrollbar cleanly on mobile pill bar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee-clone {
+    display: none;
+  }
+  .status-dot-pulse {
+    animation: none;
+  }
+  .reveal,
+  html.js-reveal .reveal:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,47 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+  compact?: boolean;
+}
+const { variant = 'dark', compact = false } = Astro.props;
+const textColor = variant === 'light' ? 'text-cream' : 'text-ink';
+const subColor = variant === 'light' ? 'text-cream/75' : 'text-verdi';
+const strokeColor = variant === 'light' ? '#FBF6EE' : '#1F4D36';
+const dotColor = '#B82D1A';
+---
+
+<span class={`inline-flex items-center gap-3 select-none ${textColor}`}>
+  <svg
+    width={compact ? 42 : 50}
+    height={compact ? 32 : 38}
+    viewBox="0 0 68 48"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    class="shrink-0"
+  >
+    <ellipse cx="34" cy="24" rx="31" ry="20" stroke={strokeColor} stroke-width="1.8" />
+    <ellipse cx="34" cy="24" rx="26.5" ry="16" stroke={strokeColor} stroke-width="0.9" stroke-dasharray="2 2.5" opacity="0.7" />
+    <text
+      x="34"
+      y="30"
+      text-anchor="middle"
+      font-family="Fraunces Variable, Georgia, serif"
+      font-style="italic"
+      font-weight="700"
+      font-size="21"
+      fill={variant === 'light' ? '#FBF6EE' : '#1C1917'}
+    >
+      Verdi
+    </text>
+    <circle cx="57" cy="11" r="3.5" fill={dotColor} />
+  </svg>
+  <span class="flex flex-col leading-none">
+    <span class={`text-[0.65rem] font-semibold uppercase tracking-[0.22em] ${subColor}`}>
+      Ristorante · Pizzeria
+    </span>
+    <span class={`font-display italic font-semibold tracking-tight ${compact ? 'text-lg' : 'text-xl'}`}>
+      Verdi
+    </span>
+  </span>
+</span>

@@ -1,0 +1,75 @@
+---
+import VerdiLogo from './VerdiLogo.astro';
+import { RESTAURANT } from '../data/restaurant';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto bg-verdi-dark pb-24 pt-16 text-cream lg:pb-12">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 border-b border-cream/15 pb-12 md:grid-cols-12">
+      <!-- Brand Column -->
+      <div class="md:col-span-5">
+        <a href="/" aria-label="Ristorante Verdi Startseite">
+          <VerdiLogo variant="light" />
+        </a>
+        <p class="mt-4 max-w-sm font-display text-base italic text-sand">
+          „{RESTAURANT.tagline}“
+        </p>
+        <p class="mt-2 max-w-sm text-sm leading-relaxed text-cream/75">
+          Steinofen-Pizza, frische Pasta, Pasta al Forno und knackige Salate in Hessisch Lichtenau –
+          vor Ort genießen oder telefonisch vorbestellen und heiß abholen.
+        </p>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="md:col-span-4">
+        <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-sand">Kontakt &amp; Adresse</h2>
+        <address class="mt-4 space-y-2 text-sm not-italic text-cream/85">
+          <p>{RESTAURANT.street} ({RESTAURANT.landmark})</p>
+          <p>{RESTAURANT.postalCode} {RESTAURANT.city}</p>
+          <p class="pt-1">
+            Telefon:{' '}
+            <a href={RESTAURANT.phoneHref} class="font-semibold text-cream underline decoration-cream/40 underline-offset-4 hover:text-sand">
+              {RESTAURANT.phoneDisplay}
+            </a>
+          </p>
+          <p class="text-xs text-cream/70">
+            Mo, Mi–So: 11:00–14:30 &amp; 17:00–21:30 · Di Ruhetag
+          </p>
+        </address>
+      </div>
+
+      <!-- Links Column -->
+      <div class="md:col-span-3">
+        <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-sand">Links &amp; Rechtliches</h2>
+        <ul class="mt-4 space-y-2.5 text-sm text-cream/85">
+          <li>
+            <a href="/#speisekarte" class="transition-colors hover:text-sand">Speisekarte</a>
+          </li>
+          <li>
+            <a href={RESTAURANT.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-sand">
+              Google Maps &amp; Bewertungen
+            </a>
+          </li>
+          <li>
+            <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-sand">
+              Facebook-Seite
+            </a>
+          </li>
+          <li class="pt-2 border-t border-cream/10">
+            <a href="/impressum" class="transition-colors hover:text-sand">Impressum</a>
+          </li>
+          <li>
+            <a href="/datenschutz" class="transition-colors hover:text-sand">Datenschutzerklärung</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-col items-start justify-between gap-3 text-xs text-cream/65 sm:flex-row sm:items-center">
+      <p>© {year} {RESTAURANT.name} · Hessisch Lichtenau</p>
+      <p>Ohne Cookies &amp; ohne Tracking · Schriftarten lokal gehostet</p>
+    </div>
+  </div>
+</footer>

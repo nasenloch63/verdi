@@ -1,0 +1,234 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import { RESTAURANT, OPENING_HOURS } from '../data/restaurant';
+import menuData from '../data/menu.json';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  includeRestaurantSchema?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = '/',
+  noindex = false,
+  includeRestaurantSchema = false,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://ristorante-verdi.vercel.app';
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+const ogImageUrl = `${siteUrl}/og-image.jpg`;
+
+const restaurantSchema = includeRestaurantSchema
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Restaurant',
+      '@id': `${siteUrl}/#restaurant`,
+      name: RESTAURANT.name,
+      alternateName: 'Restaurante Verdi',
+      description:
+        'Italienisches Restaurant & Steinofen-Pizzeria in Hessisch Lichtenau. Frische Steinofen-Pizza Ø 32 cm, Mini-Pizza, Pasta, Pasta al Forno und Salate zum Mitnehmen oder vor Ort.',
+      url: siteUrl,
+      image: [ogImageUrl],
+      telephone: RESTAURANT.phoneInternational,
+      priceRange: RESTAURANT.priceRange,
+      servesCuisine: ['Italian', 'Pizza', 'Pasta'],
+      acceptsReservations: true,
+      hasMap: RESTAURANT.googleMapsUrl,
+      sameAs: [RESTAURANT.facebookUrl, RESTAURANT.googleMapsUrl],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: RESTAURANT.street,
+        addressLocality: RESTAURANT.city,
+        postalCode: RESTAURANT.postalCode,
+        addressCountry: RESTAURANT.country,
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: RESTAURANT.geo.lat,
+        longitude: RESTAURANT.geo.lng,
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: RESTAURANT.rating.score,
+        reviewCount: RESTAURANT.rating.count,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      openingHoursSpecification: OPENING_HOURS.filter((d) => !d.closed).flatMap((d) =>
+        d.slots.map((slot) => ({
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: `https://schema.org/${d.schemaDay}`,
+          opens: slot.open,
+          closes: slot.close,
+        }))
+      ),
+      hasMenu: {
+        '@type': 'Menu',
+        name: 'Speisekarte Ristorante Verdi Pizzeria',
+        url: `${siteUrl}/#speisekarte`,
+        hasMenuSection: menuData.categories.map((cat) => ({
+          '@type': 'MenuSection',
+          name: cat.title,
+          description: cat.subtitle,
+          hasMenuItem: cat.items.map((item) => ({
+            '@type': 'MenuItem',
+            name: item.name,
+            description: item.description,
+            offers: {
+              '@type': 'Offer',
+              price: item.price.toFixed(2),
+              priceCurrency: 'EUR',
+            },
+          })),
+        })),
+      },
+    }
+  : null;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1F4D36" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={RESTAURANT.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Frische Steinofen-Pizza mit Rucola und Oliven im Ristorante Verdi Hessisch Lichtenau" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {restaurantSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
+    )}
+
+    <ClientRouter />
+  </head>
+  <body class="paper-grain min-h-screen flex flex-col bg-cream text-ink antialiased selection:bg-tomato selection:text-cream">
+    <a
+      href="#hauptinhalt"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-verdi focus:text-cream focus:px-4 focus:py-2.5 focus:rounded-full focus:font-semibold focus:shadow-lg"
+    >
+      Direkt zum Inhalt springen
+    </a>
+
+    <slot />
+
+    <script>
+      // Progressive scroll-reveal + live Europe/Berlin opening status
+      function initSiteRuntime() {
+        // 1. Live opening status in Europe/Berlin timezone
+        const statusEls = document.querySelectorAll<HTMLElement>('[data-live-status]');
+        const todayRows = document.querySelectorAll<HTMLElement>('[data-day-index]');
+
+        try {
+          const now = new Date();
+          const formatter = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Berlin',
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+          });
+          const parts = Object.fromEntries(formatter.formatToParts(now).map((p) => [p.type, p.value]));
+          const dayMap: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+          const day = dayMap[parts.weekday] ?? now.getDay();
+          const mins = Number(parts.hour) * 60 + Number(parts.minute);
+
+          const isTuesday = day === 2;
+          const inLunch = !isTuesday && mins >= 11 * 60 && mins < 14 * 60 + 30;
+          const inDinner = !isTuesday && mins >= 17 * 60 && mins < 21 * 60 + 30;
+          const isOpen = inLunch || inDinner;
+
+          let label = '';
+          if (inLunch) {
+            label = 'Jetzt geöffnet · bis 14:30 Uhr';
+          } else if (inDinner) {
+            label = 'Jetzt geöffnet · bis 21:30 Uhr';
+          } else if (isTuesday) {
+            label = 'Heute Ruhetag · Mi ab 11:00 Uhr';
+          } else if (mins < 11 * 60) {
+            label = 'Ab 11:00 Uhr geöffnet';
+          } else if (mins < 17 * 60) {
+            label = 'Mittagspause · ab 17:00 Uhr';
+          } else {
+            // After 21:30
+            label = day === 1 ? 'Geschlossen · Di Ruhetag' : 'Geschlossen · morgen ab 11:00 Uhr';
+          }
+
+          statusEls.forEach((el) => {
+            const textEl = el.querySelector<HTMLElement>('[data-status-text]');
+            const dotEl = el.querySelector<HTMLElement>('[data-status-dot]');
+            if (textEl) textEl.textContent = label;
+            if (dotEl) {
+              dotEl.classList.remove('bg-verdi', 'bg-tomato', 'bg-crust', 'status-dot-pulse');
+              if (isOpen) {
+                dotEl.classList.add('bg-verdi', 'status-dot-pulse');
+              } else if (!isTuesday && mins >= 14 * 60 + 30 && mins < 17 * 60) {
+                dotEl.classList.add('bg-crust');
+              } else {
+                dotEl.classList.add('bg-tomato');
+              }
+            }
+            el.setAttribute('data-state', isOpen ? 'open' : 'closed');
+          });
+
+          todayRows.forEach((row) => {
+            const rowDay = Number(row.dataset.dayIndex);
+            const isToday = rowDay === day;
+            row.classList.toggle('bg-verdi-soft/80', isToday);
+            row.classList.toggle('font-semibold', isToday);
+            const badge = row.querySelector<HTMLElement>('[data-today-badge]');
+            if (badge) badge.classList.toggle('hidden', !isToday);
+          });
+        } catch {
+          // Graceful fallback stays rendered in HTML
+        }
+
+        // 2. Scroll reveal (respects prefers-reduced-motion)
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduced && 'IntersectionObserver' in window) {
+          document.documentElement.classList.add('js-reveal');
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+          );
+          document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        }
+      }
+
+      document.addEventListener('astro:page-load', initSiteRuntime);
+    </script>
+  </body>
+</html>

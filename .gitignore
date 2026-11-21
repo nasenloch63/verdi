@@ -1,0 +1,22 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & Vercel
+.env
+.env.production
+.vercel/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
