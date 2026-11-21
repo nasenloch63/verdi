@@ -43,20 +43,20 @@ const vegetarianCount = menuData.categories.reduce(
     </div>
 
     <!-- Sticky Filter & Category Bar -->
-    <div class="sticky top-[62px] z-30 -mx-4 mt-8 border-y border-sand/90 bg-cream/95 px-4 py-3.5 backdrop-blur-md sm:-mx-6 sm:px-6 lg:mx-0 lg:rounded-2xl lg:border lg:px-4">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div class="sticky top-[62px] z-30 mt-8 rounded-2xl border border-sand/90 bg-cream/95 px-3.5 py-3.5 shadow-xs backdrop-blur-md sm:px-4">
+      <div class="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
         <!-- Category Pills -->
         <div
           role="tablist"
           aria-label="Speisekarten-Kategorien"
-          class="no-scrollbar flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0"
+          class="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-0.5 lg:flex-wrap lg:overflow-visible lg:pb-0"
         >
           <button
             type="button"
             role="tab"
             aria-selected="true"
             data-cat-btn="all"
-            class="cat-pill shrink-0 rounded-full bg-verdi px-4 py-2 text-sm font-semibold text-cream transition-all"
+            class="cat-pill shrink-0 rounded-full bg-verdi px-3.5 py-1.5 text-xs font-semibold text-cream transition-all sm:text-[13px]"
           >
             Alle ({totalItems})
           </button>
@@ -66,7 +66,7 @@ const vegetarianCount = menuData.categories.reduce(
               role="tab"
               aria-selected="false"
               data-cat-btn={cat.id}
-              class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-4 py-2 text-sm font-medium text-ink transition-all hover:border-verdi/50 hover:text-verdi"
+              class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-3.5 py-1.5 text-xs font-medium text-ink transition-all hover:border-verdi/50 hover:text-verdi sm:text-[13px]"
             >
               {cat.title}
             </button>
@@ -76,19 +76,19 @@ const vegetarianCount = menuData.categories.reduce(
             role="tab"
             aria-selected="false"
             data-cat-btn="extras"
-            class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-4 py-2 text-sm font-medium text-ink transition-all hover:border-verdi/50 hover:text-verdi"
+            class="cat-pill shrink-0 rounded-full border border-sand bg-parchment/70 px-3.5 py-1.5 text-xs font-medium text-ink transition-all hover:border-verdi/50 hover:text-verdi sm:text-[13px]"
           >
             Extras
           </button>
         </div>
 
         <!-- Veggie Toggle + Search -->
-        <div class="flex items-center gap-2.5">
+        <div class="flex shrink-0 items-center gap-2">
           <button
             type="button"
             id="veggie-toggle"
             aria-pressed="false"
-            class="inline-flex shrink-0 items-center gap-2 rounded-full border border-verdi/35 bg-cream px-3.5 py-2 text-xs font-semibold text-verdi transition-all hover:bg-verdi-soft"
+            class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-verdi/35 bg-cream px-3 py-1.5 text-xs font-semibold text-verdi transition-all hover:bg-verdi-soft"
           >
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
@@ -97,7 +97,7 @@ const vegetarianCount = menuData.categories.reduce(
             <span>Vegetarisch ({vegetarianCount})</span>
           </button>
 
-          <div class="relative flex-1 sm:w-52 lg:w-48">
+          <div class="relative flex-1 sm:w-48 xl:w-44">
             <label for="menu-search" class="sr-only">Gericht oder Zutat suchen</label>
             <svg
               class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
