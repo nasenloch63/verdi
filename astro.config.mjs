@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://ristorante-verdi.vercel.app',
+  site: process.env.SITE_URL || 'https://verdi-beta.vercel.app',
   output: 'static',
   integrations: [sitemap()],
   image: {

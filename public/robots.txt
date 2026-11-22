@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ristorante-verdi.vercel.app/sitemap-index.xml
+Sitemap: https://verdi-beta.vercel.app/sitemap-index.xml
