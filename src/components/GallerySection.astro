@@ -1,5 +1,6 @@
 ---
 import { Picture, getImage } from 'astro:assets';
+import Icon from './Icon.astro';
 import photoRucola from '../assets/photos/hero-pizza-rucola.jpg';
 import photoSteinofen from '../assets/photos/pizza-steinofen-nah.jpg';
 import photoCarbonara from '../assets/photos/spaghetti-carbonara.jpg';
@@ -11,231 +12,216 @@ import photoMaccheroni from '../assets/photos/maccheroni-sauce.jpg';
 import photoAuswahl from '../assets/photos/pizzen-auswahl.jpg';
 import photoGastraum from '../assets/photos/gastraum-verdi.jpg';
 
+// shape: 'wide' 4:3 · 'tall' 4:5 · 'square'
 const rawItems = [
-  {
-    src: photoSteinofen,
-    title: 'Steinofen-Pizza frisch gebacken',
-    caption: 'Dünner Teig, knusprig gebräunter Rand und reichhaltiger Belag.',
-    alt: 'Nahaufnahme einer frisch gebackenen Steinofen-Pizza aus dem Ristorante Verdi',
-    span: 'md:col-span-2 md:row-span-2',
-    aspect: 'aspect-[4/3] md:h-full',
-    pos: 'object-[50%_75%]',
-  },
-  {
-    src: photoCarbonara,
-    title: 'Spaghetti Carbonara',
-    caption: 'Gäste-Favorit mit Speck, Zwiebeln, Ei und frisch gehobeltem Parmesan.',
-    alt: 'Spaghetti Carbonara mit Parmesanspänen und Speck im Ristorante Verdi',
-    span: 'md:col-span-1',
-    aspect: 'aspect-[4/4.2]',
-    pos: 'object-center',
-  },
-  {
-    src: photoAlForno,
-    title: 'Pasta al Forno',
-    caption: 'Mit Käse goldbraun im Steinofen überbacken – alle Gerichte 8,50 €.',
-    alt: 'Goldbraun mit Käse überbackene Pasta al Forno in der Auflaufform',
-    span: 'md:col-span-1',
-    aspect: 'aspect-[4/4.2]',
-    pos: 'object-center',
-  },
-  {
-    src: photoSalatPizza,
-    title: 'Frischer Salat & Steinofen-Pizza',
-    caption: 'Knackige Salate der Saison und Pizza für einen entspannten Abend.',
-    alt: 'Reichhaltiger Salat mit Champignons und Pizza im Hintergrund am Tisch',
-    span: 'md:col-span-2',
-    aspect: 'aspect-[16/10]',
-    pos: 'object-center',
-  },
-  {
-    src: photoMelanzane,
-    title: 'Melanzane alla Parmiggiana',
-    caption: 'Überbackene Auberginen in fruchtiger Tomatensauce mit Mozzarella.',
-    alt: 'Melanzane alla Parmiggiana – überbackene Auberginen in Tomatensauce',
-    span: 'md:col-span-1',
-    aspect: 'aspect-[4/3]',
-    pos: 'object-center',
-  },
-  {
-    src: photoPrimavera,
-    title: 'Insalata Primavera',
-    caption: 'Salat der Saison mit Rucola, Krabben, Champignons und warmem Brot.',
-    alt: 'Insalata Primavera mit Krabben und frischem Salat',
-    span: 'md:col-span-1',
-    aspect: 'aspect-[4/3]',
-    pos: 'object-center',
-  },
-  {
-    src: photoMaccheroni,
-    title: 'Maccheroni frisch aus der Pfanne',
-    caption: 'Klassische italienische Pasta in aromatischer Sauce.',
-    alt: 'Maccheroni Pasta in cremiger Tomaten-Champignonsauce auf weißem Teller',
-    span: 'md:col-span-1',
-    aspect: 'aspect-[4/3]',
-    pos: 'object-center',
-  },
-  {
-    src: photoAuswahl,
-    title: 'Pizzen zum Teilen',
-    caption: 'Große 32-cm-Pizzen für den gemütlichen Abend mit Freunden.',
-    alt: 'Zwei frisch gebackene Steinofen-Pizzen auf dem Tisch',
-    span: 'md:col-span-1',
-    aspect: 'aspect-[4/3]',
-    pos: 'object-center',
-  },
-  {
-    src: photoRucola,
-    title: 'Pizza mit frischem Rucola & Oliven',
-    caption: 'Leuchtend rote Tomatensauce, knackiger Rucola und schwarze Oliven.',
-    alt: 'Steinofen-Pizza belegt mit frischem Rucola und schwarzen Oliven',
-    span: 'md:col-span-2',
-    aspect: 'aspect-[16/9]',
-    pos: 'object-[50%_72%]',
-  },
-  {
-    src: photoGastraum,
-    title: 'Unser Gastraum in Hessisch Lichtenau',
-    caption: 'Ruhig, gemütlich und zwanglos – direkt an der Desseler Straße 15.',
-    alt: 'Blick in den gemütlichen Gastraum des Ristorante Verdi in Hessisch Lichtenau',
-    span: 'md:col-span-2',
-    aspect: 'aspect-[16/9]',
-    pos: 'object-left',
-  },
-];
+  { src: photoSteinofen, shape: 'wide', tilt: '-1.5deg', pos: 'object-[50%_75%]', title: 'Frisch aus dem Steinofen', caption: 'Dünner Teig, knusprig gebräunter Rand und reichhaltiger Belag.', alt: 'Nahaufnahme einer frisch gebackenen Steinofen-Pizza aus dem Ristorante Verdi' },
+  { src: photoCarbonara, shape: 'tall', tilt: '1.6deg', pos: 'object-center', title: 'Spaghetti Carbonara', caption: 'Gäste-Favorit mit Speck, Zwiebeln, Ei und frisch gehobeltem Parmesan.', alt: 'Spaghetti Carbonara mit Parmesanspänen und Speck im Ristorante Verdi' },
+  { src: photoGastraum, shape: 'wide', tilt: '-1deg', pos: 'object-left', title: 'Unser Gastraum', caption: 'Ruhig, gemütlich und zwanglos – direkt an der Desseler Straße 15.', alt: 'Blick in den gemütlichen Gastraum des Ristorante Verdi in Hessisch Lichtenau' },
+  { src: photoAlForno, shape: 'square', tilt: '2deg', pos: 'object-center', title: 'Pasta al Forno', caption: 'Mit Käse goldbraun im Steinofen überbacken – alle Gerichte 8,50 €.', alt: 'Goldbraun mit Käse überbackene Pasta al Forno in der Auflaufform' },
+  { src: photoRucola, shape: 'wide', tilt: '-2deg', pos: 'object-[50%_72%]', title: 'Pizza mit Rucola & Oliven', caption: 'Leuchtend rote Tomatensauce, knackiger Rucola und schwarze Oliven.', alt: 'Steinofen-Pizza belegt mit frischem Rucola und schwarzen Oliven' },
+  { src: photoMelanzane, shape: 'tall', tilt: '1.2deg', pos: 'object-center', title: 'Melanzane alla Parmiggiana', caption: 'Überbackene Auberginen in fruchtiger Tomatensauce mit Mozzarella.', alt: 'Melanzane alla Parmiggiana – überbackene Auberginen in Tomatensauce' },
+  { src: photoSalatPizza, shape: 'wide', tilt: '-1.4deg', pos: 'object-center', title: 'Salat & Pizza', caption: 'Knackige Salate der Saison und Pizza für einen entspannten Abend.', alt: 'Reichhaltiger Salat mit Champignons und Pizza im Hintergrund am Tisch' },
+  { src: photoPrimavera, shape: 'square', tilt: '1.8deg', pos: 'object-center', title: 'Insalata Primavera', caption: 'Salat der Saison mit Rucola, Krabben, Champignons und warmem Brot.', alt: 'Insalata Primavera mit Krabben und frischem Salat' },
+  { src: photoAuswahl, shape: 'wide', tilt: '-1.8deg', pos: 'object-center', title: 'Pizzen zum Teilen', caption: 'Große 32-cm-Pizzen für den gemütlichen Abend mit Freunden.', alt: 'Zwei frisch gebackene Steinofen-Pizzen auf dem Tisch' },
+  { src: photoMaccheroni, shape: 'tall', tilt: '1.4deg', pos: 'object-center', title: 'Maccheroni aus der Pfanne', caption: 'Klassische italienische Pasta in aromatischer Sauce.', alt: 'Maccheroni Pasta in cremiger Tomaten-Champignonsauce auf weißem Teller' },
+] as const;
 
-// Pre-generate high-res optimized WebP URLs for the lightbox
+const aspect = { wide: 'aspect-[4/3]', tall: 'aspect-[4/5]', square: 'aspect-square' } as const;
+
 const galleryItems = await Promise.all(
   rawItems.map(async (item, idx) => {
     const full = await getImage({ src: item.src, width: 1440, format: 'webp', quality: 84 });
     return { ...item, index: idx, lightboxSrc: full.src };
   })
 );
+const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
-<section id="galerie" class="bg-surface-beige relative scroll-mt-20 py-20 sm:py-28">
+<section id="galerie" class="bg-surface-beige relative scroll-mt-20 overflow-hidden py-18 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="reveal flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
       <div>
-        <p class="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-tomato">
-          <span class="h-px w-6 bg-brass" aria-hidden="true"></span>
-          <span>Eindrücke aus Küche &amp; Gastraum</span>
-        </p>
-        <h2 class="mt-2 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        <p class="kicker">Aus Küche und Gastraum</p>
+        <h2 data-split class="mt-1 font-display text-4xl font-medium tracking-tight text-ink sm:text-[3.4rem] sm:leading-[1.02]">
           Appetit auf <span class="italic font-normal text-wood-warm">Verdi?</span>
         </h2>
       </div>
-      <p class="max-w-md text-sm leading-relaxed text-muted">
-        Echte Aufnahmen unserer Steinofen-Pizzen, Pasta-Gerichte, Salate und unseres
-        Gastraums. Klicken Sie auf ein Foto für die Großansicht.
-      </p>
-    </div>
 
-    <!-- Bento / Masonry Photo Grid Framed in Dark Walnut Mats -->
-    <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
-      {galleryItems.map((item) => (
-        <figure
-          data-clip-reveal
-          class={`wood-dark-bar group relative overflow-hidden rounded-3xl border border-brass/30 p-1.5 shadow-[0_18px_36px_-18px_rgba(20,11,6,0.4)] transition-shadow hover:border-brass-light/60 hover:shadow-[0_24px_48px_-16px_rgba(20,11,6,0.5)] ${item.span}`}
-        >
-          <button
-            type="button"
-            data-lightbox-trigger={item.index}
-            data-src={item.lightboxSrc}
-            data-title={item.title}
-            data-caption={item.caption}
-            data-alt={item.alt}
-            class="relative block h-full w-full overflow-hidden rounded-[1.15rem] text-left focus-visible:outline-brass-light"
-            aria-label={`${item.title} vergrößern`}
-          >
-            <Picture
-              src={item.src}
-              formats={['avif', 'webp']}
-              widths={[480, 840]}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 28vw"
-              alt={item.alt}
-              loading="lazy"
-              class={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] ${item.aspect} ${item.pos}`}
-            />
-            <span
-              aria-hidden="true"
-              class="pointer-events-none absolute right-3 top-3 hidden h-8 w-8 items-center justify-center rounded-full border border-brass/40 bg-espresso/75 text-brass-light opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 sm:inline-flex"
-            >
-              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-            </span>
-            <div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#160D08]/88 via-[#160D08]/38 to-transparent p-4 pt-12 opacity-95 transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
-              <p class="font-display text-base font-semibold text-cream">{item.title}</p>
-              <p class="mt-0.5 line-clamp-2 text-xs text-parchment/85">{item.caption}</p>
-            </div>
+      <div class="flex items-center gap-5">
+        <p class="font-display text-lg tabular-nums text-muted" aria-live="polite">
+          <span id="strip-current" class="text-2xl font-medium text-ink">01</span> / {pad(galleryItems.length)}
+        </p>
+        <div class="flex gap-2.5">
+          <button type="button" id="strip-prev" aria-label="Vorherige Fotos" class="inline-flex h-12 w-12 items-center justify-center rounded-full border-[1.5px] border-walnut/45 text-walnut transition-colors hover:bg-walnut hover:text-cream disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-walnut">
+            <Icon name="arrow-left" size={20} />
           </button>
-        </figure>
-      ))}
+          <button type="button" id="strip-next" aria-label="Nächste Fotos" class="inline-flex h-12 w-12 items-center justify-center rounded-full border-[1.5px] border-walnut/45 text-walnut transition-colors hover:bg-walnut hover:text-cream disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-walnut">
+            <Icon name="arrow-right" size={20} />
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Native Accessible Dark-Walnut Lightbox Dialog -->
-  <dialog
-    id="verdi-lightbox"
-    aria-label="Bildergalerie Großansicht"
-    class="wood-dark-surface m-auto max-h-[92vh] w-[94vw] max-w-4xl overflow-hidden rounded-3xl border border-brass/40 p-0 text-cream shadow-2xl backdrop:bg-[#100805]/88 backdrop:backdrop-blur-xs"
-  >
-    <div class="relative flex flex-col">
-      <div class="flex items-center justify-between border-b border-brass/25 bg-espresso/70 px-5 py-3.5">
-        <div>
-          <p id="lb-title" class="font-display text-lg font-semibold text-cream"></p>
-          <p id="lb-counter" class="text-xs text-brass-light/85"></p>
-        </div>
+  <!-- One compact row of prints: drag, swipe or use the arrows -->
+  <div id="photo-strip" class="strip no-scrollbar mt-4" tabindex="0" role="group" aria-label="Fotos aus dem Ristorante Verdi">
+    {galleryItems.map((item) => (
+      <figure data-strip-card class="strip-card snapshot" style={`--tilt: ${item.tilt}`}>
         <button
           type="button"
-          id="lb-close"
-          aria-label="Großansicht schließen"
-          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brass/35 bg-walnut/70 text-cream transition-colors hover:border-brass-light hover:bg-walnut"
+          data-lightbox-trigger={item.index}
+          data-src={item.lightboxSrc}
+          data-title={item.title}
+          data-caption={item.caption}
+          data-alt={item.alt}
+          class="group relative block overflow-hidden focus-visible:outline-tomato"
+          aria-label={`${item.title} vergrößern`}
         >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M18 6 6 18M6 6l12 12" />
-          </svg>
+          <Picture
+            src={item.src}
+            formats={['avif', 'webp']}
+            widths={[480, 840]}
+            sizes="(max-width: 640px) 78vw, 520px"
+            alt={item.alt}
+            loading="lazy"
+            draggable="false"
+            class={`strip-photo w-auto object-cover transition-transform duration-700 group-hover:scale-[1.05] ${aspect[item.shape]} ${item.pos}`}
+          />
+          <span aria-hidden="true" class="pointer-events-none absolute right-2.5 top-2.5 hidden h-9 w-9 items-center justify-center rounded-full bg-cream text-walnut opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100 sm:inline-flex">
+            <Icon name="expand" size={16} />
+          </span>
+        </button>
+        <figcaption class="font-hand px-1 pt-2.5 text-center text-[1.45rem] leading-none text-walnut">{item.title}</figcaption>
+      </figure>
+    ))}
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mt-3 h-[3px] overflow-hidden rounded-full bg-walnut/15" aria-hidden="true">
+      <div id="strip-progress" class="h-full w-full origin-left scale-x-[0.1] rounded-full bg-tomato"></div>
+    </div>
+  </div>
+
+  <dialog
+    id="verdi-lightbox"
+    aria-label="Foto in Großansicht"
+    class="wood-dark-surface m-auto max-h-[92vh] w-[94vw] max-w-4xl overflow-hidden rounded-xl border border-brass/40 p-0 text-cream shadow-2xl backdrop:bg-[#100805]/88"
+  >
+    <div class="relative flex flex-col">
+      <div class="flex items-center justify-between border-b border-brass/25 px-5 py-3.5">
+        <div>
+          <p id="lb-title" class="font-display text-xl font-medium text-cream"></p>
+          <p id="lb-counter" class="text-sm text-brass-light"></p>
+        </div>
+        <button type="button" id="lb-close" aria-label="Großansicht schließen" class="inline-flex h-11 w-11 items-center justify-center rounded-full text-cream transition-colors hover:bg-cream/12">
+          <Icon name="close" size={22} />
         </button>
       </div>
 
       <div class="relative flex items-center justify-center bg-black/45 p-2 sm:p-4">
-        <button
-          type="button"
-          id="lb-prev"
-          aria-label="Vorheriges Foto"
-          class="absolute left-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-brass/35 bg-espresso/85 text-cream transition-colors hover:border-tomato hover:bg-tomato"
-        >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="m15 18-6-6 6-6" />
-          </svg>
+        <button type="button" id="lb-prev" aria-label="Vorheriges Foto" class="absolute left-3 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-walnut shadow-lg transition-colors hover:bg-tomato hover:text-cream">
+          <Icon name="arrow-left" size={20} />
         </button>
-
-        <img
-          id="lb-img"
-          src=""
-          alt=""
-          class="max-h-[68vh] w-auto rounded-xl object-contain ring-1 ring-brass/25"
-        />
-
-        <button
-          type="button"
-          id="lb-next"
-          aria-label="Nächstes Foto"
-          class="absolute right-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-brass/35 bg-espresso/85 text-cream transition-colors hover:border-tomato hover:bg-tomato"
-        >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="m9 18 6-6-6-6" />
-          </svg>
+        <img id="lb-img" src="" alt="" class="max-h-[68vh] w-auto rounded-md object-contain" />
+        <button type="button" id="lb-next" aria-label="Nächstes Foto" class="absolute right-3 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-walnut shadow-lg transition-colors hover:bg-tomato hover:text-cream">
+          <Icon name="arrow-right" size={20} />
         </button>
       </div>
 
-      <p id="lb-caption" class="border-t border-brass/20 bg-espresso/65 px-5 py-3.5 text-center text-sm text-parchment/90"></p>
+      <p id="lb-caption" class="border-t border-brass/20 px-5 py-3.5 text-center text-base text-parchment/90"></p>
     </div>
   </dialog>
 </section>
 
 <script>
+  function initStrip() {
+    const strip = document.getElementById('photo-strip');
+    if (!strip) return;
+    const cards = Array.from(strip.querySelectorAll<HTMLElement>('[data-strip-card]'));
+    const prev = document.getElementById('strip-prev') as HTMLButtonElement | null;
+    const next = document.getElementById('strip-next') as HTMLButtonElement | null;
+    const current = document.getElementById('strip-current');
+    const progress = document.getElementById('strip-progress');
+
+    const update = () => {
+      const max = strip.scrollWidth - strip.clientWidth;
+      const ratio = max > 0 ? strip.scrollLeft / max : 0;
+      if (progress) progress.style.transform = `scaleX(${0.1 + ratio * 0.9})`;
+      if (prev) prev.disabled = strip.scrollLeft < 8;
+      if (next) next.disabled = strip.scrollLeft > max - 8;
+      if (current && cards.length) {
+        const idx = Math.min(cards.length - 1, Math.round(ratio * (cards.length - 1)));
+        current.textContent = String(idx + 1).padStart(2, '0');
+      }
+    };
+
+    const step = (dir: number) => {
+      strip.scrollBy({ left: dir * Math.max(320, strip.clientWidth * 0.7), behavior: 'smooth' });
+    };
+    if (prev) prev.onclick = () => step(-1);
+    if (next) next.onclick = () => step(1);
+    strip.onkeydown = (e) => {
+      if (e.key === 'ArrowRight') step(1);
+      if (e.key === 'ArrowLeft') step(-1);
+    };
+    strip.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    // Drag to scroll with a little throw (mouse only; touch scrolls natively)
+    let down = false;
+    let moved = 0;
+    let startX = 0;
+    let startLeft = 0;
+    let lastX = 0;
+    let velocity = 0;
+    let raf = 0;
+
+    strip.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      down = true;
+      moved = 0;
+      startX = lastX = e.clientX;
+      startLeft = strip.scrollLeft;
+      velocity = 0;
+      cancelAnimationFrame(raf);
+    });
+    window.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      if (moved > 6) strip.classList.add('is-dragging');
+      velocity = e.clientX - lastX;
+      lastX = e.clientX;
+      strip.scrollLeft = startLeft - dx;
+    });
+    const release = () => {
+      if (!down) return;
+      down = false;
+      const glide = () => {
+        velocity *= 0.94;
+        strip.scrollLeft -= velocity;
+        if (Math.abs(velocity) > 0.6) raf = requestAnimationFrame(glide);
+        else strip.classList.remove('is-dragging');
+      };
+      if (Math.abs(velocity) > 2) raf = requestAnimationFrame(glide);
+      else strip.classList.remove('is-dragging');
+    };
+    window.addEventListener('pointerup', release);
+    window.addEventListener('pointercancel', release);
+    // a drag must not open the lightbox
+    strip.addEventListener(
+      'click',
+      (e) => {
+        if (moved > 6) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      },
+      true
+    );
+  }
+
   function initLightbox() {
     const dialog = document.getElementById('verdi-lightbox') as HTMLDialogElement | null;
     const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]'));
@@ -284,5 +270,8 @@ const galleryItems = await Promise.all(
     };
   }
 
-  document.addEventListener('astro:page-load', initLightbox);
+  document.addEventListener('astro:page-load', () => {
+    initStrip();
+    initLightbox();
+  });
 </script>

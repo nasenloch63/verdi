@@ -1,18 +1,10 @@
 ---
+// Slim walnut rail between sections. (Both variants render the same plain rail now.)
 interface Props {
   variant?: 'slim' | 'ornate';
 }
-const { variant = 'slim' } = Astro.props;
 ---
 
 <div aria-hidden="true" class="relative z-10 w-full select-none">
-  <div class="wood-warm-rail relative flex h-2.5 w-full items-center justify-center border-y border-brass/45 shadow-[0_2px_10px_rgba(20,11,6,0.22)] sm:h-3">
-    {variant === 'ornate' && (
-      <span class="flex h-5 w-16 items-center justify-center rounded-full border border-brass/55 bg-espresso shadow-md">
-        <svg class="h-2.5 w-2.5 text-brass-light" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M8 0 10.4 5.6 16 8l-5.6 2.4L8 16l-2.4-5.6L0 8l5.6-2.4Z" />
-        </svg>
-      </span>
-    )}
-  </div>
+  <div class="wood-warm-rail h-2.5 w-full border-y border-brass/45 shadow-[0_2px_10px_rgba(20,11,6,0.22)] sm:h-3"></div>
 </div>

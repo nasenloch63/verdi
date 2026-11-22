@@ -6,44 +6,38 @@ interface Props {
 const { variant = 'light', compact = false } = Astro.props;
 const textColor = variant === 'light' ? 'text-cream' : 'text-ink';
 const subColor = variant === 'light' ? 'text-brass-light' : 'text-wood-warm';
-const outerStroke = variant === 'light' ? '#D8AE6E' : '#352216';
-const innerStroke = variant === 'light' ? '#F6EFE6' : '#B4823E';
+const stroke = variant === 'light' ? '#D8AE6E' : '#352216';
 const scriptFill = variant === 'light' ? '#F6EFE6' : '#221610';
-const dotColor = variant === 'light' ? '#C73F28' : '#A93320';
 ---
 
-<span class={`inline-flex items-center gap-3 select-none ${textColor}`}>
+<span class={`inline-flex items-center gap-2.5 select-none ${textColor}`}>
   <svg
-    width={compact ? 44 : 54}
-    height={compact ? 33 : 40}
-    viewBox="0 0 68 48"
+    width={compact ? 62 : 76}
+    height={compact ? 42 : 52}
+    viewBox="0 0 92 62"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
     class="shrink-0"
   >
-    <ellipse cx="34" cy="24" rx="31" ry="20" stroke={outerStroke} stroke-width="1.5" />
-    <ellipse cx="34" cy="24" rx="26.5" ry="16" stroke={innerStroke} stroke-width="0.85" stroke-dasharray="2 2.5" opacity="0.65" />
+    <ellipse cx="46" cy="31" rx="44" ry="29" stroke={stroke} stroke-width="1.6" />
     <text
-      x="34"
-      y="30.5"
+      x="46"
+      y="42"
       text-anchor="middle"
-      font-family="Cormorant Garamond Variable, Georgia, serif"
-      font-style="italic"
-      font-weight="700"
-      font-size="24"
+      font-family="'Pinyon Script', 'Snell Roundhand', cursive"
+      font-size="37"
       fill={scriptFill}
     >
       Verdi
     </text>
-    <circle cx="57" cy="11" r="3.4" fill={dotColor} />
   </svg>
   <span class="flex flex-col leading-none">
-    <span class={`whitespace-nowrap font-display font-semibold uppercase ${compact ? 'text-[0.58rem] tracking-[0.16em] sm:text-[0.7rem] sm:tracking-[0.24em]' : 'text-[0.7rem] tracking-[0.24em]'} ${subColor}`}>
-      Ristorante · Pizzeria
+    <span class={`whitespace-nowrap font-display font-medium ${compact ? 'text-[0.95rem] sm:text-[1.05rem]' : 'text-[1.15rem]'}`}>
+      Ristorante
     </span>
-    <span class={`font-display italic font-bold tracking-tight ${compact ? 'text-[1.4rem] sm:text-[1.45rem]' : 'text-[1.7rem]'}`}>
-      Verdi
+    <span class={`mt-1 whitespace-nowrap font-display italic ${compact ? 'text-[0.82rem] sm:text-[0.9rem]' : 'text-[0.98rem]'} ${subColor}`}>
+      &amp; Pizzeria
     </span>
   </span>
 </span>

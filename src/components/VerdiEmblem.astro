@@ -1,0 +1,48 @@
+---
+// Redrawn oval house emblem (after the restaurant's printed logo): RISTORANTE · Verdi · PIZZERIA
+interface Props {
+  variant?: 'ink' | 'light';
+  uid: string;
+  class?: string;
+  rim?: boolean;
+}
+const { variant = 'ink', uid, class: className = '', rim = true } = Astro.props;
+const ink = variant === 'ink' ? '#221610' : '#F6EFE6';
+const line = variant === 'ink' ? '#352216' : '#D8AE6E';
+---
+
+<svg
+  class={className}
+  viewBox="0 0 400 260"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Ristorante Verdi Pizzeria"
+>
+  <defs>
+    <path id={`${uid}-top`} d="M72 98 Q200 12 328 98" />
+    <path id={`${uid}-bot`} d="M128 208 Q200 236 272 208" />
+  </defs>
+  {rim && (
+    <>
+      <ellipse cx="200" cy="130" rx="192" ry="122" stroke={line} stroke-width="2.6" />
+      <ellipse cx="200" cy="130" rx="182" ry="112" stroke={line} stroke-width="0.9" opacity="0.6" />
+    </>
+  )}
+  <text fill={ink} font-family="'Fraunces Variable', Georgia, serif" font-size="27" font-weight="500" letter-spacing="6">
+    <textPath href={`#${uid}-top`} startOffset="50%" text-anchor="middle">RISTORANTE</textPath>
+  </text>
+  <text
+    x="200"
+    y="181"
+    text-anchor="middle"
+    fill={ink}
+    font-family="'Pinyon Script', 'Snell Roundhand', cursive"
+    font-size="112"
+  >
+    Verdi
+  </text>
+  <text fill={ink} font-family="'Fraunces Variable', Georgia, serif" font-size="21" font-weight="500" letter-spacing="5">
+    <textPath href={`#${uid}-bot`} startOffset="50%" text-anchor="middle">PIZZERIA</textPath>
+  </text>
+</svg>

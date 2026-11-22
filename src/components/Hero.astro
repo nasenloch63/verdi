@@ -2,184 +2,158 @@
 import { Picture } from 'astro:assets';
 import heroCrustWide from '../assets/photos/pizza-steinofen-nah.jpg';
 import rucolaDetail from '../assets/photos/hero-pizza-rucola.jpg';
+import Icon from './Icon.astro';
 import { RESTAURANT } from '../data/restaurant';
 
-const tickerItems = [
-  'Steinofen-Pizza Ø 32 cm',
-  'Frischegarantie',
-  '4,7 ★ Google (216 Bewertungen)',
-  'Kompositionen aus Küche & Keller',
-  'Pasta al Forno 8,50 €',
-  'Schnelle Abholung · 05602 7100',
-  'Desseler Str. 15 · Hessisch Lichtenau',
-];
+const bandWords = [
+  { text: 'Steinofen-Pizza', icon: 'pizza' },
+  { text: 'Pasta al Forno', icon: 'forno' },
+  { text: 'Spaghetti Carbonara', icon: 'pasta' },
+  { text: 'Insalata Primavera', icon: 'leaf' },
+  { text: 'Melanzane alla Parmiggiana', icon: 'basil' },
+  { text: 'Buon appetito', icon: 'heart' },
+] as const;
 ---
 
 <section class="relative overflow-hidden bg-espresso text-cream">
-  <!-- Full-Bleed Hero-Wide Authentic Stone-Oven Pizza Photography with Scrubbed Parallax -->
-  <div class="relative flex min-h-[82svh] w-full items-end sm:min-h-[86svh] lg:items-center">
+  <div class="relative flex min-h-[84svh] w-full items-end sm:min-h-[88svh] lg:items-center">
+    <!-- Full-bleed photo of a real Verdi pizza: slow zoom-out on load, parallax on scroll -->
     <div class="absolute inset-0 overflow-hidden">
-      <div data-parallax="36" class="h-[112%] w-full -translate-y-[6%]">
-        <Picture
-          src={heroCrustWide}
-          formats={['avif', 'webp']}
-          widths={[768, 1280, 1920]}
-          sizes="100vw"
-          alt="Frisch gebackene Steinofen-Pizza aus dem Ristorante Verdi mit kross gebräuntem Rand und reichhaltigem Belag"
-          loading="eager"
-          fetchpriority="high"
-          class="h-full w-full object-cover object-[50%_70%]"
-        />
+      <div data-parallax="40" class="h-[114%] w-full -translate-y-[7%]">
+        <div data-hero-image class="h-full w-full">
+          <Picture
+            src={heroCrustWide}
+            formats={['avif', 'webp']}
+            widths={[768, 1280, 1920]}
+            sizes="100vw"
+            alt="Frisch gebackene Steinofen-Pizza aus dem Ristorante Verdi mit kross gebräuntem Rand und reichhaltigem Belag"
+            loading="eager"
+            fetchpriority="high"
+            class="h-full w-full object-cover object-[50%_70%]"
+          />
+        </div>
       </div>
-      <!-- Balanced Warm Espresso-Walnut Editorial Scrims (Text Legible Left, Bright Appetizing Pizza Right) -->
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#170E09]/88 via-[#1B100A]/52 to-transparent"
-      ></div>
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#170E09]/76 via-transparent to-[#170E09]/24"
-      ></div>
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#170E09]/90 via-[#1B100A]/55 to-transparent"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#170E09]/80 via-transparent to-[#170E09]/25"></div>
     </div>
 
-    <!-- Hero Foreground Content -->
     <div class="relative z-10 mx-auto w-full max-w-7xl px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:py-20">
-      <div class="grid items-end gap-10 lg:grid-cols-12">
-        <!-- Editorial Headline & CTAs -->
+      <div class="grid items-center gap-10 lg:grid-cols-12">
         <div class="lg:col-span-8 xl:col-span-7">
-          <div data-hero-fade class="mb-5 flex flex-wrap items-center gap-2.5">
-            <span
-              data-live-status
-              class="inline-flex items-center gap-2 rounded-full border border-brass/35 bg-espresso/65 px-3.5 py-1.5 text-xs font-medium tracking-wide text-cream shadow-sm backdrop-blur-md"
-            >
-              <span data-status-dot class="h-2 w-2 rounded-full bg-status-open"></span>
+          <!-- Plain status line: no capsules, just what a guest needs to know -->
+          <p data-hero-fade class="mb-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.95rem] font-medium text-cream">
+            <span data-live-status class="inline-flex items-center gap-2.5">
+              <span data-status-dot class="h-2.5 w-2.5 rounded-full bg-status-open"></span>
               <span data-status-text>Mo, Mi–So · 11:00–14:30 &amp; 17:00–21:30</span>
             </span>
-
-            <a
-              href="#bewertungen"
-              class="inline-flex items-center gap-1.5 rounded-full border border-brass/35 bg-espresso/65 px-3.5 py-1.5 text-xs font-semibold text-cream shadow-sm backdrop-blur-md transition-colors hover:border-brass-light"
-            >
-              <svg class="h-3.5 w-3.5 text-brass-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
-              <span>{RESTAURANT.rating.scoreDisplay} ★</span>
-              <span class="text-parchment/85">({RESTAURANT.rating.count} Google-Bewertungen)</span>
+            <a href="#bewertungen" class="inline-flex items-center gap-2 text-cream transition-colors hover:text-brass-light">
+              <span class="inline-flex gap-0.5 text-brass-light" aria-hidden="true">
+                {Array.from({ length: 5 }).map(() => <Icon name="star" size={15} />)}
+              </span>
+              <span>
+                <strong class="font-bold">{RESTAURANT.rating.scoreDisplay}</strong> bei Google ·{' '}
+                <span class="link-draw">{RESTAURANT.rating.count} Bewertungen</span>
+              </span>
             </a>
-          </div>
-
-          <p data-hero-fade class="mb-3 inline-flex items-center gap-2.5 font-display text-base italic tracking-wide text-brass-light sm:text-lg">
-            <span class="h-px w-6 bg-brass-light/70" aria-hidden="true"></span>
-            <span>„{RESTAURANT.tagline}“ · {RESTAURANT.city}</span>
           </p>
 
-          <!-- Monumental Masked Headline -->
-          <h1 class="font-display text-[2.95rem] font-semibold leading-[1.0] tracking-[-0.025em] text-cream drop-shadow-[0_2px_16px_rgba(14,8,4,0.45)] sm:text-6xl lg:text-[4.75rem]">
-            <span class="block overflow-hidden pb-1">
-              <span data-hero-line class="block">Die Steinofenpizza</span>
-            </span>
-            <span class="block overflow-hidden pb-1.5">
-              <span data-hero-line class="block">
-                aus <span class="italic font-normal text-parchment">Heli.</span>
-              </span>
+          <p data-hero-fade class="kicker kicker-light mb-2">{RESTAURANT.tagline}</p>
+
+          <h1
+            data-split-hero
+            class="font-display text-[3.05rem] font-medium leading-[0.98] tracking-[-0.03em] text-cream drop-shadow-[0_2px_18px_rgba(14,8,4,0.5)] sm:text-[4.4rem] lg:text-[5.6rem]"
+          >
+            Die Steinofenpizza<br />
+            aus{' '}
+            <span class="relative inline-block italic font-normal text-parchment">
+              Heli.
+              <svg
+                class="pointer-events-none absolute -bottom-[0.14em] left-0 h-[0.26em] w-full text-tomato"
+                viewBox="0 0 200 22"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path data-draw d="M4 14C40 5 92 4 196 9M22 19c44-5 96-6 150-3" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" pathLength="1" />
+              </svg>
             </span>
           </h1>
 
-          <p data-hero-fade class="mt-5 max-w-xl text-base leading-relaxed text-cream/92 sm:text-lg">
-            Hauchdünner Teig aus dem heißen Steinofen, frische Zutaten und ehrliche Portionen –
-            blitzschnell zum Mitnehmen oder gemütlich vor Ort an der{' '}
+          <p data-hero-fade class="mt-7 max-w-xl text-lg leading-relaxed text-cream/95 sm:text-xl">
+            Hauchdünner Teig aus dem heißen Steinofen, frische Zutaten und ehrliche Portionen.
+            Schnell zum Mitnehmen oder gemütlich bei uns an der{' '}
             <span class="font-semibold text-cream">{RESTAURANT.street}</span>.
           </p>
 
-          <!-- Hand-drawn Verdi cadence flourish in antique brass -->
-          <svg
-            data-hero-fade
-            class="mt-5 h-4 w-44 text-brass-light"
-            viewBox="0 0 180 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M2 12 C 28 2, 52 17, 82 9 C 110 2, 140 16, 178 6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M20 15 C 58 9, 108 15, 162 11"
-              stroke="#F6EFE6"
-              stroke-width="1"
-              stroke-linecap="round"
-              opacity="0.55"
-            />
-          </svg>
-
-          <!-- Magnetic Primary & Secondary CTAs -->
-          <div data-hero-fade class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href={RESTAURANT.phoneHref}
-              data-magnetic
-              class="group inline-flex items-center justify-center gap-3 rounded-full bg-tomato px-7 py-4 text-base font-semibold text-cream shadow-xl shadow-black/35 ring-1 ring-brass-light/25 transition-colors hover:bg-tomato-dark active:scale-[0.98]"
-            >
-              <svg class="h-5 w-5 transition-transform group-hover:-rotate-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
+          <div data-hero-fade class="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+            <a href={RESTAURANT.phoneHref} data-magnetic class="btn btn-primary text-[1.05rem]">
+              <Icon name="phone" size={20} />
               <span>Jetzt anrufen · {RESTAURANT.phoneDisplay}</span>
             </a>
-
-            <a
-              href="#speisekarte"
-              data-magnetic
-              class="inline-flex items-center justify-center gap-2 rounded-full border border-brass-light/50 bg-espresso/50 px-7 py-3.5 text-base font-semibold text-cream backdrop-blur-md transition-colors hover:border-cream hover:bg-cream hover:text-espresso"
-            >
+            <a href="#speisekarte" data-magnetic class="btn btn-line-light">
+              <Icon name="book" size={20} />
               <span>Speisekarte ansehen</span>
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 5v14M19 12l-7 7-7-7" />
-              </svg>
             </a>
           </div>
 
-          <!-- Micro Facts Strip -->
-          <dl data-hero-fade class="mt-9 grid max-w-lg grid-cols-3 gap-3 border-t border-brass/35 pt-5 text-sm sm:gap-4">
-            <div>
-              <dt class="text-[0.65rem] uppercase tracking-[0.14em] text-brass-light/95 sm:text-[0.68rem] sm:tracking-[0.18em]">Steinofen-Pizza</dt>
-              <dd class="mt-1 font-display text-lg font-semibold leading-tight text-cream sm:text-xl">Ø 32 cm ab 7&nbsp;€</dd>
-            </div>
-            <div>
-              <dt class="text-[0.65rem] uppercase tracking-[0.14em] text-brass-light/95 sm:text-[0.68rem] sm:tracking-[0.18em]">Abholung &amp; Vor Ort</dt>
-              <dd class="mt-1 font-display text-lg font-semibold leading-tight text-cream sm:text-xl">Kein Lieferdienst</dd>
-            </div>
-            <div>
-              <dt class="text-[0.65rem] uppercase tracking-[0.14em] text-brass-light/95 sm:text-[0.68rem] sm:tracking-[0.18em]">Ruhetag</dt>
-              <dd class="mt-1 font-display text-lg font-semibold leading-tight text-cream sm:text-xl">Dienstags</dd>
-            </div>
-          </dl>
+          <!-- Three facts, in plain words with a fitting icon each -->
+          <ul data-hero-fade class="mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-4 text-cream [--ic-accent:#e0553d] sm:grid-cols-3">
+            <li class="flex items-center gap-3">
+              <Icon name="pizza" size={34} class="text-brass-light" />
+              <span class="leading-tight">
+                <span class="block font-display text-[1.15rem] font-medium">Ø 32 cm ab 7&nbsp;€</span>
+                <span class="text-sm text-parchment/85">Steinofen-Pizza</span>
+              </span>
+            </li>
+            <li class="flex items-center gap-3">
+              <Icon name="bag" size={34} class="text-brass-light" />
+              <span class="leading-tight">
+                <span class="block font-display text-[1.15rem] font-medium">Abholen oder hier essen</span>
+                <span class="text-sm text-parchment/85">Kein Lieferdienst</span>
+              </span>
+            </li>
+            <li class="flex items-center gap-3">
+              <Icon name="clock" size={34} class="text-brass-light" />
+              <span class="leading-tight">
+                <span class="block font-display text-[1.15rem] font-medium">Dienstag Ruhetag</span>
+                <span class="text-sm text-parchment/85">Sonst täglich geöffnet</span>
+              </span>
+            </li>
+          </ul>
         </div>
 
-        <!-- Secondary Authentic Verdi Photo Card in Dark-Walnut & Brass Frame (Desktop Right Corner Accent) -->
-        <div class="hidden lg:col-span-4 lg:flex lg:justify-end xl:col-span-5" data-parallax="-20">
-          <div class="wood-dark-bar w-68 overflow-hidden rounded-3xl border border-brass/45 p-2.5 shadow-2xl shadow-black/55 backdrop-blur-md">
-            <div class="overflow-hidden rounded-2xl ring-1 ring-brass/30">
+        <!-- A printed snapshot pinned into the scene, plus the turning house seal -->
+        <div class="hidden lg:col-span-4 lg:flex lg:justify-end xl:col-span-5" data-parallax="-22">
+          <div data-hero-snap class="relative w-72 xl:w-80">
+            <figure class="snapshot" style="--tilt: 4deg">
+              <span class="tape" aria-hidden="true"></span>
               <Picture
                 src={rucolaDetail}
                 formats={['avif', 'webp']}
-                widths={[360, 560]}
-                sizes="260px"
+                widths={[400, 640]}
+                sizes="320px"
                 alt="Steinofen-Pizza mit frischem Rucola und schwarzen Oliven aus dem Ristorante Verdi"
                 loading="eager"
-                class="aspect-[4/3] w-full object-cover object-[50%_76%]"
+                class="aspect-[4/3.4] w-full object-cover object-[50%_76%]"
               />
-            </div>
-            <div class="mt-2.5 flex items-center justify-between px-1.5 pb-1">
-              <div>
-                <p class="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-brass-light">
-                  Frischegarantie
-                </p>
-                <p class="font-display text-base italic text-cream">24 Sorten · Ø 32 cm</p>
-              </div>
-              <span class="rounded-full border border-brass/35 bg-verdi px-2.5 py-1 text-xs font-bold text-cream shadow-xs">
-                {RESTAURANT.rating.scoreDisplay} ★
+              <figcaption class="font-hand px-1 pb-1 pt-2.5 text-center text-[1.55rem] leading-none text-walnut">
+                24 Sorten, frisch aus dem Ofen
+              </figcaption>
+            </figure>
+
+            <div class="absolute -left-20 -top-12 h-32 w-32 drop-shadow-[0_10px_14px_rgba(10,5,2,0.5)]" aria-hidden="true">
+              <svg viewBox="0 0 140 140" class="seal-spin h-full w-full">
+                <defs>
+                  <path id="hero-seal-arc" d="M70 70m-52 0a52 52 0 1 1 104 0a52 52 0 1 1-104 0" />
+                </defs>
+                <circle cx="70" cy="70" r="68" fill="#A93320" />
+                <circle cx="70" cy="70" r="63" fill="none" stroke="#F6EFE6" stroke-width="1" stroke-dasharray="2 3" opacity="0.7" />
+                <text fill="#F6EFE6" font-family="'Figtree Variable', sans-serif" font-size="11.5" font-weight="700" letter-spacing="2.6">
+                  <textPath href="#hero-seal-arc" startOffset="0">FRISCH AUS DEM STEINOFEN ✦ RISTORANTE VERDI ✦</textPath>
+                </text>
+              </svg>
+              <span class="absolute inset-0 flex items-center justify-center text-cream [--ic-accent:#F2C36B]">
+                <Icon name="oven" size={46} />
               </span>
             </div>
           </div>
@@ -188,18 +162,18 @@ const tickerItems = [
     </div>
   </div>
 
-  <!-- Scroll-Driven Kinetic Editorial Ticker on Dark Smoked Walnut Rail -->
-  <div class="wood-dark-bar overflow-hidden border-y border-brass/40 py-3.5 text-cream shadow-lg" aria-hidden="true">
-    <div
-      data-kinetic-ticker
-      data-direction="-1"
-      class="flex w-max items-center gap-8 whitespace-nowrap px-4 text-xs font-semibold uppercase tracking-[0.24em] text-parchment/95 sm:text-sm"
-    >
-      {[...tickerItems, ...tickerItems].map((text) => (
-        <span class="inline-flex items-center gap-8">
-          <span>{text}</span>
-          <span class="h-1.5 w-1.5 rotate-45 bg-brass-light"></span>
-        </span>
+  <!-- Running band of the house classics: speeds up and leans with the scroll -->
+  <div class="wood-dark-bar overflow-hidden border-y border-brass/40 py-4 sm:py-5" aria-hidden="true">
+    <div data-band data-speed="42" class="band items-center [--ic-accent:#e0553d]">
+      {[0, 1].map(() => (
+        <div class="flex shrink-0 items-center">
+          {bandWords.map((w) => (
+            <span class="flex items-center gap-6 pr-6 sm:gap-9 sm:pr-9">
+              <span class="whitespace-nowrap font-display text-[1.7rem] italic text-cream sm:text-[2.5rem]">{w.text}</span>
+              <Icon name={w.icon} size={30} class="text-brass-light" />
+            </span>
+          ))}
+        </div>
       ))}
     </div>
   </div>

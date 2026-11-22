@@ -1,0 +1,60 @@
+---
+// Own icon set for Ristorante Verdi: 48px grid, round line work, one accent colour (--ic-accent).
+interface Props {
+  name: keyof typeof ICONS;
+  size?: number | string;
+  class?: string;
+  title?: string;
+}
+
+const ICONS = {
+  // Kitchen & dishes
+  oven: '<path d="M7 41V25a17 17 0 0 1 34 0v16"/><path d="M3 41h42"/><path d="M17 41V32a7 7 0 0 1 14 0v9"/><path class="ic-a" d="M24 40c-3.4 0-4.8-3.2-2.4-6 .5 1.5 1.6 1.4 1.7-.4 3 1.7 4.3 6.4.7 6.4z"/><path class="ic-thin" d="M24 8v5M13.5 12.5l2.6 4M34.5 12.5l-2.6 4"/>',
+  pizza: '<circle cx="21" cy="21" r="15.5"/><circle class="ic-thin" cx="21" cy="21" r="10.5"/><path d="M32.5 32.5 43 43" stroke-width="4.2"/><circle class="ic-a" cx="17" cy="18" r="2.5"/><circle class="ic-a" cx="25.5" cy="17.5" r="2.1"/><circle class="ic-a" cx="21.5" cy="26" r="2.5"/>',
+  'pizza-mini': '<circle cx="24" cy="24" r="13.5"/><path class="ic-thin" d="M24 10.5v27M12.3 17.3l23.4 13.4M35.7 17.3 12.3 30.7"/><circle class="ic-a" cx="28.5" cy="17" r="1.9"/><circle class="ic-a" cx="16.5" cy="24" r="1.9"/><circle class="ic-a" cx="28.5" cy="31" r="1.9"/><path class="ic-as" d="M40 7v6M37 10h6"/>',
+  slice: '<path d="M8 14c10-6 22-6 32 0L24 43z"/><path class="ic-thin" d="M11.5 19.5c8-4.2 17-4.2 25 0"/><circle class="ic-a" cx="20" cy="25" r="2.5"/><circle class="ic-a" cx="28" cy="26" r="2.2"/><circle class="ic-a" cx="24" cy="34" r="2"/>',
+  pasta: '<path d="M6 25h36a18 18 0 0 1-36 0z"/><path d="M17 43h14"/><path class="ic-as" d="M12 25c0-7 7-7 7 0M19 25c0-9.500 10-9.500 10 0M29 25c0-7 7-7 7 0"/><path class="ic-thin" d="M20 5c-2 2.500 2 4 0 7M28 4c-2 2.500 2 4 0 7"/>',
+  forno: '<path d="M8 24h32v7a7 7 0 0 1-7 7H15a7 7 0 0 1-7-7z"/><path d="M8 28H4M40 28h4"/><path class="ic-a" d="M8 24c0-4 4-5 6-2 2-4 6-4 8 0 2-4 6-4 8 0 2-3 10-2 10 2z"/><path class="ic-thin" d="M17 7c-2 2.500 2 4 0 7M25 5c-2 2.500 2 4 0 7M33 7c-2 2.500 2 4 0 7"/>',
+  leaf: '<path d="M10 38c-2-16 10-29 29-29 0 19-13 31-29 29z"/><path class="ic-as" d="M10 38 30 18M18 30V20.500M18 30h9.500"/>',
+  basil: '<path d="M24 44V23"/><path d="M24 25c-10 0-15-7-15-17 9 0 15 6 15 17z"/><path class="ic-as" d="M24 31c0-9 6-14 15-14 0 9-5 14-15 14z"/>',
+  plus: '<circle cx="24" cy="24" r="16.500"/><path class="ic-as" d="M24 16v16M16 24h16"/>',
+  // Service
+  bag: '<path d="M10 17h28l-2.500 25h-23z"/><path d="M17 17v-3a7 7 0 0 1 14 0v3"/><path class="ic-as" d="M19 27c2 3.200 8 3.200 10 0"/>',
+  utensils: '<path d="M13 6v11a4.500 4.500 0 0 0 9 0V6M17.500 6v36"/><path class="ic-as" d="M32 42V6c5 3 7.500 9 6.500 19H32"/>',
+  parking: '<rect x="8" y="8" width="32" height="32" rx="7"/><path class="ic-as" d="M19 34V15h7a6 6 0 0 1 0 12h-7"/>',
+  wheelchair: '<circle class="ic-a" cx="20" cy="8.500" r="3.400"/><path d="M20 15v13h11l5 10"/><path d="M20 21h9"/><path class="ic-as" d="M14.500 25a10 10 0 1 0 15 12.500"/>',
+  heart: '<path d="M24 41S7 31 7 19a9 9 0 0 1 17-4 9 9 0 0 1 17 4c0 12-17 22-17 22z"/><path class="ic-as" d="M14 19a3.500 3.500 0 0 1 3.500-3.500"/>',
+  card: '<rect x="5" y="11" width="38" height="26" rx="5"/><path d="M5 19.500h38"/><path class="ic-as" d="M11 29.500h9"/>',
+  // Contact & navigation
+  phone: '<path d="M44 33.840v6a4 4 0 0 1-4.360 4 39.580 39.580 0 0 1-17.260-6.140 39 39 0 0 1-12-12A39.580 39.580 0 0 1 4.240 8.360 4 4 0 0 1 8.220 4h6a4 4 0 0 1 4 3.440c.254 1.920.722 3.806 1.400 5.620a4 4 0 0 1-.900 4.220l-2.540 2.540a32 32 0 0 0 12 12l2.540-2.540a4 4 0 0 1 4.220-.900c1.814.678 3.700 1.146 5.620 1.400A4 4 0 0 1 44 33.840z"/>',
+  pin: '<path d="M24 44S10 33 10 20a14 14 0 0 1 28 0c0 13-14 24-14 24z"/><circle class="ic-a" cx="24" cy="20" r="5"/>',
+  clock: '<circle cx="24" cy="24" r="17"/><path class="ic-as" d="M24 13v11l7 5"/>',
+  route: '<path d="M9 41V25a8 8 0 0 1 8-8h21"/><path class="ic-as" d="M31 9l8 8-8 8"/>',
+  'arrow-up-right': '<path d="M14 34 34 14M18 14h16v16"/>',
+  'arrow-right': '<path d="M8 24h32M27 11l13 13-13 13"/>',
+  'arrow-left': '<path d="M40 24H8M21 11 8 24l13 13"/>',
+  'arrow-down': '<path d="M24 8v32M11 27l13 13 13-13"/>',
+  search: '<circle cx="21" cy="21" r="14"/><path d="m31.500 31.500 10 10"/>',
+  book: '<path d="M24 12c-5-4-11-4-17-2v28c6-2 12-2 17 2 5-4 11-4 17-2V10c-6-2-12-2-17 2z"/><path class="ic-as" d="M24 12v28"/>',
+  expand: '<path d="M30 6h12v12M18 42H6V30M42 6 28 20M6 42l14-14"/>',
+  close: '<path d="M36 12 12 36M12 12l24 24"/>',
+  star: '<path class="ic-a" d="M24 4l6.180 12.520L44 18.540l-10 9.740 2.360 13.760L24 35.540l-12.360 6.500L14 28.280 4 18.540l13.820-2.020z"/>',
+  quote: '<path class="ic-a" d="M8 34V24c0-7 4-11.500 11-13l1.500 3.500c-3.800 1.200-5.500 3.500-5.500 6.500h6v13zM27 34V24c0-7 4-11.500 11-13l1.500 3.500c-3.800 1.200-5.500 3.500-5.500 6.500h6v13z"/>',
+  camera: '<path d="M6 16h8l3-5h14l3 5h8v23H6z"/><circle class="ic-as" cx="24" cy="26" r="7"/>',
+} as const;
+
+const { name, size = 24, class: className = '', title } = Astro.props;
+// Trailing zeros above are only for readability of the source; the paths are valid SVG numbers.
+const body = ICONS[name];
+---
+
+<svg
+  class={`ic ${className}`}
+  width={size}
+  height={size}
+  viewBox="0 0 48 48"
+  aria-hidden={title ? undefined : 'true'}
+  role={title ? 'img' : undefined}
+  aria-label={title}
+  set:html={body}
+/>

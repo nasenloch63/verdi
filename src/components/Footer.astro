@@ -1,79 +1,178 @@
 ---
-import VerdiLogo from './VerdiLogo.astro';
+import Icon from './Icon.astro';
 import { RESTAURANT } from '../data/restaurant';
 
 const year = new Date().getFullYear();
 ---
 
-<footer class="wood-dark-surface relative mt-auto border-t-2 border-brass/50 pb-24 pt-16 text-cream lg:pb-12">
+<footer class="wood-dark-surface relative mt-auto overflow-hidden border-t-[5px] border-[#0e0806] pb-28 text-cream lg:pb-10">
   <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid gap-10 border-b border-brass/25 pb-12 md:grid-cols-12">
-      <!-- Brand Column -->
-      <div class="md:col-span-5">
-        <a href="/" aria-label="Ristorante Verdi Startseite">
-          <VerdiLogo variant="light" />
+    <div class="grid items-center gap-x-14 gap-y-6 lg:grid-cols-12">
+      <!-- The house sign: oval emblem on wrought iron, swinging from the top rail -->
+      <div class="lg:col-span-6">
+        <svg
+          data-sign
+          viewBox="0 0 520 440"
+          class="mx-auto block w-full max-w-[30rem] overflow-visible"
+          role="img"
+          aria-label="Wirtshausschild Ristorante Verdi Pizzeria"
+        >
+          <defs>
+            <radialGradient id="sign-plate" cx="42%" cy="32%" r="78%">
+              <stop offset="0" stop-color="#fdf8ee" />
+              <stop offset="0.62" stop-color="#f3e6ce" />
+              <stop offset="1" stop-color="#e2cda7" />
+            </radialGradient>
+            <linearGradient id="sign-brass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f0d49a" />
+              <stop offset="0.45" stop-color="#b98842" />
+              <stop offset="0.75" stop-color="#e4bf7c" />
+              <stop offset="1" stop-color="#8e6226" />
+            </linearGradient>
+            <filter id="sign-shadow" x="-20%" y="-20%" width="140%" height="150%">
+              <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000" flood-opacity="0.55" />
+            </filter>
+            <path id="sign-arc-top" d="M105 221 Q260 117 415 221" />
+            <path id="sign-arc-bot" d="M176 354 Q260 388 344 354" />
+          </defs>
+
+          <!-- wrought-iron bracket fixed to the rail -->
+          <g fill="none" stroke-linecap="round">
+            <g stroke="#0c0705" stroke-width="7">
+              <path class="sign-draw" pathLength="1" d="M150 0V40M370 0V40" />
+              <path class="sign-draw" pathLength="1" d="M70 40H450" />
+              <path class="sign-draw" pathLength="1" d="M70 40c-17 0-26 10-26 21s9 17 17 17 13-6 13-13-4-9-9-9" />
+              <path class="sign-draw" pathLength="1" d="M450 40c17 0 26 10 26 21s-9 17-17 17-13-6-13-13 4-9 9-9" />
+            </g>
+            <path class="sign-fade" d="M72 38H448" stroke="#d8ae6e" stroke-width="1" opacity="0.35" />
+          </g>
+
+          <g class="sign-swing">
+            <g class="sign-fade" stroke="url(#sign-brass)" stroke-width="4.5" stroke-linecap="round" fill="none">
+              <path d="M170 46V118M350 46V118" stroke-dasharray="9 6" />
+              <circle cx="170" cy="44" r="6" />
+              <circle cx="350" cy="44" r="6" />
+            </g>
+
+            <g filter="url(#sign-shadow)" class="sign-fade">
+              <ellipse cx="260" cy="260" rx="232" ry="150" fill="url(#sign-plate)" />
+            </g>
+            <!-- the frame is drawn around the emblem when the sign comes into view -->
+            <ellipse class="sign-draw" pathLength="1" cx="260" cy="260" rx="232" ry="150" stroke="url(#sign-brass)" stroke-width="10" fill="none" />
+            <ellipse class="sign-draw" pathLength="1" cx="260" cy="260" rx="214" ry="132" stroke="#352216" stroke-width="1.8" fill="none" />
+            <ellipse class="sign-fade" cx="260" cy="260" rx="207" ry="125" stroke="#352216" stroke-width="0.9" stroke-dasharray="2 4" fill="none" opacity="0.7" />
+
+            <g class="sign-fade">
+              <circle cx="170" cy="124" r="6.500" fill="#2a1a10" stroke="url(#sign-brass)" stroke-width="2.5" />
+              <circle cx="350" cy="124" r="6.500" fill="#2a1a10" stroke="url(#sign-brass)" stroke-width="2.5" />
+              <text fill="#221610" font-family="'Fraunces Variable', Georgia, serif" font-size="33" font-weight="500" letter-spacing="7.5">
+                <textPath href="#sign-arc-top" startOffset="50%" text-anchor="middle">RISTORANTE</textPath>
+              </text>
+              <text x="260" y="322" text-anchor="middle" fill="#221610" font-family="'Pinyon Script', 'Snell Roundhand', cursive" font-size="136">Verdi</text>
+              <text fill="#221610" font-family="'Fraunces Variable', Georgia, serif" font-size="26" font-weight="500" letter-spacing="6">
+                <textPath href="#sign-arc-bot" startOffset="50%" text-anchor="middle">PIZZERIA</textPath>
+              </text>
+              <circle cx="92" cy="260" r="3.500" fill="#A93320" />
+              <circle cx="428" cy="260" r="3.500" fill="#37563B" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Last call to action -->
+      <div class="pb-4 pt-2 text-center lg:col-span-6 lg:pt-16 lg:text-left">
+        <p class="kicker kicker-light">Hunger bekommen?</p>
+        <h2 data-split class="mt-1 font-display text-4xl font-medium leading-[1.04] tracking-tight text-cream sm:text-[3.2rem]">
+          Ein Anruf, und der <span class="italic font-normal text-parchment">Ofen läuft.</span>
+        </h2>
+        <a
+          href={RESTAURANT.phoneHref}
+          class="group mt-6 inline-flex items-center gap-4 font-display text-[2.9rem] font-medium leading-none tracking-tight text-cream transition-colors hover:text-brass-light sm:text-[4.6rem]"
+        >
+          <span class="medallion medallion-dark h-14 w-14 transition-transform duration-500 group-hover:-rotate-12 sm:h-[4.5rem] sm:w-[4.5rem]">
+            <Icon name="phone" size={28} />
+          </span>
+          <span class="tabular-nums">{RESTAURANT.phoneDisplay}</span>
         </a>
-        <p class="mt-4 max-w-sm font-display text-base italic text-brass-light">
-          „{RESTAURANT.tagline}“
-        </p>
-        <p class="mt-2 max-w-sm text-sm leading-relaxed text-parchment/80">
-          Steinofen-Pizza, frische Pasta, Pasta al Forno und knackige Salate in Hessisch Lichtenau –
-          vor Ort genießen oder telefonisch vorbestellen und heiß abholen.
-        </p>
-      </div>
-
-      <!-- Contact Column -->
-      <div class="md:col-span-4">
-        <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-brass-light">Kontakt &amp; Adresse</h2>
-        <address class="mt-4 space-y-2 text-sm not-italic text-parchment/90">
-          <p>{RESTAURANT.street} ({RESTAURANT.landmark})</p>
-          <p>{RESTAURANT.postalCode} {RESTAURANT.city}</p>
-          <p class="pt-1">
-            Telefon:{' '}
-            <a href={RESTAURANT.phoneHref} class="font-semibold text-cream underline decoration-brass/60 underline-offset-4 transition-colors hover:text-brass-light">
-              {RESTAURANT.phoneDisplay}
-            </a>
-          </p>
-          <p class="text-xs text-sand/80">
-            Mo, Mi–So: 11:00–14:30 &amp; 17:00–21:30 · Di Ruhetag
-          </p>
-        </address>
-      </div>
-
-      <!-- Links Column -->
-      <div class="md:col-span-3">
-        <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-brass-light">Links &amp; Rechtliches</h2>
-        <ul class="mt-4 space-y-2.5 text-sm text-parchment/90">
-          <li>
-            <a href="/#speisekarte" class="transition-colors hover:text-brass-light">Speisekarte</a>
-          </li>
-          <li>
-            <a href={RESTAURANT.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-brass-light">
-              Google Maps &amp; Bewertungen
-            </a>
-          </li>
-          <li>
-            <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-brass-light">
-              Facebook-Seite
-            </a>
-          </li>
-          <li class="border-t border-brass/20 pt-2">
-            <a href="/impressum" class="transition-colors hover:text-brass-light">Impressum</a>
-          </li>
-          <li>
-            <a href="/datenschutz" class="transition-colors hover:text-brass-light">Datenschutzerklärung</a>
-          </li>
-        </ul>
+        <p class="mt-5 text-lg text-parchment/85">{RESTAURANT.tagline}</p>
       </div>
     </div>
 
-    <div class="mt-8 flex flex-col items-start justify-between gap-3 text-xs text-sand/80 sm:flex-row sm:items-center">
+    <div class="mt-14 grid gap-10 border-t border-brass/25 pt-12 sm:grid-cols-2 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h3 class="flex items-center gap-2.5 font-display text-[1.45rem] font-medium text-cream">
+          <Icon name="pin" size={24} class="text-brass-light [--ic-accent:#e0553d]" />
+          Hier finden Sie uns
+        </h3>
+        <address class="mt-4 space-y-1 text-base not-italic leading-relaxed text-parchment/90">
+          <p>{RESTAURANT.street}</p>
+          <p>{RESTAURANT.postalCode} {RESTAURANT.city}</p>
+          <p class="text-parchment/70">{RESTAURANT.landmark}</p>
+        </address>
+        <a href={RESTAURANT.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-brass-light transition-colors hover:text-cream">
+          <span class="link-draw">Route planen</span>
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+      </div>
+
+      <div class="lg:col-span-4">
+        <h3 class="flex items-center gap-2.5 font-display text-[1.45rem] font-medium text-cream">
+          <Icon name="clock" size={24} class="text-brass-light [--ic-accent:#e0553d]" />
+          Wann wir da sind
+        </h3>
+        <dl class="mt-4 space-y-2 text-base text-parchment/90">
+          <div class="flex justify-between gap-4 border-b border-brass/15 pb-2">
+            <dt>Mo, Mi bis So</dt>
+            <dd class="tabular-nums">11:00–14:30 · 17:00–21:30</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt>Dienstag</dt>
+            <dd class="font-semibold text-[#ec8a76]">Ruhetag</dd>
+          </div>
+        </dl>
+        <p data-live-status class="mt-4 flex items-center gap-2 text-base font-semibold text-cream">
+          <span data-status-dot class="h-2.5 w-2.5 rounded-full bg-status-open"></span>
+          <span data-status-text>Mo, Mi–So geöffnet</span>
+        </p>
+      </div>
+
+      <div class="sm:col-span-2 lg:col-span-4">
+        <h3 class="flex items-center gap-2.5 font-display text-[1.45rem] font-medium text-cream">
+          <Icon name="book" size={24} class="text-brass-light [--ic-accent:#e0553d]" />
+          Direkt weiter
+        </h3>
+        <ul class="mt-4 grid grid-cols-2 gap-x-6 gap-y-2.5 text-base text-parchment/90">
+          <li><a href="/#speisekarte" class="transition-colors hover:text-brass-light">Speisekarte</a></li>
+          <li><a href="/#ueber-uns" class="transition-colors hover:text-brass-light">Über uns</a></li>
+          <li><a href="/#galerie" class="transition-colors hover:text-brass-light">Fotos</a></li>
+          <li><a href="/#besuch" class="transition-colors hover:text-brass-light">Anfahrt</a></li>
+          <li>
+            <a href={RESTAURANT.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-brass-light">Google-Rezensionen</a>
+          </li>
+          <li>
+            <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-brass-light">Facebook</a>
+          </li>
+          <li><a href="/impressum" class="transition-colors hover:text-brass-light">Impressum</a></li>
+          <li><a href="/datenschutz" class="transition-colors hover:text-brass-light">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Oversized farewell in the logo's hand, drifting with the scroll -->
+  <div class="pointer-events-none relative z-0 mt-10 select-none overflow-hidden" aria-hidden="true">
+    <p data-drift class="font-script whitespace-nowrap text-center text-[23vw] leading-[1.15] text-brass-light/25 lg:text-[17vw]">
+      Buon appetito
+    </p>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-start justify-between gap-3 border-t border-brass/20 pt-6 text-sm text-sand/85 sm:flex-row sm:items-center">
       <p>© {year} {RESTAURANT.name} · Hessisch Lichtenau</p>
       <p class="flex flex-wrap items-center gap-x-4 gap-y-1">
-        <span>Ohne Cookies &amp; ohne Tracking</span>
-        <span aria-hidden="true" class="text-brass/50">·</span>
-        <span class="font-medium text-parchment">
-          Design &amp; Entwicklung by <strong class="font-semibold text-brass-light">Naser Solutions</strong>
+        <span>Ohne Cookies, ohne Tracking</span>
+        <span>
+          Design &amp; Entwicklung: <strong class="font-semibold text-brass-light">Naser Solutions</strong>
         </span>
       </p>
     </div>

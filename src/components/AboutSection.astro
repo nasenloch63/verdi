@@ -3,156 +3,151 @@ import { Picture } from 'astro:assets';
 import crustPhoto from '../assets/photos/pizza-steinofen-nah.jpg';
 import tablePhoto from '../assets/photos/tisch-gemeinsam.jpg';
 import melanzanePhoto from '../assets/photos/melanzane-parmigiana.jpg';
+import Icon from './Icon.astro';
 import { RESTAURANT } from '../data/restaurant';
+
+const totalReviews = RESTAURANT.rating.count;
+const pillars = [
+  {
+    icon: 'oven',
+    title: 'Teig aus dem Steinofen',
+    text: 'Dünn ausgerollt, kross gebacken und frisch belegt. In Ø 24 cm oder Ø 32 cm.',
+  },
+  {
+    icon: 'bag',
+    title: 'Anrufen, abholen, fertig',
+    text: 'Kurz durchklingeln, bestellen und heiß mitnehmen. Direkt gegenüber der Grundschule.',
+  },
+  {
+    icon: 'basil',
+    title: 'Frische Zutaten',
+    text: 'Vom knackigen Salat bis zur überbackenen Pasta al Forno wird alles frisch zubereitet.',
+  },
+] as const;
 ---
 
-<section id="ueber-uns" class="bg-surface-taupe relative scroll-mt-20 py-20 sm:py-28">
+<section id="ueber-uns" class="bg-surface-taupe relative scroll-mt-20 overflow-hidden py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-      <!-- Visual Editorial Collage in Dark Smoked Walnut Mat Frames -->
-      <div class="lg:col-span-6">
-        <div class="grid grid-cols-12 gap-4">
-          <div
-            data-parallax="-18"
-            class="wood-dark-bar col-span-12 overflow-hidden rounded-[1.6rem] border border-brass/35 p-1.5 shadow-[0_24px_50px_-20px_rgba(20,11,6,0.45)] sm:p-2"
-          >
-            <div class="overflow-hidden rounded-[1.2rem]">
-              <Picture
-                src={crustPhoto}
-                formats={['avif', 'webp']}
-                widths={[600, 960]}
-                sizes="(max-width: 1024px) 100vw, 48vw"
-                alt="Kross gebackene Steinofen-Pizza mit feinem Belag und charakteristisch gebräuntem Rand"
-                class="aspect-[16/10] w-full object-cover object-[50%_75%]"
-              />
-            </div>
-          </div>
-          <div
-            data-parallax="16"
-            class="wood-dark-bar col-span-7 h-44 overflow-hidden rounded-[1.5rem] border border-brass/30 p-1.5 shadow-lg shadow-espresso/20 sm:h-56"
-          >
-            <div class="h-full w-full overflow-hidden rounded-[1.15rem]">
-              <Picture
-                src={tablePhoto}
-                formats={['avif', 'webp']}
-                widths={[400, 720]}
-                sizes="(max-width: 1024px) 60vw, 28vw"
-                alt="Gäste genießen frisch gebackene Pizzen bei Kerzenschein im Ristorante Verdi"
-                class="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-          <div
-            data-parallax="30"
-            class="wood-dark-bar col-span-5 h-44 overflow-hidden rounded-[1.5rem] border border-brass/30 p-1.5 shadow-lg shadow-espresso/20 sm:h-56"
-          >
-            <div class="h-full w-full overflow-hidden rounded-[1.15rem]">
-              <Picture
-                src={melanzanePhoto}
-                formats={['avif', 'webp']}
-                widths={[320, 560]}
-                sizes="(max-width: 1024px) 40vw, 20vw"
-                alt="Melanzane alla Parmiggiana – überbackene Auberginen in Tomatensauce mit Mozzarella"
-                class="h-full w-full object-cover"
-              />
-            </div>
+    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+      <!-- Photo collage: three prints laid over each other -->
+      <div class="relative lg:col-span-6">
+        <div class="relative mx-auto max-w-xl pb-24 sm:pb-28">
+          <figure data-clip-reveal data-parallax="-14" class="overflow-hidden rounded-md shadow-[0_30px_60px_-26px_rgba(20,11,6,0.6)]">
+            <Picture
+              src={crustPhoto}
+              formats={['avif', 'webp']}
+              widths={[600, 960]}
+              sizes="(max-width: 1024px) 100vw, 46vw"
+              alt="Kross gebackene Steinofen-Pizza mit feinem Belag und charakteristisch gebräuntem Rand"
+              class="aspect-[5/4] w-full object-cover object-[50%_75%]"
+            />
+          </figure>
+
+          <figure data-snap-in data-parallax="18" class="snapshot absolute bottom-2 left-0 w-[46%] sm:-left-4" style="--tilt: -5deg">
+            <span class="tape" aria-hidden="true"></span>
+            <Picture
+              src={tablePhoto}
+              formats={['avif', 'webp']}
+              widths={[320, 560]}
+              sizes="(max-width: 1024px) 46vw, 22vw"
+              alt="Gäste genießen frisch gebackene Pizzen bei Kerzenschein im Ristorante Verdi"
+              class="aspect-[4/3] w-full object-cover"
+            />
+            <figcaption class="font-hand pt-2 text-center text-[1.35rem] leading-none text-walnut">Abends bei uns</figcaption>
+          </figure>
+
+          <figure data-snap-in data-parallax="32" class="snapshot absolute bottom-6 right-0 w-[40%] sm:-right-3" style="--tilt: 4deg; --tape-tilt: 5deg">
+            <span class="tape" aria-hidden="true"></span>
+            <Picture
+              src={melanzanePhoto}
+              formats={['avif', 'webp']}
+              widths={[280, 480]}
+              sizes="(max-width: 1024px) 40vw, 19vw"
+              alt="Melanzane alla Parmiggiana – überbackene Auberginen in Tomatensauce mit Mozzarella"
+              class="aspect-square w-full object-cover"
+            />
+            <figcaption class="font-hand pt-2 text-center text-[1.35rem] leading-none text-walnut">Melanzane</figcaption>
+          </figure>
+
+          <!-- Handwritten note with an arrow pointing at the crust -->
+          <div class="pointer-events-none absolute -top-14 right-2 flex items-end gap-1 text-tomato sm:-top-[3.75rem] sm:right-6" aria-hidden="true">
+            <span class="font-hand -rotate-3 text-[1.7rem] leading-none sm:text-[2rem]">so kross muss der Rand sein</span>
+            <svg class="h-12 w-10 translate-y-7" viewBox="0 0 40 50" fill="none">
+              <path data-draw d="M6 4c18 3 26 16 22 38M28 42l-9-7M28 42l6-10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" pathLength="1" />
+            </svg>
           </div>
         </div>
       </div>
 
-      <!-- Story Copy -->
-      <div data-stagger-group class="lg:col-span-6">
-        <p data-stagger-item class="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-tomato">
-          <span class="h-px w-6 bg-brass" aria-hidden="true"></span>
-          <span>Über das Ristorante Verdi</span>
-        </p>
-        <h2 data-stagger-item class="mt-2 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl">
-          Ehrliche Küche, heißer Steinofen &amp;{' '}
+      <div class="lg:col-span-6">
+        <p class="kicker">Über uns</p>
+        <h2 data-split class="mt-1 font-display text-4xl font-medium leading-[1.04] tracking-tight text-ink sm:text-[3.4rem]">
+          Ehrliche Küche, heißer Steinofen,{' '}
           <span class="italic font-normal text-wood-warm">faire Preise.</span>
         </h2>
 
-        <p data-stagger-item class="mt-6 text-base leading-relaxed text-muted sm:text-lg">
-          Im <strong class="font-semibold text-ink">Ristorante Verdi</strong> zählt das, was auf dem Teller
-          landet: hauchdünner, knusprig gebackener Pizzateig direkt aus dem Steinofen,
-          großzügige Portionen und klassische italienische Pasta- und Ofengerichte ohne Schnörkel.
-        </p>
+        <div data-stagger-group>
+          <p data-stagger-item class="mt-7 text-lg leading-relaxed text-ink/85">
+            Im <strong class="font-semibold text-ink">Ristorante Verdi</strong> zählt, was auf dem Teller
+            landet: hauchdünner Pizzateig aus dem Steinofen, große Portionen und italienische
+            Pasta- und Ofengerichte ohne Schnörkel.
+          </p>
 
-        <p data-stagger-item class="mt-4 text-base leading-relaxed text-muted">
-          Ob Sie Ihre Lieblingspizza auf dem Heimweg blitzschnell abholen oder in entspannter,
-          zwangloser Atmosphäre (Selbstbedienung am Tresen) vor Ort oder im Freien genießen:
-          Bei uns bekommen Sie kompromisslose Frische zu einem Preis-Leistungs-Verhältnis,
-          für das Gäste aus ganz Hessisch Lichtenau und Umgebung immer wiederkommen.
-        </p>
+          <p data-stagger-item class="mt-4 text-base leading-relaxed text-muted">
+            Holen Sie Ihre Lieblingspizza auf dem Heimweg ab oder essen Sie entspannt bei uns,
+            drinnen oder im Freien. Bestellt wird am Tresen. Für dieses Preis-Leistungs-Verhältnis
+            kommen Gäste aus ganz Hessisch Lichtenau immer wieder.
+          </p>
 
-        <!-- Three Interactive 3D Perspective Tilt Craft Pillars with Warm Wood Inlay Top Trim -->
-        <div data-stagger-item class="mt-8 grid gap-4 sm:grid-cols-3">
-          <div data-tilt-card class="linen-card rounded-2xl border border-sand transition-shadow hover:shadow-lg">
-            <div class="wood-warm-cap h-1.5 w-full" aria-hidden="true"></div>
-            <div class="p-4">
-              <p class="font-display text-lg font-semibold text-walnut">Steinofen-Teig</p>
-              <p class="mt-1 text-xs leading-relaxed text-muted">
-                Schön dünn, kross gebacken und frisch belegt – von Ø 24 cm bis Ø 32 cm.
-              </p>
-            </div>
-          </div>
-          <div data-tilt-card class="linen-card rounded-2xl border border-sand transition-shadow hover:shadow-lg">
-            <div class="wood-warm-cap h-1.5 w-full" aria-hidden="true"></div>
-            <div class="p-4">
-              <p class="font-display text-lg font-semibold text-walnut">Schnelle Abholung</p>
-              <p class="mt-1 text-xs leading-relaxed text-muted">
-                Kurz anrufen, bestellen und heiß mitnehmen – direkt gegenüber der Grundschule.
-              </p>
-            </div>
-          </div>
-          <div data-tilt-card class="linen-card rounded-2xl border border-sand transition-shadow hover:shadow-lg">
-            <div class="wood-warm-cap h-1.5 w-full" aria-hidden="true"></div>
-            <div class="p-4">
-              <p class="font-display text-lg font-semibold text-walnut">Frischegarantie</p>
-              <p class="mt-1 text-xs leading-relaxed text-muted">
-                Ausschließlich frische Zutaten – von knackigen Salaten bis Pasta al Forno.
-              </p>
-            </div>
-          </div>
-        </div>
+          <!-- Three promises, each with its own drawn icon -->
+          <ul class="mt-9 space-y-5">
+            {pillars.map((p) => (
+              <li data-stagger-item class="flex items-start gap-4">
+                <span class="medallion h-14 w-14">
+                  <Icon name={p.icon} size={30} />
+                </span>
+                <span>
+                  <span class="block font-display text-[1.3rem] font-medium leading-tight text-walnut">{p.title}</span>
+                  <span class="mt-1 block text-base leading-relaxed text-muted">{p.text}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
 
-        <!-- Animated Count-Up Real Proof Bar -->
-        <div data-stagger-item class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-taupe/70 pt-6">
-          <div>
-            <p
-              class="font-display text-3xl font-bold tabular-nums text-tomato"
-              data-count-to="4.7"
-              data-count-decimals="1"
-              data-count-suffix=" ★"
-              data-count-display={`${RESTAURANT.rating.scoreDisplay} ★`}
-            >
-              {RESTAURANT.rating.scoreDisplay} ★
-            </p>
-            <p class="text-xs text-muted">{RESTAURANT.rating.fiveStarCount}× 5 Sterne bei Google</p>
-          </div>
-          <div>
-            <p
-              class="font-display text-3xl font-bold tabular-nums text-ink"
-              data-count-to="216"
-              data-count-decimals="0"
-              data-count-suffix="+"
-              data-count-display="216+"
-            >
-              216+
-            </p>
-            <p class="text-xs text-muted">Verifizierte Bewertungen</p>
-          </div>
-          <div>
-            <p
-              class="font-display text-3xl font-bold tabular-nums text-verdi"
-              data-count-to="63"
-              data-count-decimals="0"
-              data-count-suffix=""
-              data-count-display="63"
-            >
-              63
-            </p>
-            <p class="text-xs text-muted">Gerichte frisch zubereitet</p>
-          </div>
+          <!-- Real numbers, counted up on scroll -->
+          <dl data-stagger-item class="mt-10 grid grid-cols-3 gap-4 border-t border-taupe/70 pt-7">
+            <div>
+              <dd class="flex items-center gap-1.5 font-display text-[2.6rem] font-medium leading-none tabular-nums text-tomato sm:text-5xl">
+                <span data-count-to={RESTAURANT.rating.score} data-count-decimals="1" data-count-display={RESTAURANT.rating.scoreDisplay}>
+                  {RESTAURANT.rating.scoreDisplay}
+                </span>
+                <Icon name="star" size={26} class="text-brass" />
+              </dd>
+              <dt class="mt-2 text-sm leading-snug text-muted">Sterne im Schnitt bei Google</dt>
+            </div>
+            <div>
+              <dd
+                class="font-display text-[2.6rem] font-medium leading-none tabular-nums text-ink sm:text-5xl"
+                data-count-to={totalReviews}
+                data-count-decimals="0"
+                data-count-display={String(totalReviews)}
+              >
+                {totalReviews}
+              </dd>
+              <dt class="mt-2 text-sm leading-snug text-muted">Google-Bewertungen</dt>
+            </div>
+            <div>
+              <dd
+                class="font-display text-[2.6rem] font-medium leading-none tabular-nums text-verdi sm:text-5xl"
+                data-count-to="63"
+                data-count-decimals="0"
+                data-count-display="63"
+              >
+                63
+              </dd>
+              <dt class="mt-2 text-sm leading-snug text-muted">Gerichte auf der Karte</dt>
+            </div>
+          </dl>
         </div>
       </div>
     </div>

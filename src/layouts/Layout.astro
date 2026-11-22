@@ -104,7 +104,7 @@ const restaurantSchema = includeRestaurantSchema
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" as="image" href="/textures/plaster-beige.webp" type="image/webp" />
-    <link rel="preload" as="image" href="/textures/wood-dark.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/textures/walnut-planks.webp" type="image/webp" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="restaurant" />
@@ -138,7 +138,7 @@ const restaurantSchema = includeRestaurantSchema
     <div
       id="scroll-progress-bar"
       aria-hidden="true"
-      class="fixed inset-x-0 top-0 z-50 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-tomato via-brass-light to-wood-warm pointer-events-none"
+      class="fixed inset-x-0 top-0 z-50 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-verdi via-cream to-tomato pointer-events-none"
     ></div>
 
     <a
@@ -213,8 +213,7 @@ const restaurantSchema = includeRestaurantSchema
             const rowDay = Number(row.dataset.dayIndex);
             const isToday = rowDay === day;
             row.classList.toggle('bg-verdi-soft/85', isToday);
-            row.classList.toggle('ring-1', isToday);
-            row.classList.toggle('ring-verdi/20', isToday);
+            row.classList.toggle('rounded-md', isToday);
             row.classList.toggle('font-semibold', isToday);
             const badge = row.querySelector<HTMLElement>('[data-today-badge]');
             if (badge) badge.classList.toggle('hidden', !isToday);

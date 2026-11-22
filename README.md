@@ -7,7 +7,7 @@ Statische, blitzschnelle Website für das **Ristorante Verdi Pizzeria** in Hessi
 - **Framework:** [Astro](https://astro.build) (statischer Output, minimale JS-Islands)
 - **Styling:** Tailwind CSS v4 + lokal gehostete Variable-Fonts (`Fraunces` & `Plus Jakarta Sans`)
 - **Bildoptimierung:** Astro Assets + Sharp (AVIF/WebP, responsive `srcset`, Lazy Loading)
-- **Datenschutz & SEO:** Keine Cookies, kein Tracking, 2-Klick-Google-Maps, `sitemap.xml`, `robots.txt` und vollständiges JSON-LD `Restaurant` + `Menu` Schema
+- **Datenschutz & SEO:** Keine Cookies, kein Tracking, eigene OpenStreetMap-Vektorkarte ohne Drittanbieter-Anfragen (`scripts/build-map.cjs`), `sitemap.xml`, `robots.txt` und vollständiges JSON-LD `Restaurant` + `Menu` Schema
 - **Speisekarte:** Bearbeitbar über [`src/data/menu.json`](src/data/menu.json)
 
 ## Entwicklung
