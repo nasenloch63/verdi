@@ -17,17 +17,17 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-sand/85 bg-cream/94 backdrop-blur-md">
-  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-    <a href="/" class="group focus-visible:outline-tomato" aria-label="Ristorante Verdi Pizzeria – Startseite">
-      <VerdiLogo compact />
+<header class="wood-dark-bar sticky top-0 z-40 border-b border-brass/35 shadow-[0_8px_28px_rgba(14,8,4,0.34)] backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3.5 py-3 sm:gap-4 sm:px-6 lg:px-8">
+    <a href="/" class="group focus-visible:outline-brass-light" aria-label="Ristorante Verdi Pizzeria – Startseite">
+      <VerdiLogo variant="light" compact />
     </a>
 
     <nav aria-label="Hauptnavigation" class="hidden items-center gap-7 lg:flex">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="font-display text-[1.08rem] font-semibold tracking-wide text-ink/90 transition-colors hover:text-tomato"
+          class="relative font-display text-[1.08rem] font-semibold tracking-wide text-cream/90 transition-colors hover:text-brass-light after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-0 after:bg-brass-light after:transition-all after:duration-300 hover:after:w-full"
         >
           {link.label}
         </a>
@@ -37,15 +37,15 @@ const navLinks = [
     <div class="flex items-center gap-2.5 sm:gap-3">
       <div
         data-live-status
-        class="hidden items-center gap-2 rounded-full border border-sand bg-parchment/85 px-3 py-1.5 text-xs font-medium text-ink sm:inline-flex"
+        class="hidden items-center gap-2 rounded-full border border-brass/30 bg-espresso/70 px-3.5 py-1.5 text-xs font-medium text-cream/95 shadow-inner sm:inline-flex"
       >
-        <span data-status-dot class="h-2 w-2 rounded-full bg-verdi"></span>
+        <span data-status-dot class="h-2 w-2 rounded-full bg-status-open"></span>
         <span data-status-text>Mo, Mi–So · 11–14:30 &amp; 17–21:30</span>
       </div>
 
       <a
         href={RESTAURANT.phoneHref}
-        class="inline-flex items-center gap-2 rounded-full bg-tomato px-4 py-2 text-sm font-semibold text-cream shadow-sm transition-all hover:bg-tomato-dark active:scale-[0.98]"
+        class="inline-flex items-center gap-2 rounded-full bg-tomato px-4 py-2 text-sm font-semibold text-cream shadow-md shadow-black/30 ring-1 ring-brass-light/25 transition-all hover:bg-tomato-dark active:scale-[0.98]"
       >
         <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -61,7 +61,7 @@ const navLinks = [
         aria-expanded="false"
         aria-controls="mobile-nav-drawer"
         aria-label="Menü öffnen"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-sand bg-parchment text-ink transition-colors hover:border-verdi/40 hover:bg-parchment/90 lg:hidden"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brass/35 bg-walnut/80 text-cream transition-colors hover:border-brass-light/70 hover:bg-walnut lg:hidden"
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <line class="burger-line burger-top" x1="4" y1="7" x2="20" y2="7" />
@@ -72,38 +72,38 @@ const navLinks = [
     </div>
   </div>
 
-  <!-- Smooth Animated Mobile Navigation Drawer -->
+  <!-- Smooth Animated Dark-Walnut Mobile Navigation Drawer -->
   <div
     id="mobile-nav-drawer"
     data-open="false"
     aria-hidden="true"
-    class="mobile-drawer border-t border-sand/90 bg-cream/98 shadow-xl backdrop-blur-md lg:hidden"
+    class="mobile-drawer wood-dark-surface border-t border-brass/30 shadow-2xl lg:hidden"
   >
     <div class="mobile-drawer-inner">
       <div class="mx-auto max-w-7xl px-5 pb-6 pt-4">
         <div
           data-live-status
           style="--stagger: 35ms"
-          class="mobile-nav-item mb-4 inline-flex items-center gap-2 rounded-full border border-verdi/20 bg-verdi-soft px-3.5 py-1.5 text-xs font-medium text-verdi"
+          class="mobile-nav-item mb-4 inline-flex items-center gap-2 rounded-full border border-brass/30 bg-espresso/75 px-3.5 py-1.5 text-xs font-medium text-cream/95"
         >
-          <span data-status-dot class="h-2 w-2 rounded-full bg-verdi"></span>
+          <span data-status-dot class="h-2 w-2 rounded-full bg-status-open"></span>
           <span data-status-text>Mo, Mi–So · 11–14:30 &amp; 17–21:30</span>
         </div>
 
-        <nav aria-label="Mobile Navigation" class="divide-y divide-sand/70">
+        <nav aria-label="Mobile Navigation" class="divide-y divide-brass/20">
           {navLinks.map((link, idx) => (
             <a
               href={link.href}
               data-mobile-nav-link
               style={`--stagger: ${75 + idx * 55}ms`}
-              class="mobile-nav-item group flex items-baseline justify-between py-3.5 text-ink transition-colors hover:text-tomato"
+              class="mobile-nav-item group flex items-baseline justify-between py-3.5 text-cream transition-colors hover:text-brass-light"
             >
               <span class="flex items-baseline gap-3.5">
-                <span class="font-display text-sm italic text-crust">{link.num}.</span>
+                <span class="font-display text-sm italic text-brass-light">{link.num}.</span>
                 <span class="font-display text-2xl font-semibold tracking-tight">{link.label}</span>
               </span>
               <svg
-                class="h-4 w-4 text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:text-tomato"
+                class="h-4 w-4 text-sand/75 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-brass-light"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -118,10 +118,10 @@ const navLinks = [
 
         <div
           style="--stagger: 360ms"
-          class="mobile-nav-item mt-5 flex items-center justify-between gap-3 rounded-2xl border border-sand bg-parchment/80 px-4 py-3 text-xs text-muted"
+          class="mobile-nav-item mt-5 flex items-center justify-between gap-3 rounded-2xl border border-brass/25 bg-espresso/75 px-4 py-3 text-xs text-sand"
         >
           <span>{RESTAURANT.street} · {RESTAURANT.city}</span>
-          <a href={RESTAURANT.phoneHref} class="shrink-0 font-semibold text-tomato underline underline-offset-2">
+          <a href={RESTAURANT.phoneHref} class="shrink-0 font-semibold text-brass-light underline decoration-brass/50 underline-offset-2 hover:text-cream">
             {RESTAURANT.phoneDisplay}
           </a>
         </div>

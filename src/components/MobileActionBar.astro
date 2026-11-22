@@ -2,16 +2,16 @@
 import { RESTAURANT } from '../data/restaurant';
 ---
 
-<!-- Sticky Mobile Quick-Action Bar (Mobile & Small Tablet Only) -->
+<!-- Sticky Dark-Walnut Mobile Quick-Action Dock (Mobile & Small Tablet Only) -->
 <div
-  class="fixed inset-x-0 bottom-0 z-40 border-t border-sand bg-cream/95 px-3 py-2.5 shadow-[0_-8px_24px_rgba(28,25,23,0.08)] backdrop-blur-md lg:hidden"
+  class="wood-dark-bar fixed inset-x-0 bottom-0 z-40 border-t border-brass/40 px-3 pb-[max(0.65rem,env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-10px_28px_rgba(14,8,4,0.45)] backdrop-blur-md lg:hidden"
   role="region"
   aria-label="Schnellzugriff Anrufen und Speisekarte"
 >
   <div class="mx-auto flex max-w-md items-center gap-2.5">
     <a
       href={RESTAURANT.phoneHref}
-      class="flex flex-1 items-center justify-center gap-2 rounded-full bg-tomato px-4 py-3 text-sm font-bold text-cream shadow-sm active:scale-[0.98]"
+      class="flex flex-1 items-center justify-center gap-2 rounded-full bg-tomato px-4 py-3 text-sm font-bold text-cream shadow-md shadow-black/30 ring-1 ring-brass-light/25 active:scale-[0.98]"
     >
       <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -20,7 +20,7 @@ import { RESTAURANT } from '../data/restaurant';
     </a>
     <a
       href="#speisekarte"
-      class="flex items-center justify-center gap-1.5 rounded-full border border-verdi/35 bg-parchment px-4 py-3 text-sm font-semibold text-verdi active:scale-[0.98]"
+      class="flex items-center justify-center gap-1.5 rounded-full border border-brass/45 bg-walnut/85 px-4 py-3 text-sm font-semibold text-cream active:scale-[0.98]"
     >
       <span>Speisekarte</span>
     </a>

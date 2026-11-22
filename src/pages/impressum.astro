@@ -13,79 +13,96 @@ import { RESTAURANT } from '../data/restaurant';
 >
   <Header isSubpage={true} />
 
-  <main id="hauptinhalt" class="mx-auto w-full max-w-3xl flex-1 px-4 py-14 sm:px-6 sm:py-20">
-    <a href="/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-verdi hover:text-tomato">
-      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="m15 18-6-6 6-6" />
-      </svg>
-      <span>Zurück zur Startseite</span>
-    </a>
+  <!-- Dark Smoked Walnut Subpage Banner -->
+  <div class="wood-dark-surface border-b border-brass/40 text-cream">
+    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+      <a href="/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brass-light transition-colors hover:text-cream">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+        <span>Zurück zur Startseite</span>
+      </a>
 
-    <h1 class="mt-6 font-display text-4xl font-semibold text-ink sm:text-5xl">Impressum</h1>
-
-    <div class="mt-6 rounded-2xl border-2 border-dashed border-tomato/50 bg-tomato/[0.06] p-5 text-sm text-ink">
-      <p class="font-bold text-tomato">Hinweis vor Veröffentlichung (TODO):</p>
-      <p class="mt-1 leading-relaxed">
-        Bitte ersetzen Sie alle mit <strong>[TODO]</strong> markierten Platzhalter durch die
-        verbindlichen Angaben des Inhabers, bevor diese Website öffentlich beworben wird.
+      <p class="mt-5 text-xs font-bold uppercase tracking-[0.26em] text-brass-light/90">
+        Rechtliches · {RESTAURANT.shortName}
       </p>
+      <h1 class="mt-2 font-display text-4xl font-semibold tracking-tight text-cream sm:text-5xl">
+        Impressum
+      </h1>
     </div>
+  </div>
 
-    <div class="mt-10 space-y-8 text-base leading-relaxed text-muted">
-      <section>
-        <h2 class="font-display text-2xl font-semibold text-ink">Angaben gemäß § 5 DDG</h2>
-        <p class="mt-3">
-          <strong class="text-ink">{RESTAURANT.name}</strong><br />
-          Inhaber: <mark class="rounded bg-sand px-1.5 py-0.5 font-semibold text-ink">[TODO: Vor- und Nachname des Inhabers / Rechtsform]</mark><br />
-          {RESTAURANT.street}<br />
-          {RESTAURANT.postalCode} {RESTAURANT.city}<br />
-          Deutschland
-        </p>
-      </section>
+  <!-- Main Content on Tuscan Beige-Plaster Canvas -->
+  <main id="hauptinhalt" class="bg-surface-beige flex-1 py-12 sm:py-16">
+    <div class="mx-auto w-full max-w-4xl px-4 sm:px-6">
+      <div class="wood-dark-frame rounded-2xl p-2 sm:p-3.5">
+        <div class="menu-sheet rounded-[6px] px-5 py-8 sm:px-10 sm:py-12">
+          <div class="rounded-2xl border-2 border-dashed border-tomato/50 bg-tomato/[0.06] p-5 text-sm text-ink">
+            <p class="font-bold text-tomato">Hinweis vor Veröffentlichung (TODO):</p>
+            <p class="mt-1 leading-relaxed">
+              Bitte ersetzen Sie alle mit <strong>[TODO]</strong> markierten Platzhalter durch die
+              verbindlichen Angaben des Inhabers, bevor diese Website öffentlich beworben wird.
+            </p>
+          </div>
 
-      <section>
-        <h2 class="font-display text-2xl font-semibold text-ink">Kontakt</h2>
-        <p class="mt-3">
-          Telefon:{' '}
-          <a href={RESTAURANT.phoneHref} class="font-semibold text-ink underline decoration-sand underline-offset-4 hover:text-tomato">
-            {RESTAURANT.phoneDisplay}
-          </a><br />
-          E-Mail: <mark class="rounded bg-sand px-1.5 py-0.5 font-semibold text-ink">[TODO: E-Mail-Adresse des Betriebs eintragen]</mark>
-        </p>
-      </section>
+          <div class="mt-9 space-y-8 text-base leading-relaxed text-muted">
+            <section>
+              <h2 class="font-display text-2xl font-semibold text-walnut">Angaben gemäß § 5 DDG</h2>
+              <p class="mt-3">
+                <strong class="text-ink">{RESTAURANT.name}</strong><br />
+                Inhaber: <mark class="rounded bg-parchment px-1.5 py-0.5 font-semibold text-ink">[TODO: Vor- und Nachname des Inhabers / Rechtsform]</mark><br />
+                {RESTAURANT.street}<br />
+                {RESTAURANT.postalCode} {RESTAURANT.city}<br />
+                Deutschland
+              </p>
+            </section>
 
-      <section>
-        <h2 class="font-display text-2xl font-semibold text-ink">Umsatzsteuer-ID</h2>
-        <p class="mt-3">
-          Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
-          <mark class="rounded bg-sand px-1.5 py-0.5 font-semibold text-ink">[TODO: USt-IdNr. eintragen – oder Abschnitt entfernen, falls keine vorhanden]</mark>
-        </p>
-      </section>
+            <section class="border-t border-sand/70 pt-6">
+              <h2 class="font-display text-2xl font-semibold text-walnut">Kontakt</h2>
+              <p class="mt-3">
+                Telefon:{' '}
+                <a href={RESTAURANT.phoneHref} class="font-semibold text-ink underline decoration-brass underline-offset-4 hover:text-tomato">
+                  {RESTAURANT.phoneDisplay}
+                </a><br />
+                E-Mail: <mark class="rounded bg-parchment px-1.5 py-0.5 font-semibold text-ink">[TODO: E-Mail-Adresse des Betriebs eintragen]</mark>
+              </p>
+            </section>
 
-      <section>
-        <h2 class="font-display text-2xl font-semibold text-ink">Aufsichtsbehörde / Gaststättengewerbe</h2>
-        <p class="mt-3">
-          Zuständige Gewerbe- bzw. Lebensmittelüberwachungsbehörde:<br />
-          <mark class="rounded bg-sand px-1.5 py-0.5 font-semibold text-ink">[TODO: z. B. Stadt Hessisch Lichtenau – Gewerbeamt / Werra-Meißner-Kreis, falls Erlaubnis nach GastG erforderlich]</mark>
-        </p>
-      </section>
+            <section class="border-t border-sand/70 pt-6">
+              <h2 class="font-display text-2xl font-semibold text-walnut">Umsatzsteuer-ID</h2>
+              <p class="mt-3">
+                Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
+                <mark class="rounded bg-parchment px-1.5 py-0.5 font-semibold text-ink">[TODO: USt-IdNr. eintragen – oder Abschnitt entfernen, falls keine vorhanden]</mark>
+              </p>
+            </section>
 
-      <section>
-        <h2 class="font-display text-2xl font-semibold text-ink">Verbraucherstreitbeilegung</h2>
-        <p class="mt-3">
-          Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-          Verbraucherschlichtungsstelle teilzunehmen.
-        </p>
-      </section>
+            <section class="border-t border-sand/70 pt-6">
+              <h2 class="font-display text-2xl font-semibold text-walnut">Aufsichtsbehörde / Gaststättengewerbe</h2>
+              <p class="mt-3">
+                Zuständige Gewerbe- bzw. Lebensmittelüberwachungsbehörde:<br />
+                <mark class="rounded bg-parchment px-1.5 py-0.5 font-semibold text-ink">[TODO: z. B. Stadt Hessisch Lichtenau – Gewerbeamt / Werra-Meißner-Kreis, falls Erlaubnis nach GastG erforderlich]</mark>
+              </p>
+            </section>
 
-      <section>
-        <h2 class="font-display text-2xl font-semibold text-ink">Urheberrecht &amp; Bildnachweise</h2>
-        <p class="mt-3">
-          Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen
-          dem deutschen Urheberrecht. Alle verwendeten Fotos werden mit Freigabe des Inhabers von
-          {RESTAURANT.name} genutzt.
-        </p>
-      </section>
+            <section class="border-t border-sand/70 pt-6">
+              <h2 class="font-display text-2xl font-semibold text-walnut">Verbraucherstreitbeilegung</h2>
+              <p class="mt-3">
+                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+                Verbraucherschlichtungsstelle teilzunehmen.
+              </p>
+            </section>
+
+            <section class="border-t border-sand/70 pt-6">
+              <h2 class="font-display text-2xl font-semibold text-walnut">Urheberrecht &amp; Bildnachweise</h2>
+              <p class="mt-3">
+                Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen
+                dem deutschen Urheberrecht. Alle verwendeten Fotos werden mit Freigabe des Inhabers von
+                {RESTAURANT.name} genutzt.
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 

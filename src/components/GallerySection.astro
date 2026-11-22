@@ -113,15 +113,16 @@ const galleryItems = await Promise.all(
 );
 ---
 
-<section id="galerie" class="scroll-mt-20 py-20 sm:py-28">
+<section id="galerie" class="bg-surface-beige relative scroll-mt-20 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
       <div>
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-tomato">
-          Eindrücke aus Küche &amp; Gastraum
+        <p class="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-tomato">
+          <span class="h-px w-6 bg-brass" aria-hidden="true"></span>
+          <span>Eindrücke aus Küche &amp; Gastraum</span>
         </p>
         <h2 class="mt-2 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-          Appetit auf <span class="italic font-normal text-verdi">Verdi?</span>
+          Appetit auf <span class="italic font-normal text-wood-warm">Verdi?</span>
         </h2>
       </div>
       <p class="max-w-md text-sm leading-relaxed text-muted">
@@ -130,10 +131,13 @@ const galleryItems = await Promise.all(
       </p>
     </div>
 
-    <!-- Bento / Masonry Photo Grid -->
+    <!-- Bento / Masonry Photo Grid Framed in Dark Walnut Mats -->
     <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
       {galleryItems.map((item) => (
-        <figure data-clip-reveal class={`group relative overflow-hidden rounded-3xl border border-sand bg-parchment ${item.span}`}>
+        <figure
+          data-clip-reveal
+          class={`wood-dark-bar group relative overflow-hidden rounded-3xl border border-brass/30 p-1.5 shadow-[0_18px_36px_-18px_rgba(20,11,6,0.4)] transition-shadow hover:border-brass-light/60 hover:shadow-[0_24px_48px_-16px_rgba(20,11,6,0.5)] ${item.span}`}
+        >
           <button
             type="button"
             data-lightbox-trigger={item.index}
@@ -141,7 +145,7 @@ const galleryItems = await Promise.all(
             data-title={item.title}
             data-caption={item.caption}
             data-alt={item.alt}
-            class="block h-full w-full text-left focus-visible:outline-tomato"
+            class="relative block h-full w-full overflow-hidden rounded-[1.15rem] text-left focus-visible:outline-brass-light"
             aria-label={`${item.title} vergrößern`}
           >
             <Picture
@@ -153,9 +157,17 @@ const galleryItems = await Promise.all(
               loading="lazy"
               class={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] ${item.aspect} ${item.pos}`}
             />
-            <div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent p-4 pt-12 opacity-95 transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute right-3 top-3 hidden h-8 w-8 items-center justify-center rounded-full border border-brass/40 bg-espresso/75 text-brass-light opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 sm:inline-flex"
+            >
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </span>
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#160D08]/88 via-[#160D08]/38 to-transparent p-4 pt-12 opacity-95 transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
               <p class="font-display text-base font-semibold text-cream">{item.title}</p>
-              <p class="mt-0.5 text-xs text-cream/80 line-clamp-2">{item.caption}</p>
+              <p class="mt-0.5 line-clamp-2 text-xs text-parchment/85">{item.caption}</p>
             </div>
           </button>
         </figure>
@@ -163,23 +175,23 @@ const galleryItems = await Promise.all(
     </div>
   </div>
 
-  <!-- Native Accessible Lightbox Dialog -->
+  <!-- Native Accessible Dark-Walnut Lightbox Dialog -->
   <dialog
     id="verdi-lightbox"
     aria-label="Bildergalerie Großansicht"
-    class="m-auto max-h-[92vh] w-[94vw] max-w-4xl overflow-hidden rounded-3xl border border-cream/15 bg-ink p-0 text-cream shadow-2xl backdrop:bg-ink/85 backdrop:backdrop-blur-xs"
+    class="wood-dark-surface m-auto max-h-[92vh] w-[94vw] max-w-4xl overflow-hidden rounded-3xl border border-brass/40 p-0 text-cream shadow-2xl backdrop:bg-[#100805]/88 backdrop:backdrop-blur-xs"
   >
     <div class="relative flex flex-col">
-      <div class="flex items-center justify-between border-b border-cream/10 px-5 py-3.5">
+      <div class="flex items-center justify-between border-b border-brass/25 bg-espresso/70 px-5 py-3.5">
         <div>
           <p id="lb-title" class="font-display text-lg font-semibold text-cream"></p>
-          <p id="lb-counter" class="text-xs text-cream/65"></p>
+          <p id="lb-counter" class="text-xs text-brass-light/85"></p>
         </div>
         <button
           type="button"
           id="lb-close"
           aria-label="Großansicht schließen"
-          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:bg-cream/10"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brass/35 bg-walnut/70 text-cream transition-colors hover:border-brass-light hover:bg-walnut"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M18 6 6 18M6 6l12 12" />
@@ -187,12 +199,12 @@ const galleryItems = await Promise.all(
         </button>
       </div>
 
-      <div class="relative flex items-center justify-center bg-black/40 p-2 sm:p-4">
+      <div class="relative flex items-center justify-center bg-black/45 p-2 sm:p-4">
         <button
           type="button"
           id="lb-prev"
           aria-label="Vorheriges Foto"
-          class="absolute left-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-ink/80 text-cream ring-1 ring-cream/20 transition-colors hover:bg-tomato"
+          class="absolute left-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-brass/35 bg-espresso/85 text-cream transition-colors hover:border-tomato hover:bg-tomato"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="m15 18-6-6 6-6" />
@@ -203,14 +215,14 @@ const galleryItems = await Promise.all(
           id="lb-img"
           src=""
           alt=""
-          class="max-h-[68vh] w-auto rounded-xl object-contain"
+          class="max-h-[68vh] w-auto rounded-xl object-contain ring-1 ring-brass/25"
         />
 
         <button
           type="button"
           id="lb-next"
           aria-label="Nächstes Foto"
-          class="absolute right-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-ink/80 text-cream ring-1 ring-cream/20 transition-colors hover:bg-tomato"
+          class="absolute right-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-brass/35 bg-espresso/85 text-cream transition-colors hover:border-tomato hover:bg-tomato"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="m9 18 6-6-6-6" />
@@ -218,7 +230,7 @@ const galleryItems = await Promise.all(
         </button>
       </div>
 
-      <p id="lb-caption" class="px-5 py-3.5 text-center text-sm text-cream/80"></p>
+      <p id="lb-caption" class="border-t border-brass/20 bg-espresso/65 px-5 py-3.5 text-center text-sm text-parchment/90"></p>
     </div>
   </dialog>
 </section>

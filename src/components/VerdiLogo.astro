@@ -3,11 +3,13 @@ interface Props {
   variant?: 'dark' | 'light';
   compact?: boolean;
 }
-const { variant = 'dark', compact = false } = Astro.props;
+const { variant = 'light', compact = false } = Astro.props;
 const textColor = variant === 'light' ? 'text-cream' : 'text-ink';
-const subColor = variant === 'light' ? 'text-cream/80' : 'text-verdi';
-const strokeColor = variant === 'light' ? '#FBF6EE' : '#1F4D36';
-const dotColor = '#B82D1A';
+const subColor = variant === 'light' ? 'text-brass-light' : 'text-wood-warm';
+const outerStroke = variant === 'light' ? '#D8AE6E' : '#352216';
+const innerStroke = variant === 'light' ? '#F6EFE6' : '#B4823E';
+const scriptFill = variant === 'light' ? '#F6EFE6' : '#221610';
+const dotColor = variant === 'light' ? '#C73F28' : '#A93320';
 ---
 
 <span class={`inline-flex items-center gap-3 select-none ${textColor}`}>
@@ -20,8 +22,8 @@ const dotColor = '#B82D1A';
     aria-hidden="true"
     class="shrink-0"
   >
-    <ellipse cx="34" cy="24" rx="31" ry="20" stroke={strokeColor} stroke-width="1.6" />
-    <ellipse cx="34" cy="24" rx="26.5" ry="16" stroke={strokeColor} stroke-width="0.85" stroke-dasharray="2 2.5" opacity="0.7" />
+    <ellipse cx="34" cy="24" rx="31" ry="20" stroke={outerStroke} stroke-width="1.5" />
+    <ellipse cx="34" cy="24" rx="26.5" ry="16" stroke={innerStroke} stroke-width="0.85" stroke-dasharray="2 2.5" opacity="0.65" />
     <text
       x="34"
       y="30.5"
@@ -30,17 +32,17 @@ const dotColor = '#B82D1A';
       font-style="italic"
       font-weight="700"
       font-size="24"
-      fill={variant === 'light' ? '#FBF6EE' : '#1C1917'}
+      fill={scriptFill}
     >
       Verdi
     </text>
     <circle cx="57" cy="11" r="3.4" fill={dotColor} />
   </svg>
   <span class="flex flex-col leading-none">
-    <span class={`font-display text-[0.7rem] font-semibold uppercase tracking-[0.24em] ${subColor}`}>
+    <span class={`whitespace-nowrap font-display font-semibold uppercase ${compact ? 'text-[0.58rem] tracking-[0.16em] sm:text-[0.7rem] sm:tracking-[0.24em]' : 'text-[0.7rem] tracking-[0.24em]'} ${subColor}`}>
       Ristorante · Pizzeria
     </span>
-    <span class={`font-display italic font-bold tracking-tight ${compact ? 'text-[1.45rem]' : 'text-[1.7rem]'}`}>
+    <span class={`font-display italic font-bold tracking-tight ${compact ? 'text-[1.4rem] sm:text-[1.45rem]' : 'text-[1.7rem]'}`}>
       Verdi
     </span>
   </span>

@@ -6,62 +6,69 @@ import melanzanePhoto from '../assets/photos/melanzane-parmigiana.jpg';
 import { RESTAURANT } from '../data/restaurant';
 ---
 
-<section id="ueber-uns" class="scroll-mt-20 border-y border-sand bg-parchment/60 py-20 sm:py-28">
+<section id="ueber-uns" class="bg-surface-taupe relative scroll-mt-20 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-      <!-- Visual Editorial Collage with Multi-Layer Scrubbed Parallax -->
+      <!-- Visual Editorial Collage in Dark Smoked Walnut Mat Frames -->
       <div class="lg:col-span-6">
         <div class="grid grid-cols-12 gap-4">
           <div
             data-parallax="-18"
-            class="col-span-12 overflow-hidden rounded-3xl border border-sand bg-cream shadow-lg"
+            class="wood-dark-bar col-span-12 overflow-hidden rounded-[1.6rem] border border-brass/35 p-1.5 shadow-[0_24px_50px_-20px_rgba(20,11,6,0.45)] sm:p-2"
           >
-            <Picture
-              src={crustPhoto}
-              formats={['avif', 'webp']}
-              widths={[600, 960]}
-              sizes="(max-width: 1024px) 100vw, 48vw"
-              alt="Kross gebackene Steinofen-Pizza mit feinem Belag und charakteristisch gebräuntem Rand"
-              class="aspect-[16/10] w-full object-cover object-[50%_75%]"
-            />
+            <div class="overflow-hidden rounded-[1.2rem]">
+              <Picture
+                src={crustPhoto}
+                formats={['avif', 'webp']}
+                widths={[600, 960]}
+                sizes="(max-width: 1024px) 100vw, 48vw"
+                alt="Kross gebackene Steinofen-Pizza mit feinem Belag und charakteristisch gebräuntem Rand"
+                class="aspect-[16/10] w-full object-cover object-[50%_75%]"
+              />
+            </div>
           </div>
           <div
             data-parallax="16"
-            class="col-span-7 h-44 overflow-hidden rounded-3xl border border-sand bg-cream shadow-sm sm:h-56"
+            class="wood-dark-bar col-span-7 h-44 overflow-hidden rounded-[1.5rem] border border-brass/30 p-1.5 shadow-lg shadow-espresso/20 sm:h-56"
           >
-            <Picture
-              src={tablePhoto}
-              formats={['avif', 'webp']}
-              widths={[400, 720]}
-              sizes="(max-width: 1024px) 60vw, 28vw"
-              alt="Gäste genießen frisch gebackene Pizzen bei Kerzenschein im Ristorante Verdi"
-              class="h-full w-full object-cover"
-            />
+            <div class="h-full w-full overflow-hidden rounded-[1.15rem]">
+              <Picture
+                src={tablePhoto}
+                formats={['avif', 'webp']}
+                widths={[400, 720]}
+                sizes="(max-width: 1024px) 60vw, 28vw"
+                alt="Gäste genießen frisch gebackene Pizzen bei Kerzenschein im Ristorante Verdi"
+                class="h-full w-full object-cover"
+              />
+            </div>
           </div>
           <div
             data-parallax="30"
-            class="col-span-5 h-44 overflow-hidden rounded-3xl border border-sand bg-cream shadow-sm sm:h-56"
+            class="wood-dark-bar col-span-5 h-44 overflow-hidden rounded-[1.5rem] border border-brass/30 p-1.5 shadow-lg shadow-espresso/20 sm:h-56"
           >
-            <Picture
-              src={melanzanePhoto}
-              formats={['avif', 'webp']}
-              widths={[320, 560]}
-              sizes="(max-width: 1024px) 40vw, 20vw"
-              alt="Melanzane alla Parmiggiana – überbackene Auberginen in Tomatensauce mit Mozzarella"
-              class="h-full w-full object-cover"
-            />
+            <div class="h-full w-full overflow-hidden rounded-[1.15rem]">
+              <Picture
+                src={melanzanePhoto}
+                formats={['avif', 'webp']}
+                widths={[320, 560]}
+                sizes="(max-width: 1024px) 40vw, 20vw"
+                alt="Melanzane alla Parmiggiana – überbackene Auberginen in Tomatensauce mit Mozzarella"
+                class="h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Story Copy -->
       <div data-stagger-group class="lg:col-span-6">
-        <p data-stagger-item class="text-xs font-bold uppercase tracking-[0.22em] text-tomato">
-          Über das Ristorante Verdi
+        <p data-stagger-item class="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-tomato">
+          <span class="h-px w-6 bg-brass" aria-hidden="true"></span>
+          <span>Über das Ristorante Verdi</span>
         </p>
         <h2 data-stagger-item class="mt-2 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl">
           Ehrliche Küche, heißer Steinofen &amp;{' '}
-          <span class="italic font-normal text-verdi">faire Preise.</span>
+          <span class="italic font-normal text-wood-warm">faire Preise.</span>
         </h2>
 
         <p data-stagger-item class="mt-6 text-base leading-relaxed text-muted sm:text-lg">
@@ -77,30 +84,39 @@ import { RESTAURANT } from '../data/restaurant';
           für das Gäste aus ganz Hessisch Lichtenau und Umgebung immer wiederkommen.
         </p>
 
-        <!-- Three Interactive 3D Perspective Tilt Craft Pillars -->
+        <!-- Three Interactive 3D Perspective Tilt Craft Pillars with Warm Wood Inlay Top Trim -->
         <div data-stagger-item class="mt-8 grid gap-4 sm:grid-cols-3">
-          <div data-tilt-card class="rounded-2xl border border-sand bg-cream p-4 shadow-xs transition-shadow hover:shadow-md">
-            <p class="font-display text-lg font-semibold text-verdi">Steinofen-Teig</p>
-            <p class="mt-1 text-xs leading-relaxed text-muted">
-              Schön dünn, kross gebacken und frisch belegt – von Ø 24 cm bis Ø 32 cm.
-            </p>
+          <div data-tilt-card class="linen-card rounded-2xl border border-sand transition-shadow hover:shadow-lg">
+            <div class="wood-warm-cap h-1.5 w-full" aria-hidden="true"></div>
+            <div class="p-4">
+              <p class="font-display text-lg font-semibold text-walnut">Steinofen-Teig</p>
+              <p class="mt-1 text-xs leading-relaxed text-muted">
+                Schön dünn, kross gebacken und frisch belegt – von Ø 24 cm bis Ø 32 cm.
+              </p>
+            </div>
           </div>
-          <div data-tilt-card class="rounded-2xl border border-sand bg-cream p-4 shadow-xs transition-shadow hover:shadow-md">
-            <p class="font-display text-lg font-semibold text-verdi">Schnelle Abholung</p>
-            <p class="mt-1 text-xs leading-relaxed text-muted">
-              Kurz anrufen, bestellen und heiß mitnehmen – direkt gegenüber der Grundschule.
-            </p>
+          <div data-tilt-card class="linen-card rounded-2xl border border-sand transition-shadow hover:shadow-lg">
+            <div class="wood-warm-cap h-1.5 w-full" aria-hidden="true"></div>
+            <div class="p-4">
+              <p class="font-display text-lg font-semibold text-walnut">Schnelle Abholung</p>
+              <p class="mt-1 text-xs leading-relaxed text-muted">
+                Kurz anrufen, bestellen und heiß mitnehmen – direkt gegenüber der Grundschule.
+              </p>
+            </div>
           </div>
-          <div data-tilt-card class="rounded-2xl border border-sand bg-cream p-4 shadow-xs transition-shadow hover:shadow-md">
-            <p class="font-display text-lg font-semibold text-verdi">Frischegarantie</p>
-            <p class="mt-1 text-xs leading-relaxed text-muted">
-              Ausschließlich frische Zutaten – von knackigen Salaten bis Pasta al Forno.
-            </p>
+          <div data-tilt-card class="linen-card rounded-2xl border border-sand transition-shadow hover:shadow-lg">
+            <div class="wood-warm-cap h-1.5 w-full" aria-hidden="true"></div>
+            <div class="p-4">
+              <p class="font-display text-lg font-semibold text-walnut">Frischegarantie</p>
+              <p class="mt-1 text-xs leading-relaxed text-muted">
+                Ausschließlich frische Zutaten – von knackigen Salaten bis Pasta al Forno.
+              </p>
+            </div>
           </div>
         </div>
 
         <!-- Animated Count-Up Real Proof Bar -->
-        <div data-stagger-item class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-sand pt-6">
+        <div data-stagger-item class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-taupe/70 pt-6">
           <div>
             <p
               class="font-display text-3xl font-bold tabular-nums text-tomato"

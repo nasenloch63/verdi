@@ -8,22 +8,38 @@
   --font-display: "Cormorant Garamond Variable", Georgia, "Times New Roman", serif;
   --font-sans: "Lora Variable", Georgia, "Times New Roman", serif;
 
-  --color-cream: #FBF6EE;
-  --color-parchment: #F3EADB;
-  --color-sand: #E6D9C4;
-  --color-ink: #1C1917;
-  --color-muted: #595047;
-  --color-tomato: #B82D1A;
-  --color-tomato-dark: #942213;
-  --color-verdi: #1F4D36;
-  --color-verdi-dark: #143324;
-  --color-verdi-soft: #E5EFE9;
-  --color-crust: #B97A26;
+  /* Warm Tuscan Beige-Brown & Cotton Linen Surfaces */
+  --color-cream: #F6EFE6;
+  --color-linen: #EFE5D8;
+  --color-parchment: #E4D5C1;
+  --color-sand: #CFB99C;
+  --color-taupe: #B89E7E;
+
+  /* Architectural Dark Smoked Walnut & Roasted Chestnut Wood */
+  --color-wood-warm: #5E402B;
+  --color-walnut: #352216;
+  --color-espresso: #1E130D;
+  --color-wood-deep: #130B07;
+
+  /* Typography Ink Hierarchy */
+  --color-ink: #221610;
+  --color-muted: #614D3D;
+
+  /* Logical Luxury Accents Derived from Verdi's Real Interior */
+  --color-brass: #B4823E;
+  --color-brass-light: #D8AE6E;
+  --color-crust: #B4823E;
+  --color-tomato: #A93320;
+  --color-tomato-dark: #892516;
+  --color-verdi: #37563B;
+  --color-verdi-dark: #243B27;
+  --color-verdi-soft: #E3E9DE;
+  --color-status-open: #4E945B;
 }
 
 @layer base {
   html {
-    background-color: var(--color-cream);
+    background-color: var(--color-espresso);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -32,7 +48,7 @@
   }
 
   body {
-    background-color: var(--color-cream);
+    background-color: var(--color-parchment);
     color: var(--color-ink);
     overflow-x: clip;
   }
@@ -42,35 +58,134 @@
   }
 
   ::selection {
-    background-color: #B82D1A;
-    color: #FBF6EE;
+    background-color: var(--color-tomato);
+    color: var(--color-cream);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-tomato);
+    outline: 2px solid var(--color-brass);
     outline-offset: 3px;
     border-radius: 4px;
   }
 }
 
-/* Warm stone-paper grain overlay */
+/* ============================================================================
+   BESPOKE CROSS-PAGE ARCHITECTURAL BACKGROUNDS (DESKTOP & MOBILE SAFE)
+   ============================================================================ */
+
+/* Global fixed Tuscan limewash beige-plaster canvas (iOS/Android 60fps safe — no background-attachment: fixed jank!) */
+.site-canvas-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background-color: #E7D9C6;
+  background-image:
+    radial-gradient(ellipse 95% 65% at 18% 12%, rgba(248, 240, 228, 0.56) 0%, transparent 64%),
+    radial-gradient(ellipse 85% 70% at 88% 82%, rgba(164, 128, 88, 0.24) 0%, transparent 68%),
+    linear-gradient(180deg, rgba(235, 221, 202, 0.32) 0%, rgba(219, 200, 175, 0.42) 55%, rgba(204, 181, 152, 0.48) 100%),
+    url('/textures/plaster-beige.webp');
+  background-size: cover, cover, cover, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Warm stone-paper micro-grain overlay across all pages */
 .paper-grain::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 60;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Culinary studio radial glow for the 3D Hero stage */
-.stage-3d-bg {
+/* Alternating Warm Beige & Toasted Taupe Section Washes (letting Tuscan plaster breathe through) */
+.bg-surface-beige {
   background:
-    radial-gradient(circle at 50% 42%, rgba(199, 138, 59, 0.24) 0%, rgba(184, 45, 26, 0.14) 36%, rgba(20, 51, 36, 0.92) 78%, #10251B 100%);
+    radial-gradient(ellipse 80% 45% at 50% 0%, rgba(250, 244, 234, 0.65) 0%, transparent 72%),
+    linear-gradient(180deg, rgba(241, 232, 219, 0.72) 0%, rgba(233, 220, 202, 0.66) 100%);
 }
 
-/* Interactive 3D tilt cards with dynamic specular light */
+.bg-surface-taupe {
+  background:
+    radial-gradient(ellipse 75% 50% at 85% 15%, rgba(180, 130, 62, 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 12% 88%, rgba(94, 64, 43, 0.14) 0%, transparent 68%),
+    linear-gradient(180deg, rgba(222, 204, 180, 0.80) 0%, rgba(213, 193, 166, 0.84) 55%, rgba(203, 181, 152, 0.86) 100%);
+}
+
+/* Deep Dark Smoked Walnut Architectural Surface (Reviews Lounge, Footer, Subpage Banner, Map Card, Lightbox) */
+.wood-dark-surface {
+  background-color: #1A100A;
+  background-image:
+    radial-gradient(ellipse 78% 62% at 50% 0%, rgba(216, 174, 110, 0.16) 0%, transparent 65%),
+    radial-gradient(ellipse 90% 80% at 50% 100%, rgba(15, 8, 4, 0.72) 0%, transparent 72%),
+    linear-gradient(180deg, rgba(26, 16, 10, 0.72) 0%, rgba(26, 16, 10, 0.56) 50%, rgba(18, 10, 6, 0.80) 100%),
+    url('/textures/wood-dark.webp');
+  background-size: cover, cover, cover, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Frosted Dark Smoked Walnut Bar (Sticky Header, Sticky Menu Filter Ribbon, Hero Ticker, Mobile Bottom Bar) */
+.wood-dark-bar {
+  background-color: rgba(27, 17, 11, 0.94);
+  background-image:
+    linear-gradient(180deg, rgba(46, 29, 19, 0.74) 0%, rgba(24, 14, 9, 0.88) 100%),
+    url('/textures/wood-dark.webp');
+  background-size: cover, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Vertically Seamless Dark Smoked Walnut Frame (Speisekarte Outer Wood Bezel — never stretches on tall mobile!) */
+.wood-dark-frame {
+  background-color: #24160E;
+  background-image:
+    linear-gradient(90deg, rgba(16, 9, 5, 0.42) 0%, rgba(62, 40, 26, 0.12) 14%, rgba(62, 40, 26, 0.12) 86%, rgba(16, 9, 5, 0.42) 100%),
+    linear-gradient(180deg, rgba(216, 174, 110, 0.12) 0%, transparent 6%, transparent 94%, rgba(12, 7, 4, 0.42) 100%),
+    url('/textures/wood-dark-tile.webp');
+  background-size: 100% 100%, 100% 100%, 620px auto;
+  background-position: center, center, top center;
+  background-repeat: no-repeat, no-repeat, repeat;
+  box-shadow:
+    0 34px 80px -24px rgba(19, 11, 7, 0.55),
+    0 10px 26px -10px rgba(19, 11, 7, 0.35),
+    inset 0 1px 0 rgba(216, 174, 110, 0.38),
+    inset 0 -1px 0 rgba(12, 7, 4, 0.75);
+}
+
+/* Warm Roasted Chestnut / Walnut Wood Trim Rail & Card Accent Strip */
+.wood-warm-rail {
+  background-color: #462E1E;
+  background-image:
+    linear-gradient(180deg, rgba(216, 174, 110, 0.24) 0%, rgba(42, 26, 17, 0.28) 55%, rgba(20, 12, 7, 0.52) 100%),
+    url('/textures/wood-warm.webp');
+  background-size: cover, 720px auto;
+  background-position: center;
+  background-repeat: no-repeat, repeat-x;
+}
+
+.wood-warm-cap {
+  background-color: #4B3120;
+  background-image:
+    linear-gradient(90deg, rgba(28, 17, 11, 0.32) 0%, rgba(216, 174, 110, 0.16) 50%, rgba(28, 17, 11, 0.32) 100%),
+    url('/textures/wood-warm.webp');
+  background-size: cover, 480px auto;
+  background-position: center;
+}
+
+/* Warm Elevated Card Surface on Beige Backgrounds */
+.linen-card {
+  background: linear-gradient(180deg, rgba(248, 242, 234, 0.96) 0%, rgba(241, 231, 217, 0.94) 100%);
+  box-shadow:
+    0 18px 42px -22px rgba(34, 22, 16, 0.22),
+    0 2px 8px rgba(34, 22, 16, 0.06),
+    inset 0 1px 0 rgba(255, 250, 244, 0.85);
+}
+
+/* Interactive 3D tilt cards with dynamic warm brass specular light */
 [data-tilt-card] {
   position: relative;
   overflow: hidden;
@@ -85,7 +200,7 @@
   transition: opacity 0.35s ease;
   background: radial-gradient(
     260px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(199, 138, 59, 0.16),
+    rgba(216, 174, 110, 0.22),
     transparent 65%
   );
 }
@@ -93,18 +208,19 @@
   opacity: 1;
 }
 
-/* Authentic Speisekarte paper & dotted leader */
+/* Authentic Heavy Cotton-Linen Speisekarte Paper & Dotted Leader */
 .menu-sheet {
   background:
-    linear-gradient(180deg, rgba(252, 248, 240, 0.98) 0%, rgba(248, 241, 229, 0.98) 100%);
+    radial-gradient(ellipse 90% 35% at 50% 0%, rgba(255, 251, 245, 0.72) 0%, transparent 70%),
+    linear-gradient(180deg, #F8F1E7 0%, #F2E7D8 52%, #EFE2D0 100%);
   box-shadow:
-    0 24px 60px -24px rgba(28, 25, 23, 0.16),
-    0 2px 10px rgba(28, 25, 23, 0.05),
-    inset 0 0 0 1px rgba(185, 122, 38, 0.25);
+    inset 0 0 0 1px rgba(180, 130, 62, 0.42),
+    inset 0 2px 24px rgba(53, 34, 22, 0.07),
+    0 2px 12px rgba(18, 10, 6, 0.35);
 }
 
 .menu-leader {
-  background-image: radial-gradient(circle, rgba(89, 80, 71, 0.48) 0.95px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(97, 77, 61, 0.48) 0.95px, transparent 1px);
   background-position: bottom;
   background-size: 7px 2px;
   background-repeat: repeat-x;
@@ -203,20 +319,6 @@
   animation: soft-pulse 2.2s ease-in-out infinite;
 }
 
-/* Slow orbital spin for studio badge ring */
-@keyframes slow-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.spin-slow {
-  animation: slow-spin 26s linear infinite;
-}
-
 /* Fallback subtle CSS reveal */
 .reveal {
   opacity: 1;
@@ -251,8 +353,7 @@ html.js-reveal .reveal:not(.is-visible) {
   .marquee-clone {
     display: none;
   }
-  .status-dot-pulse,
-  .spin-slow {
+  .status-dot-pulse {
     animation: none;
   }
   .mobile-drawer,

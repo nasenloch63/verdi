@@ -99,10 +99,12 @@ const restaurantSchema = includeRestaurantSchema
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#1F4D36" />
+    <meta name="theme-color" content="#1E130D" />
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href="/textures/plaster-beige.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/textures/wood-dark.webp" type="image/webp" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="restaurant" />
@@ -128,17 +130,20 @@ const restaurantSchema = includeRestaurantSchema
 
     <ClientRouter />
   </head>
-  <body class="paper-grain min-h-screen flex flex-col bg-cream text-ink antialiased selection:bg-tomato selection:text-cream">
+  <body class="paper-grain relative min-h-screen flex flex-col bg-transparent text-ink antialiased selection:bg-tomato selection:text-cream">
+    <!-- Cross-Page Fixed Tuscan Beige-Plaster Architectural Canvas (Desktop & Mobile 60fps safe) -->
+    <div class="site-canvas-backdrop" aria-hidden="true"></div>
+
     <!-- Top Scroll Progress Hairline -->
     <div
       id="scroll-progress-bar"
       aria-hidden="true"
-      class="fixed inset-x-0 top-0 z-50 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-tomato via-crust to-verdi pointer-events-none"
+      class="fixed inset-x-0 top-0 z-50 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-tomato via-brass-light to-wood-warm pointer-events-none"
     ></div>
 
     <a
       href="#hauptinhalt"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-verdi focus:text-cream focus:px-4 focus:py-2.5 focus:rounded-full focus:font-semibold focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-espresso focus:text-cream focus:ring-1 focus:ring-brass-light focus:px-4 focus:py-2.5 focus:rounded-full focus:font-semibold focus:shadow-lg"
     >
       Direkt zum Inhalt springen
     </a>
@@ -192,11 +197,11 @@ const restaurantSchema = includeRestaurantSchema
             const dotEl = el.querySelector<HTMLElement>('[data-status-dot]');
             if (textEl) textEl.textContent = label;
             if (dotEl) {
-              dotEl.classList.remove('bg-verdi', 'bg-tomato', 'bg-crust', 'status-dot-pulse');
+              dotEl.classList.remove('bg-status-open', 'bg-verdi', 'bg-tomato', 'bg-crust', 'bg-brass-light', 'status-dot-pulse');
               if (isOpen) {
-                dotEl.classList.add('bg-verdi', 'status-dot-pulse');
+                dotEl.classList.add('bg-status-open', 'status-dot-pulse');
               } else if (!isTuesday && mins >= 14 * 60 + 30 && mins < 17 * 60) {
-                dotEl.classList.add('bg-crust');
+                dotEl.classList.add('bg-brass-light');
               } else {
                 dotEl.classList.add('bg-tomato');
               }
@@ -207,7 +212,9 @@ const restaurantSchema = includeRestaurantSchema
           todayRows.forEach((row) => {
             const rowDay = Number(row.dataset.dayIndex);
             const isToday = rowDay === day;
-            row.classList.toggle('bg-verdi-soft/80', isToday);
+            row.classList.toggle('bg-verdi-soft/85', isToday);
+            row.classList.toggle('ring-1', isToday);
+            row.classList.toggle('ring-verdi/20', isToday);
             row.classList.toggle('font-semibold', isToday);
             const badge = row.querySelector<HTMLElement>('[data-today-badge]');
             if (badge) badge.classList.toggle('hidden', !isToday);

@@ -15,9 +15,9 @@ const tickerItems = [
 ];
 ---
 
-<section class="relative overflow-hidden bg-ink text-cream">
+<section class="relative overflow-hidden bg-espresso text-cream">
   <!-- Full-Bleed Hero-Wide Authentic Stone-Oven Pizza Photography with Scrubbed Parallax -->
-  <div class="relative min-h-[82svh] w-full flex items-end sm:min-h-[86svh] lg:items-center">
+  <div class="relative flex min-h-[82svh] w-full items-end sm:min-h-[86svh] lg:items-center">
     <div class="absolute inset-0 overflow-hidden">
       <div data-parallax="36" class="h-[112%] w-full -translate-y-[6%]">
         <Picture
@@ -28,17 +28,17 @@ const tickerItems = [
           alt="Frisch gebackene Steinofen-Pizza aus dem Ristorante Verdi mit kross gebräuntem Rand und reichhaltigem Belag"
           loading="eager"
           fetchpriority="high"
-          class="h-full w-full object-cover object-[50%_72%]"
+          class="h-full w-full object-cover object-[50%_70%]"
         />
       </div>
-      <!-- Editorial Warm Cinematic Scrims (High WCAG Contrast + Rich Food Glow) -->
+      <!-- Balanced Warm Espresso-Walnut Editorial Scrims (Text Legible Left, Bright Appetizing Pizza Right) -->
       <div
         aria-hidden="true"
-        class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#14110F]/92 via-[#14110F]/68 to-[#14110F]/22"
+        class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#170E09]/88 via-[#1B100A]/52 to-transparent"
       ></div>
       <div
         aria-hidden="true"
-        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#14110F]/88 via-transparent to-[#14110F]/35"
+        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#170E09]/76 via-transparent to-[#170E09]/24"
       ></div>
     </div>
 
@@ -50,50 +50,51 @@ const tickerItems = [
           <div data-hero-fade class="mb-5 flex flex-wrap items-center gap-2.5">
             <span
               data-live-status
-              class="inline-flex items-center gap-2 rounded-full border border-cream/25 bg-ink/55 px-3.5 py-1.5 text-xs font-medium tracking-wide text-cream backdrop-blur-md"
+              class="inline-flex items-center gap-2 rounded-full border border-brass/35 bg-espresso/65 px-3.5 py-1.5 text-xs font-medium tracking-wide text-cream shadow-sm backdrop-blur-md"
             >
-              <span data-status-dot class="h-2 w-2 rounded-full bg-verdi"></span>
+              <span data-status-dot class="h-2 w-2 rounded-full bg-status-open"></span>
               <span data-status-text>Mo, Mi–So · 11:00–14:30 &amp; 17:00–21:30</span>
             </span>
 
             <a
               href="#bewertungen"
-              class="inline-flex items-center gap-1.5 rounded-full border border-cream/25 bg-ink/55 px-3.5 py-1.5 text-xs font-semibold text-cream backdrop-blur-md transition-colors hover:border-crust"
+              class="inline-flex items-center gap-1.5 rounded-full border border-brass/35 bg-espresso/65 px-3.5 py-1.5 text-xs font-semibold text-cream shadow-sm backdrop-blur-md transition-colors hover:border-brass-light"
             >
-              <svg class="h-3.5 w-3.5 text-crust" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg class="h-3.5 w-3.5 text-brass-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
               <span>{RESTAURANT.rating.scoreDisplay} ★</span>
-              <span class="text-cream/75">({RESTAURANT.rating.count} Google-Bewertungen)</span>
+              <span class="text-parchment/85">({RESTAURANT.rating.count} Google-Bewertungen)</span>
             </a>
           </div>
 
-          <p data-hero-fade class="mb-3 font-display text-base italic tracking-wide text-sand sm:text-lg">
-            „{RESTAURANT.tagline}“ · {RESTAURANT.city}
+          <p data-hero-fade class="mb-3 inline-flex items-center gap-2.5 font-display text-base italic tracking-wide text-brass-light sm:text-lg">
+            <span class="h-px w-6 bg-brass-light/70" aria-hidden="true"></span>
+            <span>„{RESTAURANT.tagline}“ · {RESTAURANT.city}</span>
           </p>
 
           <!-- Monumental Masked Headline -->
-          <h1 class="font-display text-[2.9rem] font-semibold leading-[1.0] tracking-[-0.025em] text-cream drop-shadow-xs sm:text-6xl lg:text-[4.65rem]">
+          <h1 class="font-display text-[2.95rem] font-semibold leading-[1.0] tracking-[-0.025em] text-cream drop-shadow-[0_2px_16px_rgba(14,8,4,0.45)] sm:text-6xl lg:text-[4.75rem]">
             <span class="block overflow-hidden pb-1">
-              <span data-hero-line class="block">Steinofen-Pizza</span>
+              <span data-hero-line class="block">Die Steinofenpizza</span>
             </span>
             <span class="block overflow-hidden pb-1.5">
               <span data-hero-line class="block">
-                aus <span class="italic font-normal text-sand">Hessisch Lichtenau.</span>
+                aus <span class="italic font-normal text-parchment">Heli.</span>
               </span>
             </span>
           </h1>
 
-          <p data-hero-fade class="mt-5 max-w-xl text-base leading-relaxed text-cream/88 sm:text-lg">
+          <p data-hero-fade class="mt-5 max-w-xl text-base leading-relaxed text-cream/92 sm:text-lg">
             Hauchdünner Teig aus dem heißen Steinofen, frische Zutaten und ehrliche Portionen –
             blitzschnell zum Mitnehmen oder gemütlich vor Ort an der{' '}
             <span class="font-semibold text-cream">{RESTAURANT.street}</span>.
           </p>
 
-          <!-- Hand-drawn Verdi cadence flourish -->
+          <!-- Hand-drawn Verdi cadence flourish in antique brass -->
           <svg
             data-hero-fade
-            class="mt-5 h-4 w-44 text-crust"
+            class="mt-5 h-4 w-44 text-brass-light"
             viewBox="0 0 180 18"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +108,7 @@ const tickerItems = [
             />
             <path
               d="M20 15 C 58 9, 108 15, 162 11"
-              stroke="#FBF6EE"
+              stroke="#F6EFE6"
               stroke-width="1"
               stroke-linecap="round"
               opacity="0.55"
@@ -119,7 +120,7 @@ const tickerItems = [
             <a
               href={RESTAURANT.phoneHref}
               data-magnetic
-              class="group inline-flex items-center justify-center gap-3 rounded-full bg-tomato px-7 py-4 text-base font-semibold text-cream shadow-xl shadow-black/30 transition-colors hover:bg-tomato-dark active:scale-[0.98]"
+              class="group inline-flex items-center justify-center gap-3 rounded-full bg-tomato px-7 py-4 text-base font-semibold text-cream shadow-xl shadow-black/35 ring-1 ring-brass-light/25 transition-colors hover:bg-tomato-dark active:scale-[0.98]"
             >
               <svg class="h-5 w-5 transition-transform group-hover:-rotate-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -130,7 +131,7 @@ const tickerItems = [
             <a
               href="#speisekarte"
               data-magnetic
-              class="inline-flex items-center justify-center gap-2 rounded-full border border-cream/40 bg-cream/12 px-7 py-3.5 text-base font-semibold text-cream backdrop-blur-md transition-colors hover:border-cream hover:bg-cream hover:text-verdi-dark"
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-brass-light/50 bg-espresso/50 px-7 py-3.5 text-base font-semibold text-cream backdrop-blur-md transition-colors hover:border-cream hover:bg-cream hover:text-espresso"
             >
               <span>Speisekarte ansehen</span>
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -140,26 +141,26 @@ const tickerItems = [
           </div>
 
           <!-- Micro Facts Strip -->
-          <dl data-hero-fade class="mt-9 grid max-w-lg grid-cols-3 gap-4 border-t border-cream/20 pt-5 text-sm">
+          <dl data-hero-fade class="mt-9 grid max-w-lg grid-cols-3 gap-3 border-t border-brass/35 pt-5 text-sm sm:gap-4">
             <div>
-              <dt class="text-[0.68rem] uppercase tracking-[0.18em] text-cream/70">Steinofen-Pizza</dt>
-              <dd class="mt-1 font-display text-xl font-semibold text-cream">Ø 32 cm ab 7 €</dd>
+              <dt class="text-[0.65rem] uppercase tracking-[0.14em] text-brass-light/95 sm:text-[0.68rem] sm:tracking-[0.18em]">Steinofen-Pizza</dt>
+              <dd class="mt-1 font-display text-lg font-semibold leading-tight text-cream sm:text-xl">Ø 32 cm ab 7&nbsp;€</dd>
             </div>
             <div>
-              <dt class="text-[0.68rem] uppercase tracking-[0.18em] text-cream/70">Abholung &amp; Vor Ort</dt>
-              <dd class="mt-1 font-display text-xl font-semibold text-cream">Kein Lieferdienst</dd>
+              <dt class="text-[0.65rem] uppercase tracking-[0.14em] text-brass-light/95 sm:text-[0.68rem] sm:tracking-[0.18em]">Abholung &amp; Vor Ort</dt>
+              <dd class="mt-1 font-display text-lg font-semibold leading-tight text-cream sm:text-xl">Kein Lieferdienst</dd>
             </div>
             <div>
-              <dt class="text-[0.68rem] uppercase tracking-[0.18em] text-cream/70">Ruhetag</dt>
-              <dd class="mt-1 font-display text-xl font-semibold text-cream">Dienstags</dd>
+              <dt class="text-[0.65rem] uppercase tracking-[0.14em] text-brass-light/95 sm:text-[0.68rem] sm:tracking-[0.18em]">Ruhetag</dt>
+              <dd class="mt-1 font-display text-lg font-semibold leading-tight text-cream sm:text-xl">Dienstags</dd>
             </div>
           </dl>
         </div>
 
-        <!-- Secondary Authentic Verdi Photo Card (Desktop Right Corner Accent) -->
+        <!-- Secondary Authentic Verdi Photo Card in Dark-Walnut & Brass Frame (Desktop Right Corner Accent) -->
         <div class="hidden lg:col-span-4 lg:flex lg:justify-end xl:col-span-5" data-parallax="-20">
-          <div class="w-64 overflow-hidden rounded-3xl border border-cream/25 bg-ink/70 p-2.5 shadow-2xl backdrop-blur-md">
-            <div class="overflow-hidden rounded-2xl">
+          <div class="wood-dark-bar w-68 overflow-hidden rounded-3xl border border-brass/45 p-2.5 shadow-2xl shadow-black/55 backdrop-blur-md">
+            <div class="overflow-hidden rounded-2xl ring-1 ring-brass/30">
               <Picture
                 src={rucolaDetail}
                 formats={['avif', 'webp']}
@@ -167,17 +168,17 @@ const tickerItems = [
                 sizes="260px"
                 alt="Steinofen-Pizza mit frischem Rucola und schwarzen Oliven aus dem Ristorante Verdi"
                 loading="eager"
-                class="aspect-[4/3] w-full object-cover object-[50%_72%]"
+                class="aspect-[4/3] w-full object-cover object-[50%_76%]"
               />
             </div>
             <div class="mt-2.5 flex items-center justify-between px-1.5 pb-1">
               <div>
-                <p class="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-sand">
+                <p class="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-brass-light">
                   Frischegarantie
                 </p>
                 <p class="font-display text-base italic text-cream">24 Sorten · Ø 32 cm</p>
               </div>
-              <span class="rounded-full bg-verdi px-2.5 py-1 text-xs font-bold text-cream">
+              <span class="rounded-full border border-brass/35 bg-verdi px-2.5 py-1 text-xs font-bold text-cream shadow-xs">
                 {RESTAURANT.rating.scoreDisplay} ★
               </span>
             </div>
@@ -187,17 +188,17 @@ const tickerItems = [
     </div>
   </div>
 
-  <!-- Scroll-Driven Kinetic Editorial Ticker -->
-  <div class="overflow-hidden border-t border-cream/15 bg-verdi-dark py-3.5 text-cream" aria-hidden="true">
+  <!-- Scroll-Driven Kinetic Editorial Ticker on Dark Smoked Walnut Rail -->
+  <div class="wood-dark-bar overflow-hidden border-y border-brass/40 py-3.5 text-cream shadow-lg" aria-hidden="true">
     <div
       data-kinetic-ticker
       data-direction="-1"
-      class="flex w-max items-center gap-8 whitespace-nowrap px-4 text-xs font-semibold uppercase tracking-[0.24em] text-sand/90 sm:text-sm"
+      class="flex w-max items-center gap-8 whitespace-nowrap px-4 text-xs font-semibold uppercase tracking-[0.24em] text-parchment/95 sm:text-sm"
     >
       {[...tickerItems, ...tickerItems].map((text) => (
         <span class="inline-flex items-center gap-8">
           <span>{text}</span>
-          <span class="h-1.5 w-1.5 rounded-full bg-tomato"></span>
+          <span class="h-1.5 w-1.5 rotate-45 bg-brass-light"></span>
         </span>
       ))}
     </div>

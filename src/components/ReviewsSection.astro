@@ -2,25 +2,26 @@
 import { RESTAURANT, REVIEWS } from '../data/restaurant';
 ---
 
-<section id="bewertungen" class="scroll-mt-20 overflow-hidden bg-verdi-dark py-20 text-cream sm:py-28">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section id="bewertungen" class="wood-dark-surface relative scroll-mt-20 overflow-hidden border-y border-brass/40 py-20 text-cream sm:py-28">
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
       <div>
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-crust">
-          Echte Stimmen aus Google Maps
+        <p class="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-brass-light">
+          <span class="h-px w-6 bg-brass-light/70" aria-hidden="true"></span>
+          <span>Echte Stimmen aus Google Maps</span>
         </p>
         <h2 class="mt-2 font-display text-4xl font-semibold tracking-tight text-cream sm:text-5xl">
-          Was unsere <span class="italic font-normal text-sand">Gäste</span> sagen
+          Was unsere <span class="italic font-normal text-parchment">Gäste</span> sagen
         </h2>
       </div>
 
-      <div class="flex flex-wrap items-center gap-5 rounded-3xl border border-cream/15 bg-cream/[0.06] px-6 py-4">
+      <div class="flex flex-col items-start gap-4 rounded-3xl border border-brass/35 bg-espresso/65 px-6 py-4 shadow-xl shadow-black/30 backdrop-blur-md sm:flex-row sm:items-center sm:gap-5">
         <div>
           <div class="flex items-baseline gap-2">
             <span class="font-display text-4xl font-bold text-cream">{RESTAURANT.rating.scoreDisplay}</span>
-            <span class="text-sm text-cream/70">/ 5,0</span>
+            <span class="text-sm text-sand/80">/ 5,0</span>
           </div>
-          <div class="mt-1 flex items-center gap-0.5 text-crust" aria-label="4,7 von 5 Sternen">
+          <div class="mt-1 flex items-center gap-0.5 text-brass-light" aria-label="4,7 von 5 Sternen">
             {Array.from({ length: 5 }).map(() => (
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -28,14 +29,14 @@ import { RESTAURANT, REVIEWS } from '../data/restaurant';
             ))}
           </div>
         </div>
-        <div class="h-10 w-px bg-cream/15" aria-hidden="true"></div>
+        <div class="h-px w-full bg-brass/30 sm:h-10 sm:w-px" aria-hidden="true"></div>
         <div>
           <p class="text-sm font-semibold text-cream">{RESTAURANT.rating.count} Bewertungen</p>
           <a
             href={RESTAURANT.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-sand underline decoration-sand/40 underline-offset-4 transition-colors hover:text-cream"
+            class="mt-0.5 inline-flex items-center gap-1 text-xs font-medium text-brass-light underline decoration-brass/50 underline-offset-4 transition-colors hover:text-cream"
           >
             <span>Alle Bewertungen bei Google lesen</span>
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -47,17 +48,17 @@ import { RESTAURANT, REVIEWS } from '../data/restaurant';
     </div>
   </div>
 
-  <!-- Smooth Infinite Review Marquee (pauses on hover/focus; wraps cleanly under reduced-motion) -->
-  <div class="marquee-wrapper relative mt-12">
-    <!-- Subtle side edge fades -->
-    <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-20 bg-gradient-to-r from-verdi-dark to-transparent sm:block"></div>
-    <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-20 bg-gradient-to-l from-verdi-dark to-transparent sm:block"></div>
+  <!-- Smooth Infinite Review Marquee on Smoked Dark-Walnut Glass Cards -->
+  <div class="marquee-wrapper relative z-10 mt-12">
+    <!-- Subtle side edge fades matching dark walnut wood -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-24 bg-gradient-to-r from-[#1A100A] via-[#1A100A]/80 to-transparent sm:block"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-[#1A100A] via-[#1A100A]/80 to-transparent sm:block"></div>
 
     <div class="marquee-track gap-5 px-4">
       {REVIEWS.map((review) => (
-        <article class="flex w-[310px] shrink-0 flex-col justify-between rounded-3xl border border-cream/12 bg-cream/[0.07] p-6 backdrop-blur-xs sm:w-[370px]">
+        <article class="flex w-[310px] shrink-0 flex-col justify-between rounded-3xl border border-brass/25 bg-espresso/60 p-6 shadow-xl shadow-black/25 backdrop-blur-sm transition-colors hover:border-brass-light/50 sm:w-[370px]">
           <div>
-            <div class="flex items-center gap-0.5 text-crust" aria-label={`${review.rating} von 5 Sternen`}>
+            <div class="flex items-center gap-0.5 text-brass-light" aria-label={`${review.rating} von 5 Sternen`}>
               {Array.from({ length: review.rating }).map(() => (
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -68,18 +69,18 @@ import { RESTAURANT, REVIEWS } from '../data/restaurant';
               „{review.quote}“
             </blockquote>
           </div>
-          <footer class="mt-6 flex items-center justify-between border-t border-cream/10 pt-4 text-xs">
+          <footer class="mt-6 flex items-center justify-between border-t border-brass/20 pt-4 text-xs">
             <span class="font-semibold text-cream">{review.author}</span>
-            <span class="text-cream/65">{review.context}</span>
+            <span class="text-sand/80">{review.context}</span>
           </footer>
         </article>
       ))}
 
       {/* Duplicate track for seamless loop (aria-hidden so screen readers don't read twice) */}
       {REVIEWS.map((review) => (
-        <article aria-hidden="true" class="marquee-clone flex w-[310px] shrink-0 flex-col justify-between rounded-3xl border border-cream/12 bg-cream/[0.07] p-6 backdrop-blur-xs sm:w-[370px]">
+        <article aria-hidden="true" class="marquee-clone flex w-[310px] shrink-0 flex-col justify-between rounded-3xl border border-brass/25 bg-espresso/60 p-6 shadow-xl shadow-black/25 backdrop-blur-sm sm:w-[370px]">
           <div>
-            <div class="flex items-center gap-0.5 text-crust">
+            <div class="flex items-center gap-0.5 text-brass-light">
               {Array.from({ length: review.rating }).map(() => (
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -90,9 +91,9 @@ import { RESTAURANT, REVIEWS } from '../data/restaurant';
               „{review.quote}“
             </p>
           </div>
-          <div class="mt-6 flex items-center justify-between border-t border-cream/10 pt-4 text-xs">
+          <div class="mt-6 flex items-center justify-between border-t border-brass/20 pt-4 text-xs">
             <span class="font-semibold text-cream">{review.author}</span>
-            <span class="text-cream/65">{review.context}</span>
+            <span class="text-sand/80">{review.context}</span>
           </div>
         </article>
       ))}

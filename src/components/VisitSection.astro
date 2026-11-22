@@ -2,14 +2,15 @@
 import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
 ---
 
-<section id="besuch" class="scroll-mt-20 border-t border-sand bg-parchment/70 py-20 sm:py-28">
+<section id="besuch" class="bg-surface-taupe relative scroll-mt-20 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal max-w-2xl">
-      <p class="text-xs font-bold uppercase tracking-[0.22em] text-tomato">
-        Besuch, Abholung &amp; Öffnungszeiten
+      <p class="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-tomato">
+        <span class="h-px w-6 bg-brass" aria-hidden="true"></span>
+        <span>Besuch, Abholung &amp; Öffnungszeiten</span>
       </p>
       <h2 class="mt-2 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-        So finden Sie <span class="italic font-normal text-verdi">uns</span>
+        So finden Sie <span class="italic font-normal text-wood-warm">uns</span>
       </h2>
       <p class="mt-3 text-base leading-relaxed text-muted">
         Zentral in Hessisch Lichtenau an der <strong class="text-ink">{RESTAURANT.street}</strong>{' '}
@@ -18,50 +19,53 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
     </div>
 
     <div class="mt-10 grid gap-8 lg:grid-cols-12">
-      <!-- Opening Hours & Contact Card -->
-      <div class="reveal flex flex-col justify-between rounded-3xl border border-sand bg-cream p-6 shadow-sm sm:p-8 lg:col-span-5">
+      <!-- Opening Hours & Contact Card with Dark Smoked Walnut Header Cap -->
+      <div class="reveal linen-card flex flex-col justify-between overflow-hidden rounded-3xl border border-sand lg:col-span-5">
         <div>
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <h3 class="font-display text-2xl font-semibold text-ink">Öffnungszeiten</h3>
+          <!-- Dark Walnut Architectural Header Cap -->
+          <div class="wood-dark-bar flex flex-wrap items-center justify-between gap-2 border-b border-brass/40 px-6 py-5 sm:px-8">
+            <h3 class="font-display text-2xl font-semibold text-cream">Öffnungszeiten</h3>
             <span
               data-live-status
-              class="inline-flex items-center gap-2 rounded-full border border-verdi/20 bg-verdi-soft px-3 py-1 text-xs font-semibold text-verdi"
+              class="inline-flex items-center gap-2 rounded-full border border-brass/35 bg-espresso/75 px-3 py-1 text-xs font-semibold text-cream"
             >
-              <span data-status-dot class="h-2 w-2 rounded-full bg-verdi"></span>
+              <span data-status-dot class="h-2 w-2 rounded-full bg-status-open"></span>
               <span data-status-text>Zeiten</span>
             </span>
           </div>
 
-          <dl class="mt-5 divide-y divide-sand/70 text-sm">
-            {OPENING_HOURS.map((day) => (
-              <div
-                data-day-index={day.dayIndex}
-                class="flex items-center justify-between gap-4 rounded-lg px-2.5 py-2.5 transition-colors"
-              >
-                <dt class="flex items-center gap-2 text-ink">
-                  <span>{day.label}</span>
-                  <span
-                    data-today-badge
-                    class="hidden rounded-full bg-verdi px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-cream"
-                  >
-                    Heute
-                  </span>
-                </dt>
-                <dd class={`tabular-nums ${day.closed ? 'font-semibold text-tomato' : 'text-muted'}`}>
-                  {day.closed
-                    ? 'Ruhetag'
-                    : day.slots.map((s) => `${s.open}–${s.close}`).join(' · ')}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <div class="px-6 pt-5 sm:px-8">
+            <dl class="divide-y divide-sand/75 text-sm">
+              {OPENING_HOURS.map((day) => (
+                <div
+                  data-day-index={day.dayIndex}
+                  class="flex items-center justify-between gap-4 rounded-lg px-2.5 py-2.5 transition-colors"
+                >
+                  <dt class="flex items-center gap-2 text-ink">
+                    <span>{day.label}</span>
+                    <span
+                      data-today-badge
+                      class="hidden rounded-full bg-verdi px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-cream"
+                    >
+                      Heute
+                    </span>
+                  </dt>
+                  <dd class={`tabular-nums ${day.closed ? 'font-semibold text-tomato' : 'text-muted'}`}>
+                    {day.closed
+                      ? 'Ruhetag'
+                      : day.slots.map((s) => `${s.open}–${s.close}`).join(' · ')}
+                  </dd>
+                </div>
+              ))}
+            </dl>
 
-          <p class="mt-5 rounded-2xl border border-crust/30 bg-parchment/80 p-3.5 text-xs leading-relaxed text-ink/85">
-            <strong class="font-semibold text-ink">Tipp:</strong> {RESTAURANT.peakHint}
-          </p>
+            <p class="mt-5 rounded-2xl border border-brass/40 bg-parchment/85 p-3.5 text-xs leading-relaxed text-ink/90">
+              <strong class="font-semibold text-walnut">Tipp:</strong> {RESTAURANT.peakHint}
+            </p>
+          </div>
         </div>
 
-        <div class="mt-6 space-y-3 border-t border-sand pt-6">
+        <div class="mt-6 space-y-3 border-t border-sand px-6 pb-6 pt-6 sm:px-8 sm:pb-8">
           <div class="text-sm">
             <p class="font-semibold text-ink">{RESTAURANT.name}</p>
             <p class="text-muted">
@@ -70,12 +74,12 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
             </p>
           </div>
 
-          <div class="flex flex-wrap gap-3 pt-1">
+          <div class="flex flex-col gap-2.5 pt-1 sm:flex-row sm:gap-3">
             <a
               href={RESTAURANT.phoneHref}
-              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-tomato px-5 py-3 text-sm font-semibold text-cream transition-colors hover:bg-tomato-dark"
+              class="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-tomato px-5 py-3 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-tomato-dark"
             >
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
               <span>{RESTAURANT.phoneDisplay}</span>
@@ -85,10 +89,10 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
               href={RESTAURANT.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-verdi/35 bg-cream px-5 py-3 text-sm font-semibold text-verdi transition-colors hover:bg-verdi hover:text-cream"
+              class="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-walnut/40 bg-parchment/70 px-5 py-3 text-sm font-semibold text-walnut transition-colors hover:bg-walnut hover:text-cream"
             >
               <span>Route planen</span>
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M7 17 17 7M7 7h10v10" />
               </svg>
             </a>
@@ -96,22 +100,22 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
         </div>
       </div>
 
-      <!-- Privacy-First 2-Click Map & Service Grid -->
+      <!-- Privacy-First 2-Click Dark-Walnut Map & Service Grid -->
       <div class="reveal flex flex-col gap-6 lg:col-span-7">
-        <!-- DSGVO 2-Click Google Map Container -->
+        <!-- DSGVO 2-Click Google Map Container on Dark Smoked Walnut Surface -->
         <div
           id="map-consent-wrapper"
           data-embed-url={RESTAURANT.googleMapsEmbedUrl}
-          class="relative min-h-[320px] overflow-hidden rounded-3xl border border-sand bg-verdi-dark text-cream shadow-sm sm:min-h-[360px]"
+          class="wood-dark-surface relative min-h-[320px] overflow-hidden rounded-3xl border border-brass/40 text-cream shadow-[0_24px_54px_-22px_rgba(20,11,6,0.5)] sm:min-h-[360px]"
         >
-          <!-- Stylized local vector street map preview (Zero third-party requests!) -->
+          <!-- Stylized local vector street map preview in brushed champagne brass (Zero third-party requests!) -->
           <svg
             aria-hidden="true"
             viewBox="0 0 800 420"
             preserveAspectRatio="xMidYMid slice"
             class="absolute inset-0 h-full w-full opacity-25"
           >
-            <g stroke="#FBF6EE" stroke-width="2" fill="none">
+            <g stroke="#D8AE6E" stroke-width="2" fill="none">
               <path d="M-20 80 Q 220 120, 420 70 T 840 130" stroke-width="4" />
               <path d="M-20 230 Q 260 190, 480 250 T 840 210" stroke-width="5" />
               <path d="M120 -10 L 165 430" />
@@ -119,14 +123,14 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
               <path d="M620 -10 L 580 430" />
               <path d="M-20 340 L 820 310" />
             </g>
-            <circle cx="400" cy="210" r="78" stroke="#B82D1A" stroke-width="2" stroke-dasharray="6 6" fill="none" />
+            <circle cx="400" cy="210" r="78" stroke="#C73F28" stroke-width="2" stroke-dasharray="6 6" fill="none" />
           </svg>
 
           <div
             id="map-consent-overlay"
             class="relative z-10 flex h-full min-h-[320px] flex-col items-center justify-center p-6 text-center sm:min-h-[360px] sm:p-10"
           >
-            <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-tomato text-cream shadow-lg">
+            <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-tomato text-cream shadow-lg shadow-black/40 ring-2 ring-brass-light/35">
               <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                 <circle cx="12" cy="10" r="3" />
@@ -136,10 +140,10 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
             <h3 class="mt-4 font-display text-2xl font-semibold text-cream">
               {RESTAURANT.street}, {RESTAURANT.postalCode} {RESTAURANT.city}
             </h3>
-            <p class="mt-2 max-w-md text-xs leading-relaxed text-cream/80 sm:text-sm">
+            <p class="mt-2 max-w-md text-xs leading-relaxed text-parchment/85 sm:text-sm">
               Zum Schutz Ihrer Privatsphäre wird Google Maps erst nach Ihrem Klick geladen.
               Dabei werden Daten an Google übertragen (Details im{' '}
-              <a href="/datenschutz" class="underline decoration-cream/50 underline-offset-2 hover:text-sand">
+              <a href="/datenschutz" class="text-brass-light underline decoration-brass/60 underline-offset-2 hover:text-cream">
                 Datenschutz
               </a>
               ).
@@ -149,7 +153,7 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
               <button
                 type="button"
                 id="load-google-map-btn"
-                class="rounded-full bg-cream px-6 py-3 text-sm font-semibold text-verdi-dark shadow-md transition-all hover:bg-sand active:scale-[0.98]"
+                class="rounded-full bg-cream px-6 py-3 text-sm font-semibold text-espresso shadow-md transition-all hover:bg-parchment active:scale-[0.98]"
               >
                 Google Maps Karte laden
               </button>
@@ -157,7 +161,7 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
                 href={RESTAURANT.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="rounded-full border border-cream/35 px-5 py-3 text-sm font-medium text-cream transition-colors hover:bg-cream/10"
+                class="rounded-full border border-brass/45 bg-espresso/50 px-5 py-3 text-sm font-medium text-cream backdrop-blur-xs transition-colors hover:border-brass-light hover:bg-walnut/70"
               >
                 Direkt in Google Maps öffnen
               </a>
@@ -165,12 +169,15 @@ import { RESTAURANT, OPENING_HOURS, AMENITIES } from '../data/restaurant';
           </div>
         </div>
 
-        <!-- Amenities & Services Grid -->
+        <!-- Amenities & Services Grid with Subtle Warm Wood Top Cap -->
         <div data-stagger-group class="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
           {AMENITIES.map((item) => (
-            <div data-stagger-item data-tilt-card class="rounded-2xl border border-sand bg-cream p-4 shadow-xs transition-shadow hover:shadow-md">
-              <p class="text-sm font-semibold text-ink">{item.title}</p>
-              <p class="mt-1 text-xs leading-relaxed text-muted">{item.detail}</p>
+            <div data-stagger-item data-tilt-card class="linen-card rounded-2xl border border-sand transition-shadow hover:shadow-lg">
+              <div class="wood-warm-cap h-1 w-full opacity-90" aria-hidden="true"></div>
+              <div class="p-4">
+                <p class="text-sm font-semibold text-walnut">{item.title}</p>
+                <p class="mt-1 text-xs leading-relaxed text-muted">{item.detail}</p>
+              </div>
             </div>
           ))}
         </div>
